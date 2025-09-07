@@ -1,69 +1,66 @@
-# React + TypeScript + Vite
+# Contribution Guidelines
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Thank you for contributing to this project!  
+Please follow these guidelines so our workflow stays smooth and consistent.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Workflow
 
-## Expanding the ESLint configuration
+1. **Create a branch** from `main`:
+   - Use the format:  
+     ```
+     <type>/<short-description>
+     ```
+     Example: `feat/login-page`, `fix/navbar-bug`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. **Work on your changes** in your branch.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+3. **Commit using Conventional Commits** (see below).
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+4. **Open a Pull Request (PR)**:
+   - Link it to the related issue on GitHub Projects.
+   - At least one teammate must review before merging.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ✍️ Commit Rules
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+We use [Conventional Commits](https://www.conventionalcommits.org/) to keep messages clear.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**Format:**
+<type>(optional scope): <short description>
+
+markdown
+Copy code
+
+**Examples:**
+- `feat(auth): add JWT login`
+- `fix(ui): correct navbar alignment`
+- `docs(readme): update setup instructions`
+- `refactor(api): simplify user controller`
+
+**Types we use:**
+- `feat` → new feature
+- `fix` → bug fix
+- `docs` → documentation only
+- `refactor` → code restructuring without feature/bug changes
+- `chore` → maintenance, setup, dependencies
+- `style` → code style changes (no logic impact)
+- `test` → add or update tests
+
+---
+
+## ✅ Pull Request Checklist
+Before marking your PR as ready:
+- [ ] My code follows the style guidelines of this project
+- [ ] I used the correct branch naming format
+- [ ] I wrote commits following Conventional Commits
+- [ ] I linked the PR to its issue on GitHub Projects
+- [ ] I tested my changes locally
+
+---
+
+## 🧩 Code Reviews
+- Be constructive and respectful in feedback.  
+- Approve only when the code is working, clean, and tested.
