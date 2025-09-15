@@ -15,7 +15,7 @@ const Navbar = () => {
       {/* Import Montserrat font */}
       <style>
         {`
-          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
         `}
       </style>
       <nav
@@ -38,7 +38,7 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <div style={{ fontWeight: 700, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif' }}>
+        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif' }}>
           ICPEP
         </div>
         {/* Desktop Navigation */}
