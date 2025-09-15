@@ -1,62 +1,110 @@
+import React, { useEffect, useRef } from 'react';
 import Button from '../ui/Button';
 
 const Hero = () => {
+  const waveRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Wave is hidden at bottom, pops up as user scrolls (max 120px)
+      if (waveRef.current) {
+        const maxOffset = 180; // height of wave
+        const popAmount = Math.min(scrollY, 120) / 120; // 0 to 1
+        waveRef.current.style.transform = `translateY(${maxOffset * (1 - popAmount)}px)`;
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    // Set initial position
+    if (waveRef.current) {
+      waveRef.current.style.transform = `translateY(180px)`;
+    }
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <>
     <section
       style={{
-        backgroundImage: 'url("/bg.svg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
         width: "100vw",
         height: "100vh",
-        overflow: "hidden",
-        position: "fixed",
+        position: "relative", // was "fixed"
         left: 0,
         top: 0,
         margin: 0,
         padding: 0,
         display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        // zIndex: -1, // remove this line
+      }}
+    >
+      {/* Animated gradient background */}
+      <style>
+        {`
+          @keyframes gradientMove {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+          .animated-gradient-bg {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0;
+            background: linear-gradient(120deg, #9362CD, #E80F50, #FDE5D9);
+            background-size: 200% 200%;
+            animation: gradientMove 8s ease-in-out infinite;
+          }
+          .blur-overlay {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            backdrop-filter: blur(32px);
+            opacity: 0.7;
+          }
+        `}
+      </style>
+      <div className="animated-gradient-bg"></div>
+      <div className="blur-overlay"></div>
+      <div style={{
+        display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        zIndex: -1
-      }}
-    >
-      {/* Import Montserrat font */}
-      <style>
-        {`
-          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
-        `}
-      </style>
-      <div style={{
-        position: "relative",
-        zIndex: 1,
         width: "100%",
-        textAlign: "center",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center"
+        position: "relative",
+        zIndex: 2
       }}>
-        <div style={{ marginTop: "-5rem", marginLeft: "4rem" }}>
-          <h1 style={{
-            fontSize: "3.5rem",
-            margin: 0,
-            fontWeight: 900,
-            fontFamily: "Montserrat, sans-serif",
-            letterSpacing: 1,
-          }}>
-            Engineering Tomorrow,<br /><br />
-            One Student at a Time
-          </h1>
-        </div>
-        {/* Buttons below heading */}
+        <h1 style={{
+          color: "#fff",
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 900,
+          fontSize: "3.2rem",
+          margin: 0,
+          textAlign: "center",
+        }}>
+          Engineering Tomorrow,
+        </h1>
+        <h1 style={{
+          color: "#fff",
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 900,
+          fontSize: "3.2rem",
+          margin: "3rem 0 3.5rem 0",
+          textAlign: "center",
+        }}>
+          One Student at a Time
+        </h1>
         <div style={{
-          position: "absolute",
-          top: "14rem",
-          left: 0,
-          width: "100%",
           display: "flex",
           gap: "1.5rem",
           justifyContent: "center"
@@ -79,8 +127,45 @@ const Hero = () => {
           </Button>
         </div>
       </div>
+      {/* Ice cream wave SVG at bottom */}
+      <div
+        ref={waveRef}
+        style={{
+          position: "absolute",
+          left: 0,
+          bottom: 0,
+          width: "100vw",
+          height: "180px",
+          zIndex: 3,
+          pointerEvents: "none",
+          transition: "transform 0.4s cubic-bezier(.4,0,.2,1)",
+        }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1920 180"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          style={{
+            display: "block",
+          }}
+        >
+          <path
+            d="
+              M0,120
+              Q320,180 480,120
+              Q640,60 960,120
+              Q1280,180 1440,120
+              Q1600,60 1920,120
+              V180 H0 Z
+            "
+            fill="white"
+          />
+        </svg>
+      </div>
     </section>
-    </>
   );
 };
 
