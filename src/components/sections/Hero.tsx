@@ -42,6 +42,11 @@ const Hero = () => {
       {/* Animated gradient background */}
       <style>
         {`
+          html, body {
+            box-sizing: border-box;
+            overflow-x: hidden;
+            width: 100vw;
+          }
           @keyframes gradientMove {
             0% {
               background-position: 0% 50%;
@@ -80,7 +85,7 @@ const Hero = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        width: "100%",
+        width: "100vw",
         position: "relative",
         zIndex: 2
       }}>
@@ -135,6 +140,7 @@ const Hero = () => {
           left: 0,
           bottom: 0,
           width: "100vw",
+          maxWidth: "100%",
           height: "180px",
           zIndex: 3,
           pointerEvents: "none",

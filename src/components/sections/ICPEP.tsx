@@ -39,6 +39,7 @@ const ICPEP = () => (
     <img
       src="/ICPEP-logo.svg"
       alt="ICPEP SE PUP Logo"
+      draggable={false}
       style={{
         width: '260px',
         height: 'auto',

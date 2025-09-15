@@ -30,7 +30,7 @@ const Navbar = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 40px',
+          padding: '0 60px', // increased from 40px
           background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
           boxSizing: 'border-box',
           flexWrap: 'wrap',
@@ -38,7 +38,7 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif' }}>
+        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif', marginLeft: 16 }}>
           ICPEP
         </div>
         {/* Desktop Navigation */}
@@ -48,16 +48,16 @@ const Navbar = () => {
           alignItems: 'center',
           fontFamily: 'Montserrat, sans-serif',
         }}>
-          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 22, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</a>
+          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</a>
           <div style={{ position: 'relative' }}>
-            <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 22, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
-              About Us <span style={{ fontSize: 16 }}>▼</span>
+            <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
+              About Us <span style={{ fontSize: 14 }}>▼</span>
             </a>
           </div>
-          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 22, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</a>
+          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</a>
         </div>
-        <div className="navbar-btn" style={{ minWidth: 0 }}>
-          <Button>Join Now</Button>
+        <div className="navbar-btn" style={{ minWidth: 0, marginRight: 16 }}>
+          <Button style={{ padding: '14px 22px' }}>Join Now</Button>
         </div>
         {/* Hamburger for mobile */}
         <div
