@@ -1,7 +1,16 @@
 import Card3 from '../ui/Card3';
 
-const adviserName = 'Sir Mahaguay';
-const adviserPosition = 'ICPEP SE PUP ADVISER';
+const adviser = [
+  {
+    name: 'Sir Mahaguay',
+    position: 'ICPEP SE PUP ADVISER',
+    // photoUrl: "images/adviser.svg",
+    facebookUrl: "https://facebook.com",
+    xUrl: "https://x.com",
+    instagramUrl: "https://instagram.com",
+    linkedinUrl: "https://linkedin.com"
+  }
+]
 
 const adviserDescription = `
 Engr. Rolito L. Mahaguay, MSE-Computer, is an Associate Professor I and the Chairperson of the Department of Computer 
@@ -19,20 +28,20 @@ const Adviser = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '2.5rem',
+        marginBottom: '15rem',
       }}
     >
       {/* Card with name, position, photo, and social media */}
       <Card3
-        name = "Sir Mahaguay"
-        position = "ICPEP SE PUP ADVISER"
-        // photo = "images/adviser.svg"
+        name = {adviser[0].name}
+        position = {adviser[0].position}
+        // photo = {adviser[0].photoUrl}
         width="450px"
         photoSize="150px"
-        facebookUrl="https://facebook.com" // example para sa clickable na icon (replace the link nalang po)
-        // twitterUrl="https://twitter.com"
-        // instagramUrl="https://instagram.com"
-        // linkedinUrl="https://linkedin.com"
+        facebookUrl= {adviser[0].facebookUrl}// example para sa clickable na icon (replace the link nalang po)
+        // xUrl= {adviser[0].xUrl}
+        // instagramUrl= {adviser[0].instagramUrl}
+        // linkedinUrl= {adviser[0].linkedinUrl}
       />
 
       {/* Description */}
