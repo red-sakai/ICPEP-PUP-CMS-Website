@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Button from '../ui/Button';
 
 const Hero = () => {
@@ -86,6 +86,7 @@ const Hero = () => {
         alignItems: "center",
         justifyContent: "center",
         width: "100vw",
+        height: "100vh", // ensure vertical centering
         position: "relative",
         zIndex: 2
       }}>
@@ -112,7 +113,8 @@ const Hero = () => {
         <div style={{
           display: "flex",
           gap: "1.5rem",
-          justifyContent: "center"
+          justifyContent: "center",
+          alignItems: "center" // ensure buttons are centered horizontally
         }}>
           <Button variant="primary">Become a Member</Button>
           <Button
