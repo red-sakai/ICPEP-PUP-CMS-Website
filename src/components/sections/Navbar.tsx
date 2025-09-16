@@ -4,8 +4,8 @@ import Button from '../ui/Button';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'About Us', href: '#' },
-  { label: 'Contact Us', href: '#' },
+  { label: 'About Us', href: '/about' }, // update href
+  { label: 'Contact Us', href: '/contact' }, // update href for future use
 ];
 
 const Navbar = () => {
@@ -55,7 +55,7 @@ const Navbar = () => {
               About Us <span style={{ fontSize: 14 }}>▼</span>
             </Link>
           </div>
-          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</a>
+          <Link to="/contact" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</Link>
         </div>
         <div className="navbar-btn" style={{ minWidth: 0, marginRight: 16 }}>
           <Button style={{ padding: '14px 22px' }}>Join Now</Button>
@@ -146,8 +146,8 @@ const Navbar = () => {
           >
             About Us
           </Link>
-          <a
-            href="#"
+          <Link
+            to="/contact"
             style={{
               color: '#fff',
               fontWeight: 600,
@@ -158,7 +158,7 @@ const Navbar = () => {
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
-          </a>
+          </Link>
           <Button>Join Now</Button>
         </div>
       )}
