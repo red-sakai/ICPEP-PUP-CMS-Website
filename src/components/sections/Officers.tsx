@@ -16,7 +16,7 @@ const executiveMembers = [
   {
     name: 'Name',
     position: 'Position',
-    // photoUrl: "images/member.svg",
+    photoUrl: "images/member.svg",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
@@ -109,6 +109,7 @@ const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
             key={index}
             name={member.name}
             position={member.position}
+            // photoUrl={member.photoUrl}
             width="400px"
             photoSize="150px"
             facebookUrl={member.facebookUrl}
@@ -171,6 +172,7 @@ const Officers = () => {
           <Card3
           name={currentPresident[0].name}
           position={currentPresident[0].position}
+          // photoUrl={currentPresident[0].photoUrl}
           width="650px"
           photoSize="150px"
           facebookUrl={currentPresident[0].facebookUrl}
