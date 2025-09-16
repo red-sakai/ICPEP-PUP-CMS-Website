@@ -1,14 +1,13 @@
 import Navbar from './Navbar';
 
 const AboutUs = () => (
-  <div style={{ width: '100vw', overflowX: 'hidden', boxSizing: 'border-box', margin: 0, padding: 0 }}>
+  <div style={{ width: '100%', overflowX: 'hidden', boxSizing: 'border-box', margin: 0, padding: 0 }}>
     <Navbar />
     {/* Gradient header */}
     <div
       style={{
-        width: '100vw',
+        width: '100%',
         minHeight: '340px',
-        height: '340px',
         background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
         display: 'flex',
         flexDirection: 'column',
@@ -16,7 +15,7 @@ const AboutUs = () => (
         justifyContent: 'center',
         overflow: 'hidden',
         margin: 0,
-        padding: 0,
+        padding: '0 1rem',
         boxSizing: 'border-box',
         position: 'relative',
       }}

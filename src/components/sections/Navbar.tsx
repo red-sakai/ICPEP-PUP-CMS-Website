@@ -2,12 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' }, // update href
-  { label: 'Contact Us', href: '/contact' }, // update href for future use
-];
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
