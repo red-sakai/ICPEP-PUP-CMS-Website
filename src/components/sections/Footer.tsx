@@ -1,5 +1,3 @@
-import React from 'react';
-
 const iconStyle = { fontSize: '2rem', marginRight: '1.5rem', color: '#fff', verticalAlign: 'middle' };
 
 const Footer = () => (

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Facts = () => {
   return (
     <section style={{ padding: '4rem 0', background: '#f3eafd', minHeight: '300px' }}>
