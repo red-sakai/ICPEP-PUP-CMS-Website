@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from '../ui/Card';
 
 const ICPEP = () => (
   <section
@@ -60,6 +61,34 @@ const ICPEP = () => (
     >
       The Institute of Computer Engineers of the Philippines – Student Edition at the Polytechnic University of the Philippines (ICpEP.SE-PUP) is a student organization committed to advancing computer engineering and computer science education.
     </p>
+    {/* Cards row */}
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        gap: '2rem',
+        marginTop: '3rem',
+        flexWrap: 'wrap',
+      }}
+    >
+      <Card
+        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* code icon */}&#60;&#47;&#62;</span>}
+        title="Academic Excellence"
+        description="We promote academic excellence in software engineering through collaborative learning, peer mentoring, and knowledge sharing among students."
+      />
+      <Card
+        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* people icon */}&#128101;</span>}
+        title="Professional Community"
+        description="A vibrant community of software engineering students fostering collaboration, networking, and professional development within PUP."
+      />
+      <Card
+        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* bulb icon */}&#128161;</span>}
+        title="Innovation and Research"
+        description="We encourage innovation and research in software engineering, providing platforms for students to explore cutting-edge technologies and methodologies."
+      />
+    </div>
   </section>
 );
 
