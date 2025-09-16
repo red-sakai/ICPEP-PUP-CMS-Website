@@ -10,7 +10,7 @@ const ICPEP = () => (
       alignItems: 'center',
       justifyContent: 'center',
       padding: '4rem 1rem 2rem 1rem',
-      background: 'transparent',
+      background: '#fff',
       margin: '2.5rem 0',
     }}
   >
