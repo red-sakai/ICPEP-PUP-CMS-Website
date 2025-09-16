@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 
 const navLinks = [
-  { label: 'Home', href: '#' },
+  { label: 'Home', href: '/' },
   { label: 'About Us', href: '#' },
   { label: 'Contact Us', href: '#' },
 ];
@@ -48,11 +49,11 @@ const Navbar = () => {
           alignItems: 'center',
           fontFamily: 'Montserrat, sans-serif',
         }}>
-          <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</a>
+          <Link to="/" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</Link>
           <div style={{ position: 'relative' }}>
-            <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
+            <Link to="/about" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
               About Us <span style={{ fontSize: 14 }}>▼</span>
-            </a>
+            </Link>
           </div>
           <a href="#" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</a>
         </div>
@@ -119,22 +120,45 @@ const Navbar = () => {
             fontFamily: 'Montserrat, sans-serif',
           }}
         >
-          {navLinks.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              style={{
-                color: '#fff',
-                fontWeight: 600,
-                fontSize: 22,
-                textDecoration: 'none',
-                fontFamily: 'Montserrat, sans-serif',
-              }}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
+          <Link
+            to="/"
+            style={{
+              color: '#fff',
+              fontWeight: 600,
+              fontSize: 22,
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+            }}
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/about"
+            style={{
+              color: '#fff',
+              fontWeight: 600,
+              fontSize: 22,
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+            }}
+            onClick={() => setMenuOpen(false)}
+          >
+            About Us
+          </Link>
+          <a
+            href="#"
+            style={{
+              color: '#fff',
+              fontWeight: 600,
+              fontSize: 22,
+              textDecoration: 'none',
+              fontFamily: 'Montserrat, sans-serif',
+            }}
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact Us
+          </a>
           <Button>Join Now</Button>
         </div>
       )}

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Button from '../ui/Button';
 
-const Hero = () => {
+const Hero = ({ id }: { id?: string }) => {
   const waveRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const Hero = () => {
 
   return (
     <section
+      id={id}
       style={{
         width: "100vw",
         height: "100vh",
