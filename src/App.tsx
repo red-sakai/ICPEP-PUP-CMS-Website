@@ -6,6 +6,7 @@ import Footer from './components/sections/Footer';
 import Facts from './components/sections/Facts';
 import AboutUs from './components/sections/AboutUs';
 import MissionVision from './components/sections/Mission&Vision';
+import Adviser from './components/sections/Adviser';
 import { useEffect } from 'react';
 
 {/* Landing Page section */}
@@ -27,7 +28,7 @@ function AboutPage() {
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <AboutUs />
       <MissionVision />
-      {/* dito mo i-call yung gagawin mong adviser section @Marjoy */}
+      <Adviser />
       <Footer />
     </div>
   );
