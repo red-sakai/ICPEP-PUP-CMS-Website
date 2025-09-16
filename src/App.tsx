@@ -2,7 +2,7 @@ import Hero from './components/sections/Hero';
 import Navbar from './components/sections/Navbar';
 import ICPEP from './components/sections/ICPEP';
 import Footer from './components/sections/Footer';
-import Facts from './components/sections/Facts'; // add this import
+import Facts from './components/sections/Facts';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <Hero />
       <ICPEP />
-      <Facts /> {/* render Facts above Footer */}
+      <Facts />
       <Footer />
     </div>
     

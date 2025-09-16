@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from '../ui/Card';
 
 const ICPEP = () => (
@@ -26,7 +25,7 @@ const ICPEP = () => (
         marginTop: 0,
       }}
     >
-      What is ICPEP SE PUP?
+      What is ICPEP SE - PUP Manila?
     </h2>
     <div
       style={{
