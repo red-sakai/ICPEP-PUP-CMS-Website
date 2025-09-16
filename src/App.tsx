@@ -8,6 +8,7 @@ import AboutUs from './components/sections/AboutUs';
 import MissionVision from './components/sections/Mission&Vision';
 import { useEffect } from 'react';
 
+{/* Landing Page section */}
 function LandingPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
@@ -20,11 +21,13 @@ function LandingPage() {
   );
 }
 
+{/* About Page section */}
 function AboutPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <AboutUs />
       <MissionVision />
+      {/* dito mo i-call yung gagawin mong adviser section @Marjoy */}
       <Footer />
     </div>
   );
