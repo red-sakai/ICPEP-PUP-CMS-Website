@@ -37,7 +37,6 @@ const Hero = ({ id }: { id?: string }) => {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        // zIndex: -1, // remove this line
       }}
     >
       {/* Animated gradient background */}

@@ -1,3 +1,5 @@
+{/* shorter card */}
+
 import React from 'react';
 
 type CardProps = {
