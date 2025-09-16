@@ -12,7 +12,7 @@ type Card3Props = {
   height?: string | number;
   photoSize?: string | number;
   facebookUrl?: string;
-  twitterUrl?: string;
+  xUrl?: string;
   instagramUrl?: string;
   linkedinUrl?: string;
 };
@@ -25,7 +25,7 @@ const Card3: React.FC<Card3Props> = ({
   height = 'auto',
   photoSize = '100px',
   facebookUrl,
-  twitterUrl,
+  xUrl,
   instagramUrl,
   linkedinUrl,
 }) => {
@@ -110,7 +110,7 @@ const Card3: React.FC<Card3Props> = ({
         }}
       >
         {renderIcon(FaFacebookF, facebookUrl)}
-        {renderIcon(FaXTwitter, twitterUrl)}
+        {renderIcon(FaXTwitter, xUrl)}
         {renderIcon(FaInstagram, instagramUrl)}
         {renderIcon(FaLinkedinIn, linkedinUrl)}
       </div>
