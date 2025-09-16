@@ -7,6 +7,7 @@ import Facts from './components/sections/Facts';
 import AboutUs from './components/sections/AboutUs';
 import MissionVision from './components/sections/Mission&Vision';
 import Adviser from './components/sections/Adviser';
+import Officers from './components/sections/Officers'
 import { useEffect } from 'react';
 
 {/* Landing Page section */}
@@ -29,6 +30,7 @@ function AboutPage() {
       <AboutUs />
       <MissionVision />
       <Adviser />
+      <Officers />
       <Footer />
     </div>
   );
