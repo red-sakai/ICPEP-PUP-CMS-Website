@@ -81,6 +81,20 @@ const pastPresidents = [
   }
 ]
 
+const SectionHeader = ({ title }: { title: string }) => (
+  <h4 style={{
+    fontFamily: 'Montserrat, sans-serif',
+    fontWeight: 650,
+    fontSize: '1.3rem',
+    color: '#505050ff',
+    textAlign: 'center',
+    marginBottom: '0.7rem',
+    marginTop: 0,
+  }}>
+    {title}
+  </h4>
+);
+
 const Officers = () => {
   return (
     <div
@@ -123,19 +137,7 @@ const Officers = () => {
           marginTop: '0.5rem'
         }}
       >
-        <h4
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 650,
-          fontSize: '1.3rem',
-          color: '#505050ff',
-          textAlign: 'center',
-          marginBottom: '0.7rem',
-          marginTop: 0,
-        }}
-      >
-        Executive Members
-      </h4>
+        <SectionHeader title="Executive Members" />
         {/* President */}
         <div>
           <Card3
@@ -144,7 +146,7 @@ const Officers = () => {
             // photo = {executiveMembers[0].photoUrl}
             width="650px"
             photoSize="150px"
-            facebookUrl= {executiveMembers[0].facebookUrl}// example para sa clickable na icon (replace the link nalang po)
+            facebookUrl= {executiveMembers[0].facebookUrl}
             xUrl= {executiveMembers[0].xUrl}
             instagramUrl= {executiveMembers[0].instagramUrl}
             linkedinUrl= {executiveMembers[0].linkedinUrl}
@@ -155,8 +157,8 @@ const Officers = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '2rem', // spacing between cards
-            flexWrap: 'wrap', // makes it responsive, wraps on smaller screens
+            gap: '2rem', 
+            flexWrap: 'wrap',
             marginTop: '2rem',
           }}
         >
@@ -202,25 +204,13 @@ const Officers = () => {
           marginTop: '3rem'
         }}
       >
-        <h4
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 650,
-          fontSize: '1.3rem',
-          color: '#505050ff',
-          textAlign: 'center',
-          marginBottom: '0.7rem',
-          marginTop: 0,
-        }}
-      >
-        Committee Members
-      </h4>
+        <SectionHeader title="Committee Members" />
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '2rem', // spacing between cards
-            flexWrap: 'wrap', // makes it responsive, wraps on smaller screens
+            gap: '2rem',
+            flexWrap: 'wrap',
             marginTop: '2rem',
           }}
         >
@@ -266,19 +256,7 @@ const Officers = () => {
           marginTop: '3rem'
         }}
       >
-        <h4
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 650,
-          fontSize: '1.3rem',
-          color: '#505050ff',
-          textAlign: 'center',
-          marginBottom: '0.7rem',
-          marginTop: 0,
-        }}
-      >
-        Past Presidents
-      </h4>
+        <SectionHeader title="Past Presidents" />
         <div
           style={{
             display: 'flex',
