@@ -133,37 +133,93 @@ const Officers = () => {
         flexDirection: 'column',
         alignItems: 'center',
         marginBottom: '15rem',
+        position: 'relative',
+        background: '#FCEFF7',
+        padding: '3rem 0',
+        overflow: 'hidden',
       }}
     >
-      <div>
+      {/* Decorative circles with shine effect */}
+      <div style={{
+        position: 'absolute',
+        right: '5%',
+        top: '15%',
+        width: '120px',
+        height: '120px',
+        background: 'radial-gradient(circle at 30% 30%, #FFF 0%, #FFF 5%, #F8D7E9 30%, #F8D7E9 100%)',
+        borderRadius: '50%',
+        opacity: 0.7,
+        zIndex: 0,
+        boxShadow: '0 0 20px 0 rgba(248, 215, 233, 0.5)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        left: '8%',
+        top: '30%',
+        width: '150px',
+        height: '150px',
+        background: 'radial-gradient(circle at 25% 25%, #FFF 0%, #FFF 5%, #F5DCE9 35%, #F5DCE9 100%)',
+        borderRadius: '50%',
+        opacity: 0.8,
+        zIndex: 0,
+        boxShadow: '0 0 25px 0 rgba(245, 220, 233, 0.6)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        right: '12%',
+        bottom: '20%',
+        width: '80px',
+        height: '80px',
+        background: 'radial-gradient(circle at 20% 20%, #FFF 0%, #FFF 8%, #F8D7E9 40%, #F8D7E9 100%)',
+        borderRadius: '50%',
+        opacity: 0.7,
+        zIndex: 0,
+        boxShadow: '0 0 15px 0 rgba(248, 215, 233, 0.5)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        left: '15%',
+        bottom: '10%',
+        width: '100px',
+        height: '100px',
+        background: 'radial-gradient(circle at 30% 30%, #FFF 0%, #FFF 6%, #F5DCE9 35%, #F5DCE9 100%)',
+        borderRadius: '50%',
+        opacity: 0.8,
+        zIndex: 0,
+        boxShadow: '0 0 20px 0 rgba(245, 220, 233, 0.6)',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
         <h1
-        style={{
-          fontFamily: 'Montserrat, sans-serif',
-          fontWeight: 900,
-          fontSize: '2.2rem',
-          color: '#505050ff',
-          textAlign: 'center',
-          marginBottom: '0.7rem',
-          marginTop: 0,
-        }}
-      >
-        ICpEp.se PUP Officers 2025-2026
-      </h1>
-      <div
-        style={{
-          width: '160px',
-          height: '8px',
-          borderRadius: '8px',
-          background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
-          margin: '0 auto 3rem auto',
-        }}
-      />
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 900,
+            fontSize: '2.2rem',
+            color: '#505050ff',
+            textAlign: 'center',
+            marginBottom: '0.7rem',
+            marginTop: 0,
+          }}
+        >
+          ICpEP.se PUP Officers 2025-2026
+        </h1>
+        <div
+          style={{
+            width: '160px',
+            height: '8px',
+            borderRadius: '8px',
+            background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
+            margin: '0 auto 3rem auto',
+          }}
+        />
       </div>
 
       {/* Executive Members */}
       <div
         style={{
-          marginTop: '0.5rem'
+          marginTop: '0.5rem',
+          position: 'relative',
+          zIndex: 1
         }}
       >
         <SectionHeader title="Executive Members" />
@@ -186,13 +242,13 @@ const Officers = () => {
       </div>
 
       {/* Committee Members */}
-      <div style={{ marginTop: '3rem' }}>
+      <div style={{ marginTop: '3rem', position: 'relative', zIndex: 1 }}>
         <SectionHeader title="Committee Members" />
         <MembersRow members={committeeMembers} />
       </div>
       
       {/* Past Presidents */}
-      <div style={{ marginTop: '3rem' }}>
+      <div style={{ marginTop: '3rem', position: 'relative', zIndex: 1 }}>
         <SectionHeader title="Past Presidents" />
         <MembersRow members={pastPresidents} />
       </div>

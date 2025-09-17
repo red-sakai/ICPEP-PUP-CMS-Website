@@ -2,11 +2,15 @@
 
 import React from 'react';
 
+type ReactNode = React.ReactNode;
+
 type Card2Props = {
   description: string;
+  title?: string;
+  icon?: ReactNode;
 };
 
-const Card2: React.FC<Card2Props> = ({ description }) => (
+const Card2: React.FC<Card2Props> = ({ description, title, icon }) => (
   <div
     style={{
       background: '#F9F7FB',
@@ -23,6 +27,24 @@ const Card2: React.FC<Card2Props> = ({ description }) => (
       margin: '0 auto',
     }}
   >
+    {(title || icon) && (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%' }}>
+        {icon && <div style={{ color: '#9362CD' }}>{icon}</div>}
+        {title && (
+          <h3
+            style={{
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 700,
+              fontSize: '1.5rem',
+              color: '#333',
+              margin: 0,
+            }}
+          >
+            {title}
+          </h3>
+        )}
+      </div>
+    )}
     <p
       style={{
         fontFamily: 'Montserrat, sans-serif',

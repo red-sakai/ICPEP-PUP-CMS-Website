@@ -2,7 +2,7 @@ import Card3 from '../ui/Card3';
 
 const adviser = [
   {
-    name: 'Sir Mahaguay',
+    name: 'Engr. Rolito L. Mahaguay',
     position: 'ICPEP SE PUP ADVISER',
     // photoUrl: "images/adviser.svg",
     facebookUrl: "https://facebook.com",
