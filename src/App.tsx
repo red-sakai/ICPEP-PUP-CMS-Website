@@ -6,8 +6,12 @@ import Footer from './components/sections/Footer';
 import Facts from './components/sections/Facts';
 import AboutUs from './components/sections/AboutUs';
 import MissionVision from './components/sections/Mission&Vision';
+import Adviser from './components/sections/Adviser';
+import Officers from './components/sections/Officers';
+import History from './components/sections/History';
 import { useEffect } from 'react';
 
+{/* Landing Page section */}
 function LandingPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
@@ -20,11 +24,15 @@ function LandingPage() {
   );
 }
 
+{/* About Page section */}
 function AboutPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <AboutUs />
       <MissionVision />
+      <Adviser />
+      <Officers />
+      <History />
       <Footer />
     </div>
   );
