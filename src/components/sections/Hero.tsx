@@ -63,75 +63,126 @@ const Hero = ({ id }: { id?: string }) => {
             left: 0; top: 0;
             width: 100vw; height: 100vh;
             z-index: 0;
-            background: linear-gradient(120deg, #9362CD, #E80F50, #FDE5D9);
-            background-size: 200% 200%;
-            animation: gradientMove 8s ease-in-out infinite;
+            background: url('/pup.jpg') center/cover no-repeat;
+            background-size: cover;
+          }
+          .background-image {
+            position: absolute;
+            right: 0; top: 0;
+            width: 50vw; height: 100vh;
+            z-index: 0;
+            background: url('/studentsupport.jpg') center/cover no-repeat;
+            background-size: cover;
+            -webkit-mask: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%);
+            mask: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%);
+          }
+          .image-overlay {
+            position: absolute;
+            right: 0; top: 0;
+            width: 50vw; height: 100vh;
+            z-index: 1;
+            background: linear-gradient(120deg, 
+              rgba(147, 98, 205, 0.15), 
+              rgba(232, 15, 80, 0.1), 
+              rgba(253, 229, 217, 0.05));
+          }
+          .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+          }
+          .hero-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
           }
           .blur-overlay {
             position: absolute;
             left: 0; top: 0;
             width: 100vw; height: 100vh;
-            z-index: 1;
+            z-index: 2;
             pointer-events: none;
-            backdrop-filter: blur(32px);
-            opacity: 0.7;
+            backdrop-filter: blur(1px);
+            opacity: 0.05;
+          }
+          .purple-overlay {
+            position: absolute;
+            left: 0; top: 0;
+            width: 75vw; height: 100vh;
+            z-index: 1;
+            background: linear-gradient(to right, 
+              rgba(147, 98, 205, 0.95), 
+              rgba(147, 98, 205, 0.90), 
+              rgba(190, 56, 142, 0.70), 
+              rgba(232, 15, 80, 0.65), 
+              rgba(242, 135, 118, 0.35), 
+              rgba(253, 229, 217, 0.20), 
+              rgba(253, 229, 217, 0.05), 
+              transparent);
           }
         `}
       </style>
       <div className="animated-gradient-bg"></div>
+      <div className="purple-overlay"></div>
       <div className="blur-overlay"></div>
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100vw",
-        height: "100vh", // ensure vertical centering
+      <div className="hero-content" style={{
         position: "relative",
-        zIndex: 2
+        zIndex: 3,
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
       }}>
-        <h1 style={{
-          color: "#fff",
-          fontFamily: "Montserrat, sans-serif",
-          fontWeight: 900,
-          fontSize: "3.2rem",
-          margin: 0,
-          textAlign: "center",
-        }}>
-          Engineering Tomorrow,
-        </h1>
-        <h1 style={{
-          color: "#fff",
-          fontFamily: "Montserrat, sans-serif",
-          fontWeight: 900,
-          fontSize: "3.2rem",
-          margin: "3rem 0 3.5rem 0",
-          textAlign: "center",
-        }}>
-          One Student at a Time
-        </h1>
-        <div style={{
-          display: "flex",
-          gap: "1.5rem",
-          justifyContent: "center",
-          alignItems: "center" // ensure buttons are centered horizontally
-        }}>
-          <Button variant="primary">Become a Member</Button>
-          <Button
-            variant="gradientOutline"
-            iconRight={
-              <span style={{ display: 'inline-block', marginLeft: '0.5em', fontSize: '1.2em' }}>
-                &#8594;
-              </span>
-            }
-            style={{
-              color: '#fff',
-              border: '2px solid #fff',
-              boxShadow: 'none',
-            }}
-          >
-            Learn More
-          </Button>
+        <div className="hero-text">
+          <h1 style={{
+            color: "#fff",
+            fontFamily: "Montserrat, sans-serif",
+            fontWeight: 900,
+            fontSize: "3.2rem",
+            margin: 0,
+            textAlign: "center",
+          }}>
+            Engineering Tomorrow,
+          </h1>
+          <h1 style={{
+            color: "#fff",
+            fontFamily: "Montserrat, sans-serif",
+            fontWeight: 900,
+            fontSize: "3.2rem",
+            margin: "3rem 0 3.5rem 0",
+            textAlign: "center",
+          }}>
+            One Student at a Time
+          </h1>
+          <div style={{
+            display: "flex",
+            gap: "1.5rem",
+            justifyContent: "center",
+            alignItems: "center"
+          }}>
+            <Button variant="primary">Become a Member</Button>
+            <Button
+              variant="gradientOutline"
+              iconRight={
+                <span style={{ display: 'inline-block', marginLeft: '0.5em', fontSize: '1.2em' }}>
+                  &#8594;
+                </span>
+              }
+              style={{
+                color: '#fff',
+                border: '2px solid #fff',
+                boxShadow: 'none',
+              }}
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
       </div>
       {/* Ice cream wave SVG at bottom */}
