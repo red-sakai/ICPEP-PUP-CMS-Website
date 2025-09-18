@@ -1,13 +1,12 @@
 {/* shorter card */}
 
-import React from 'react';
+import React, { useState } from 'react';
 
 type CardProps = {
   icon: React.ReactNode;
   title: string;
   description: string;
 };
-
 const Card: React.FC<CardProps> = ({ icon, title, description }) => (
   <div
     style={{
@@ -34,7 +33,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: '0.5rem',
+        marginBottom: '0.25rem',
       }}
     >
       {icon}
@@ -42,8 +41,8 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
     <h3
       style={{
         fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 900,
-        fontSize: '1.35rem',
+        fontWeight: 700,
+        fontSize: '1.1rem',
         color: '#222',
         margin: 0,
       }}
@@ -53,7 +52,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
     <p
       style={{
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.08rem',
+        fontSize: '0.95rem',
         color: '#555',
         margin: 0,
         lineHeight: 1.5,
@@ -62,6 +61,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
       {description}
     </p>
   </div>
-);
+  );
+};
 
 export default Card;
