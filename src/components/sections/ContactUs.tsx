@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 
-const AboutUs = () => (
+const ContactUs = () => (
   <div style={{ width: '100%', overflowX: 'hidden', boxSizing: 'border-box', margin: 0, padding: 0 }}>
     <Navbar />
     {/* Gradient header */}
@@ -33,7 +33,7 @@ const AboutUs = () => (
             letterSpacing: '0.02em',
           }}
         >
-          ABOUT ICPEP SE PUP Manila
+          Contact Us
         </h1>
         <p
           style={{
@@ -45,7 +45,7 @@ const AboutUs = () => (
             margin: '0 auto',
           }}
         >
-          Learn about the Institute of Computer Engineers of the Philippines, our mission, vision, and the people who lead our organization.
+          Get in touch with ICPEP SE PUP. We're here to answer your questions and help you get involved.
         </p>
       </div>
       {/* Decorative circles */}
@@ -97,4 +97,4 @@ const AboutUs = () => (
   </div>
 );
 
-export default AboutUs;
+export default ContactUs;

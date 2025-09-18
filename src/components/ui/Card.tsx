@@ -7,33 +7,23 @@ type CardProps = {
   title: string;
   description: string;
 };
-
-const Card: React.FC<CardProps> = ({ icon, title, description }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div
-      style={{
-        background: '#FBF9FD',
-        borderRadius: '18px',
-        boxShadow: isHovered 
-          ? '0 12px 32px rgba(0,0,0,0.18)' 
-          : '0 8px 24px rgba(0,0,0,0.12)',
-        padding: '1.5rem 2.5rem 1.25rem 2.5rem',
-        minWidth: '400px',
-        maxWidth: '450px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        gap: '1rem',
-        margin: '0 1rem',
-        transition: 'all 0.3s ease',
-        transform: isHovered ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
-        cursor: 'pointer',
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+const Card: React.FC<CardProps> = ({ icon, title, description }) => (
+  <div
+    style={{
+      background: '#F9F7FB',
+      borderRadius: '18px',
+      boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+      padding: '2rem 2rem 1.5rem 2rem',
+      width: '340px', // fixed width for all cards
+      minWidth: '340px',
+      maxWidth: '340px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '1.2rem',
+      margin: '0',
+    }}
+  >
     <div
       style={{
         background: '#EAE8F6',

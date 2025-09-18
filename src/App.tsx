@@ -6,8 +6,15 @@ import Footer from './components/sections/Footer';
 import Facts from './components/sections/Facts';
 import AboutUs from './components/sections/AboutUs';
 import MissionVision from './components/sections/Mission&Vision';
+import Adviser from './components/sections/Adviser';
+import Officers from './components/sections/Officers';
+import History from './components/sections/History';
+import ContactUs from './components/sections/ContactUs';
+import ContactCards from './components/sections/ContactCards';
+import FAQ from './components/sections/FAQ';
 import { useEffect } from 'react';
 
+{/* Landing Page section */}
 function LandingPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
@@ -20,14 +27,30 @@ function LandingPage() {
   );
 }
 
+{/* About Page section */}
 function AboutPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <AboutUs />
       <MissionVision />
+      <Adviser />
+      <Officers />
+      <History />
       <Footer />
     </div>
   );
+}
+
+{/* Contact Us section */}
+function ContactPage() {
+  return (
+    <div style={{ width: '100%', overflowX: 'hidden' }}>
+      <ContactUs />
+      <ContactCards />
+      <FAQ />
+      <Footer />
+    </div>
+  )
 }
 
 function App() {
@@ -51,6 +74,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>
