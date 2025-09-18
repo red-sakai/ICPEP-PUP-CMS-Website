@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
 
   return (
     <>
@@ -44,10 +46,102 @@ const Navbar = () => {
           fontFamily: 'Montserrat, sans-serif',
         }}>
           <Link to="/" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</Link>
-          <div style={{ position: 'relative' }}>
-            <Link to="/about" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>
-              About Us <span style={{ fontSize: 14 }}>▼</span>
-            </Link>
+          <div 
+            style={{ position: 'relative' }}
+            onMouseEnter={() => setAboutDropdownOpen(true)}
+            onMouseLeave={() => setAboutDropdownOpen(false)}
+          >
+            <div style={{ 
+              color: '#fff', 
+              fontWeight: 600, 
+              fontSize: 16, 
+              fontFamily: 'Montserrat, sans-serif',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px'
+            }}>
+              About Us <ArrowDropDownIcon style={{ fontSize: 20 }} />
+            </div>
+            {aboutDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                background: '#fff',
+                borderRadius: '8px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                padding: '12px 0',
+                minWidth: '200px',
+                zIndex: 1000,
+                marginTop: '8px'
+              }}>
+                <Link 
+                  to="/about/history" 
+                  className="dropdown-link"
+                  style={{ 
+                    display: 'block',
+                    color: '#333', 
+                    fontWeight: 500, 
+                    fontSize: 14, 
+                    textDecoration: 'none', 
+                    fontFamily: 'Montserrat, sans-serif',
+                    padding: '8px 16px',
+                    transition: 'background-color 0.2s'
+                  }}
+                >
+                  Our History
+                </Link>
+                <Link 
+                  to="/about/mission" 
+                  className="dropdown-link"
+                  style={{ 
+                    display: 'block',
+                    color: '#333', 
+                    fontWeight: 500, 
+                    fontSize: 14, 
+                    textDecoration: 'none', 
+                    fontFamily: 'Montserrat, sans-serif',
+                    padding: '8px 16px',
+                    transition: 'background-color 0.2s'
+                  }}
+                >
+                  Mission & Vision
+                </Link>
+                <Link 
+                  to="/about/officers" 
+                  className="dropdown-link"
+                  style={{ 
+                    display: 'block',
+                    color: '#333', 
+                    fontWeight: 500, 
+                    fontSize: 14, 
+                    textDecoration: 'none', 
+                    fontFamily: 'Montserrat, sans-serif',
+                    padding: '8px 16px',
+                    transition: 'background-color 0.2s'
+                  }}
+                >
+                  Officers
+                </Link>
+                <Link 
+                  to="/about/membership" 
+                  className="dropdown-link"
+                  style={{ 
+                    display: 'block',
+                    color: '#333', 
+                    fontWeight: 500, 
+                    fontSize: 14, 
+                    textDecoration: 'none', 
+                    fontFamily: 'Montserrat, sans-serif',
+                    padding: '8px 16px',
+                    transition: 'background-color 0.2s'
+                  }}
+                >
+                  Membership
+                </Link>
+              </div>
+            )}
           </div>
           <Link to="/contact" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</Link>
         </div>
@@ -179,6 +273,9 @@ const Navbar = () => {
             .navbar-mobile-menu {
               display: none !important;
             }
+          }
+          .dropdown-link:hover {
+            background-color: #f5f5f5 !important;
           }
           body {
             margin: 0;
