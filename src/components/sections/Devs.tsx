@@ -43,7 +43,7 @@ const researchTeam = [
   {
     name: 'Carl Blancaflor',
     position: 'Researcher',
-    photoUrl: "#",
+    photoUrl: "Carl-B.png",
     facebookUrl: "https://www.facebook.com/BlancaflorCarl",
     xUrl: "#",
     instagramUrl: "https://www.instagram.com/blancaflor_carl/",
