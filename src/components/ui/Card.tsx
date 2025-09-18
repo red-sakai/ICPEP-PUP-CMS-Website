@@ -15,13 +15,14 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
       borderRadius: '18px',
       boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
       padding: '2rem 2rem 1.5rem 2rem',
-      minWidth: '320px',
-      maxWidth: '370px',
+      width: '340px', // fixed width for all cards
+      minWidth: '340px',
+      maxWidth: '340px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'flex-start',
       gap: '1.2rem',
-      margin: '0 1rem',
+      margin: '0',
     }}
   >
     <div
