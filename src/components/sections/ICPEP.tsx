@@ -1,4 +1,7 @@
 import Card from '../ui/Card';
+import CodeIcon from '@mui/icons-material/Code';
+import GroupIcon from '@mui/icons-material/Group';
+import LightbulbOutlineIcon from '@mui/icons-material/LightbulbOutline';
 
 const ICPEP = () => (
   <section
@@ -21,7 +24,7 @@ const ICPEP = () => (
         fontSize: '2rem',
         color: '#333',
         textAlign: 'center',
-        marginBottom: '1.2rem',
+        marginBottom: '0rem',
         marginTop: 0,
       }}
     >
@@ -33,7 +36,6 @@ const ICPEP = () => (
         height: '10px',
         borderRadius: '8px',
         background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
-        marginBottom: '2rem',
       }}
     />
     <img
@@ -41,16 +43,15 @@ const ICPEP = () => (
       alt="ICPEP SE PUP Logo"
       draggable={false}
       style={{
-        width: '260px',
+        width: '300px',
         height: 'auto',
-        marginBottom: '2rem',
         display: 'block',
       }}
     />
     <p
       style={{
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.35rem',
+        fontSize: '1.2rem',
         color: '#666',
         textAlign: 'center',
         maxWidth: '900px',
@@ -73,17 +74,17 @@ const ICPEP = () => (
       }}
     >
       <Card
-        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* code icon */}&#60;&#47;&#62;</span>}
+        icon={<CodeIcon style={{ fontSize: '2rem', color: '#9362CD' }} />}
         title="Academic Excellence"
         description="We promote academic excellence in software engineering through collaborative learning, peer mentoring, and knowledge sharing among students."
       />
       <Card
-        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* people icon */}&#128101;</span>}
+        icon={<GroupIcon style={{ fontSize: '2rem', color: '#9362CD' }} />}
         title="Professional Community"
         description="A vibrant community of software engineering students fostering collaboration, networking, and professional development within PUP."
       />
       <Card
-        icon={<span style={{ fontSize: '2rem', color: '#9362CD' }}>{/* bulb icon */}&#128161;</span>}
+        icon={<LightbulbOutlineIcon style={{ fontSize: '2rem', color: '#9362CD' }} />}
         title="Innovation and Research"
         description="We encourage innovation and research in software engineering, providing platforms for students to explore cutting-edge technologies and methodologies."
       />
