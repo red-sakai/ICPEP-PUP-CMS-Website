@@ -59,7 +59,7 @@ const Footer = () => (
             draggable={false}
           />
           <span style={{ fontWeight: 900, fontSize: '1.45rem', letterSpacing: '0.02em' }}>
-            ICPEP SE PUP
+            ICPEP SE - PUP Manila
           </span>
         </div>
         <div style={{ fontSize: '0.9rem', color: '#A5A5A9', marginBottom: '1rem' }}>
@@ -93,10 +93,8 @@ const Footer = () => (
         <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '1.2rem' }}>Organization</div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
           <li className="footer-link">Our History</li>
-          <li className="footer-link">Events</li>
           <li className="footer-link">Membership</li>
-          <li className="footer-link">Resources</li>
-          <li className="footer-link">News</li>
+          <li className="footer-link">FAQs</li>
         </ul>
       </div>
       {/* Contact Info */}
