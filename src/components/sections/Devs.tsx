@@ -13,7 +13,7 @@ const devs = [
   {
     name: 'Jhered Republica',
     position: 'Frontend Developer',
-    photoUrl: "#",
+    photoUrl: "Jhered.jpg",
     facebookUrl: "https://www.facebook.com/jay.mcrr",
     xUrl: "#",
     instagramUrl: "https://www.instagram.com/jay_mcrr/",
@@ -34,7 +34,7 @@ const researchTeam = [
   {
     name: 'Carl Erosa',
     position: 'Researcher',
-    photoUrl: "#",
+    photoUrl: "Carl-E.jpg",
     facebookUrl: "https://www.facebook.com/CmDrew13",
     xUrl: "#",
     instagramUrl: "https://www.instagram.com/itsyaboikaruu/",
