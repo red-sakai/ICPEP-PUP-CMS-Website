@@ -38,7 +38,7 @@ const Footer = () => (
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        gap: '2rem',
+        gap: '5rem',
         padding: '0 2rem',
       }}
     >
