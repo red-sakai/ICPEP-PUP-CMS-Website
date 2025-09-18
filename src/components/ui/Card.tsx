@@ -1,6 +1,6 @@
 {/* shorter card */}
 
-import React, { useState } from 'react';
+import React from 'react';
 
 type CardProps = {
   icon: React.ReactNode;
@@ -62,6 +62,5 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
     </p>
   </div>
   );
-};
 
 export default Card;
