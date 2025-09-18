@@ -40,6 +40,7 @@ const ContinuingIcon = () => (
 const History = () => {
   return (
     <div
+      id="history-section"
       style={{
         width: '100%',
         padding: '3rem 1rem 5rem',

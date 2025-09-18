@@ -6,7 +6,7 @@ const missionText = `The Institute of Computer Engineers of the Philippines Stud
 const visionText = `The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) envisions itself as the foundation of world-class computer engineers and a motivator of students' interests towards excellence in Computer Engineering as their field of specialization.`;
 
 const MissionVision = () => (
-  <div style={{ width: '100%', minHeight: '100vh', overflowX: 'hidden', boxSizing: 'border-box', background: '#fff' }}>
+  <div id="mission-vision-section" style={{ width: '100%', minHeight: '100vh', overflowX: 'hidden', boxSizing: 'border-box', background: '#fff' }}>
     <Navbar />
     <div
       style={{

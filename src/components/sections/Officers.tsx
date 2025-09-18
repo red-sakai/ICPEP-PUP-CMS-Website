@@ -127,6 +127,7 @@ const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
 const Officers = () => {
   return (
     <div
+      id="officers-section"
       style={{
         width: '100%',
         display: 'flex',

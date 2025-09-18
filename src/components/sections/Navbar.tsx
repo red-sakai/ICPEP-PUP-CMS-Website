@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
@@ -7,6 +7,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -45,7 +46,7 @@ const Navbar = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '0 60px', // increased from 40px
+          padding: '0 60px',
           background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
           boxSizing: 'border-box',
           flexWrap: 'wrap',
@@ -120,6 +121,21 @@ const Navbar = () => {
                     padding: '8px 16px',
                     transition: 'background-color 0.2s'
                   }}
+                  onClick={e => {
+                    e.preventDefault();
+                    if (window.location.pathname !== '/about') {
+                      navigate('/about');
+                      setTimeout(() => {
+                        const el = document.getElementById('history-section');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        setAboutDropdownOpen(false);
+                      }, 100);
+                    } else {
+                      const el = document.getElementById('history-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      setAboutDropdownOpen(false);
+                    }
+                  }}
                 >
                   Our History
                 </Link>
@@ -136,6 +152,21 @@ const Navbar = () => {
                     padding: '8px 16px',
                     transition: 'background-color 0.2s'
                   }}
+                  onClick={e => {
+                    e.preventDefault();
+                    if (window.location.pathname !== '/about') {
+                      navigate('/about');
+                      setTimeout(() => {
+                        const el = document.getElementById('mission-vision-section');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        setAboutDropdownOpen(false);
+                      }, 100);
+                    } else {
+                      const el = document.getElementById('mission-vision-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      setAboutDropdownOpen(false);
+                    }
+                  }}
                 >
                   Mission & Vision
                 </Link>
@@ -151,6 +182,21 @@ const Navbar = () => {
                     fontFamily: 'Montserrat, sans-serif',
                     padding: '8px 16px',
                     transition: 'background-color 0.2s'
+                  }}
+                  onClick={e => {
+                    e.preventDefault();
+                    if (window.location.pathname !== '/about') {
+                      navigate('/about');
+                      setTimeout(() => {
+                        const el = document.getElementById('officers-section');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        setAboutDropdownOpen(false);
+                      }, 100);
+                    } else {
+                      const el = document.getElementById('officers-section');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      setAboutDropdownOpen(false);
+                    }
                   }}
                 >
                   Officers
