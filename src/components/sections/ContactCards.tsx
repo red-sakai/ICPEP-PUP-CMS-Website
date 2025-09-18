@@ -29,7 +29,7 @@ const ContactCards = () => (
       <Card
         icon={<FiMail size={28} color="#6C63FF" />}
         title="Email"
-        description="m@gmail.com"
+        description="icpepse.pupmanila@gmail.com"
       />
       <Card
         icon={<FiMessageCircle size={28} color="#6C63FF" />}
