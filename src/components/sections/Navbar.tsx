@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -6,6 +6,24 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setAboutDropdownOpen(false);
+      }
+    };
+
+    if (aboutDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [aboutDropdownOpen]);
 
   return (
     <>
@@ -47,21 +65,34 @@ const Navbar = () => {
         }}>
           <Link to="/" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</Link>
           <div 
+            ref={dropdownRef}
             style={{ position: 'relative' }}
-            onMouseEnter={() => setAboutDropdownOpen(true)}
-            onMouseLeave={() => setAboutDropdownOpen(false)}
           >
             <div style={{ 
               color: '#fff', 
               fontWeight: 600, 
               fontSize: 16, 
               fontFamily: 'Montserrat, sans-serif',
-              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: '4px'
             }}>
-              About Us <ArrowDropDownIcon style={{ fontSize: 20 }} />
+              <Link 
+                to="/about" 
+                style={{ 
+                  color: '#fff', 
+                  fontWeight: 600, 
+                  fontSize: 16, 
+                  textDecoration: 'none', 
+                  fontFamily: 'Montserrat, sans-serif' 
+                }}
+              >
+                About Us
+              </Link>
+              <ArrowDropDownIcon 
+                style={{ fontSize: 20, cursor: 'pointer' }} 
+                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+              />
             </div>
             {aboutDropdownOpen && (
               <div style={{
