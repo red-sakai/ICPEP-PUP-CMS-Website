@@ -1,6 +1,6 @@
 {/* shorter card */}
 
-import React from 'react';
+import React, { useState } from 'react';
 
 type CardProps = {
   icon: React.ReactNode;
@@ -8,22 +8,32 @@ type CardProps = {
   description: string;
 };
 
-const Card: React.FC<CardProps> = ({ icon, title, description }) => (
-  <div
-    style={{
-      background: '#FBF9FD',
-      borderRadius: '18px',
-      boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
-      padding: '1.5rem 2.5rem 1.25rem 2.5rem',
-      minWidth: '400px',
-      maxWidth: '450px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: '1rem',
-      margin: '0 1rem',
-    }}
-  >
+const Card: React.FC<CardProps> = ({ icon, title, description }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      style={{
+        background: '#FBF9FD',
+        borderRadius: '18px',
+        boxShadow: isHovered 
+          ? '0 12px 32px rgba(0,0,0,0.18)' 
+          : '0 8px 24px rgba(0,0,0,0.12)',
+        padding: '1.5rem 2.5rem 1.25rem 2.5rem',
+        minWidth: '400px',
+        maxWidth: '450px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: '1rem',
+        margin: '0 1rem',
+        transition: 'all 0.3s ease',
+        transform: isHovered ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
     <div
       style={{
         background: '#EAE8F6',
@@ -61,6 +71,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
       {description}
     </p>
   </div>
-);
+  );
+};
 
 export default Card;
