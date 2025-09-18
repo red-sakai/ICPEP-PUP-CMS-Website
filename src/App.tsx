@@ -9,6 +9,9 @@ import MissionVision from './components/sections/Mission&Vision';
 import Adviser from './components/sections/Adviser';
 import Officers from './components/sections/Officers';
 import History from './components/sections/History';
+import ContactUs from './components/sections/ContactUs';
+import ContactCards from './components/sections/ContactCards';
+import FAQ from './components/sections/FAQ';
 import { useEffect } from 'react';
 
 {/* Landing Page section */}
@@ -38,6 +41,18 @@ function AboutPage() {
   );
 }
 
+{/* Contact Us section */}
+function ContactPage() {
+  return (
+    <div style={{ width: '100%', overflowX: 'hidden' }}>
+      <ContactUs />
+      <ContactCards />
+      <FAQ />
+      <Footer />
+    </div>
+  )
+}
+
 function App() {
   // Add global styles to ensure full-width layout
   useEffect(() => {
@@ -59,6 +74,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>
