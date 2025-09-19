@@ -100,7 +100,7 @@ const Devs = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '10rem',
+        marginBottom: '4rem',
         position: 'relative',
         background: '#FCEFF7',
         padding: '3rem 0',
@@ -186,7 +186,7 @@ const Devs = () => {
         <SectionHeader title="Development Team" />
         <MembersRow members={devs} />
       </div>
-      <div style={{ marginTop: '3rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
         <SectionHeader title="Research Team" />
         <MembersRow members={researchTeam} />
       </div>

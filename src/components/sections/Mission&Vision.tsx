@@ -28,7 +28,7 @@ const MissionVision = () => (
           fontSize: '2.2rem',
           color: '#333',
           textAlign: 'center',
-          marginBottom: '0.7rem',
+          marginBottom: '2.5rem',
           marginTop: 0,
         }}
       >
