@@ -4,8 +4,8 @@ const adviser = [
   {
     name: 'Engr. Rolito L. Mahaguay',
     position: 'ICPEP SE PUP ADVISER',
-    // photoUrl: "images/adviser.svg",
-    facebookUrl: "https://facebook.com",
+    photoUrl: "Engr-Mahaguay.jpg",
+    facebookUrl: "https://www.facebook.com/rmahaguay",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
@@ -35,7 +35,7 @@ const Adviser = () => {
       <Card3
         name = {adviser[0].name}
         position = {adviser[0].position}
-        // photo = {adviser[0].photoUrl}
+        photoUrl={adviser[0].photoUrl}
         width="450px"
         photoSize="150px"
         facebookUrl= {adviser[0].facebookUrl}// example para sa clickable na icon (replace the link nalang po)
@@ -53,6 +53,7 @@ const Adviser = () => {
           fontSize: '1.3rem',
           lineHeight: '1.5',
           color: '#777',
+          fontFamily: 'Montserrat, sans-serif'
         }}
       >
         {adviserDescription}

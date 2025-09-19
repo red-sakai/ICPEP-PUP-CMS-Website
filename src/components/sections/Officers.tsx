@@ -4,7 +4,7 @@ const currentPresident = [
   {
     name: 'Gladwin Ferdz Del Rosario',
     position: 'President',
-    // photoUrl: "images/president.svg",
+    photoUrl: "Gladwin.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
@@ -14,69 +14,54 @@ const currentPresident = [
 
 const executiveMembers = [
   {
-    name: 'Name',
-    position: 'Position',
-    photoUrl: "images/member.svg",
+    name: 'Alexie Ysabel Anoya',
+    position: 'Executive Vice President',
+    photoUrl: "Alexie.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
   },
   {
-    name: 'Name',
-    position: 'Position',
-    // photoUrl: "images/member.svg",
+    name: 'Shanella Maye S. Constantino',
+    position: 'Vice President for Internal Affairs',
+    photoUrl: "Shanella.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
   },
   {
-    name: 'Name',
-    position: 'Position',
-    // photoUrl: "images/member.svg",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  }
-]
-
-const committeeMembers = [
-  {
-    name: 'Name',
-    position: 'Position',
-    // photoUrl: "images/member.svg",
+    name: 'Joshua A. Basilan',
+    position: 'Vice President for External Affairs',
+    photoUrl: "Joshua.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
   },
   {
-    name: 'Name',
-    position: 'Position',
-    // photoUrl: "images/member.svg",
+    name: 'Albren Dominique Naplaza',
+    position: 'Executive Secretary',
+    photoUrl: "Albren.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
   },
   {
-    name: 'Name',
-    position: 'Position',
-    // photoUrl: "images/member.svg",
+    name: 'Nikki Elisha D. Plaza',
+    position: 'Treasurer',
+    photoUrl: "Nikki.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"
-  }
-]
-
-const pastPresidents = [
+  },
   {
-    name: 'Marvin Erosa',
-    position: "'24-'25 pres.",
-    // photoUrl: "images/member.svg",
+    name: 'Mary Ruth P. Relator',
+    position: 'Auditor',
+    photoUrl: "Mary.PNG",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
@@ -109,7 +94,7 @@ const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
             key={index}
             name={member.name}
             position={member.position}
-            // photoUrl={member.photoUrl}
+            photoUrl={member.photoUrl}
             width="400px"
             photoSize="150px"
             facebookUrl={member.facebookUrl}
@@ -229,7 +214,7 @@ const Officers = () => {
           <Card3
           name={currentPresident[0].name}
           position={currentPresident[0].position}
-          // photoUrl={currentPresident[0].photoUrl}
+          photoUrl={currentPresident[0].photoUrl}
           width="650px"
           photoSize="150px"
           facebookUrl={currentPresident[0].facebookUrl}
@@ -240,18 +225,6 @@ const Officers = () => {
         </div>
         {/* Other Executive Members */}
         <MembersRow members={executiveMembers} />
-      </div>
-
-      {/* Committee Members */}
-      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
-        <SectionHeader title="Committee Members" />
-        <MembersRow members={committeeMembers} />
-      </div>
-      
-      {/* Past Presidents */}
-      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
-        <SectionHeader title="Past Presidents" />
-        <MembersRow members={pastPresidents} />
       </div>
     </div>
   );

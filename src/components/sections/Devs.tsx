@@ -4,7 +4,7 @@ const devs = [
   {
     name: 'Ezekiel Bustamante',
     position: 'UI/UX Designer',
-    photoUrl: "#",
+    photoUrl: "Ezekiel.PNG",
     facebookUrl: "https://www.facebook.com/ezekiel.bustamante.549",
     xUrl: "#",
     instagramUrl: "https://www.instagram.com/kielsough/",
@@ -22,10 +22,10 @@ const devs = [
   {
     name: 'Marjoy Caranto',
     position: 'Frontend Developer',
-    photoUrl: "#",
+    photoUrl: "Marjoy.PNG",
     facebookUrl: "https://www.facebook.com/marjoycarantoaccount",
     xUrl: "#",
-    instagramUrl: "#",
+    instagramUrl: "https://www.instagram.com/00filmj_/",
     linkedinUrl: "https://www.linkedin.com/in/marjoycaranto/"
   }
 ];
