@@ -12,6 +12,7 @@ import History from './components/sections/History';
 import ContactUs from './components/sections/ContactUs';
 import ContactCards from './components/sections/ContactCards';
 import FAQ from './components/sections/FAQ';
+import Devs from './components/sections/Devs';
 import { useEffect } from 'react';
 
 {/* Landing Page section */}
@@ -35,6 +36,7 @@ function AboutPage() {
       <MissionVision />
       <Adviser />
       <Officers />
+      <Devs />
       <History />
       <Footer />
     </div>

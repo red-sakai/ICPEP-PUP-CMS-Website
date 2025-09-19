@@ -133,7 +133,7 @@ const Officers = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '15rem',
+        marginBottom: '4rem', // reduced from 15rem
         position: 'relative',
         background: '#FCEFF7',
         padding: '3rem 0',
@@ -243,13 +243,13 @@ const Officers = () => {
       </div>
 
       {/* Committee Members */}
-      <div style={{ marginTop: '3rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
         <SectionHeader title="Committee Members" />
         <MembersRow members={committeeMembers} />
       </div>
       
       {/* Past Presidents */}
-      <div style={{ marginTop: '3rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
         <SectionHeader title="Past Presidents" />
         <MembersRow members={pastPresidents} />
       </div>
