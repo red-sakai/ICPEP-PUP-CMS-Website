@@ -1,25 +1,40 @@
+import { useRef, useEffect } from 'react';
+
 const facts = [
   {
     title: "ICPEP x PUP Fact #1",
-    description: "help",
+    description: "ICpEP. org (representing CpE students) joins inter-organization competitions, like quiz bees, hackathons, and programming",
     background: "linear-gradient(135deg, #E8D5FF 0%, #C8A8FF 100%)",
     illustration: "/sapiens 1.svg" // Sapiens 1 illustration
   },
   {
     title: "ICPEP x PUP Fact #2",
-    description: "me",
+    description: "From inter-org competitions, academic seminars, to community outreach — ICpEP joins in PUP initiatives as the CpE representative.",
     background: "linear-gradient(135deg, #FFB8B8 0%, #FF9999 100%)",
     illustration: "/sapiens 2.svg" // Sapiens 2 illustration
   },
   {
     title: "ICPEP x PUP Fact #3",
-    description: "here",
+    description: "It’s the recognized student chapter of ICpEP at PUP. It serves as the official academic organization for Computer Engineering (CpE) students.",
     background: "linear-gradient(135deg, #FFD4B8 0%, #FFBF99 100%)",
     illustration: "/sapiens 3.svg" // Sapiens 3 illustration
   }
 ];
 
 const Facts = () => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    cardRefs.current.forEach((card, idx) => {
+      if (card) {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 200 + idx * 150); // stagger animation
+      }
+    });
+  }, []);
+
   return (
     <section style={{ 
       minHeight: '100vh', 
@@ -32,7 +47,8 @@ const Facts = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', width: '100%' }}>
         {facts.map((fact, idx) => (
           <div 
-            key={idx} 
+            key={idx}
+            ref={el => { cardRefs.current[idx] = el; }}
             style={{ 
               background: fact.background,
               borderRadius: '32px',
@@ -45,7 +61,10 @@ const Facts = () => {
               gap: '2rem',
               minHeight: '250px',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              opacity: 0,
+              transform: 'translateY(40px)',
+              transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
             }}
           >
             {/* Decorative elements */}

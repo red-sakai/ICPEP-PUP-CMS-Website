@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Card3 from '../ui/Card3';
 
 const devs = [
@@ -92,8 +93,19 @@ const MembersRow = ({ members }: { members: typeof devs | typeof researchTeam })
 };
 
 const Devs = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (section) {
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
+    }
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       id="devs-section"
       style={{
         width: '100%',
@@ -105,6 +117,9 @@ const Devs = () => {
         background: '#FCEFF7',
         padding: '3rem 0',
         overflow: 'hidden',
+        opacity: 0,
+        transform: 'translateY(40px)',
+        transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
       }}
     >
       {/* Decorative circles */}

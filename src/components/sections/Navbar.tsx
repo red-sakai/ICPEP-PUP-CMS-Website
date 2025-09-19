@@ -223,7 +223,12 @@ const Navbar = () => {
           <Link to="/contact" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</Link>
         </div>
         <div className="navbar-btn" style={{ minWidth: 0, marginRight: 16 }}>
-          <Button style={{ padding: '14px 22px' }}>Join Now</Button>
+          <Button
+            style={{ padding: '14px 22px' }}
+            onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
+          >
+            Join Now
+          </Button>
         </div>
         {/* Hamburger for mobile */}
         <div
@@ -324,7 +329,11 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
-          <Button>Join Now</Button>
+          <Button
+            onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
+          >
+            Join Now
+          </Button>
         </div>
       )}
       {/* Responsive styles */}
@@ -360,8 +369,7 @@ const Navbar = () => {
           }
         `}
       </style>
-      {/* Spacer to prevent content being hidden under fixed navbar */}
-      <div style={{ height: 90 }} />
+      {!menuOpen && <div style={{ height: 90 }} />}
     </>
   );
 };

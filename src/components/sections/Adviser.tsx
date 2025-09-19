@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Card3 from '../ui/Card3';
 
 const adviser = [
@@ -21,14 +22,28 @@ guides and inspires future engineers to uphold excellence, innovation, and camar
 `;
 
 const Adviser = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (section) {
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
+    }
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       style={{
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         marginBottom: '15rem',
+        opacity: 0,
+        transform: 'translateY(40px)',
+        transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
       }}
     >
       {/* Card with name, position, photo, and social media */}

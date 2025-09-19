@@ -5,7 +5,7 @@ import React from 'react';
 type CardProps = {
   icon: React.ReactNode;
   title: string;
-  description: string;
+  description: React.ReactNode; // changed from string to React.ReactNode
 };
 const Card: React.FC<CardProps> = ({ icon, title, description }) => (
   <div

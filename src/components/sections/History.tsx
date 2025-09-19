@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { FaHistory } from "react-icons/fa"
 import { RiOrganizationChart } from "react-icons/ri"
 import { RxAccessibility } from "react-icons/rx"
@@ -7,14 +8,28 @@ import { VscDebugContinue } from "react-icons/vsc"
 import Card2 from '../ui/Card2';
 
 const History = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (section) {
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
+    }
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       id="history-section"
       style={{
         width: '100%',
         padding: '3rem 1rem 5rem',
         boxSizing: 'border-box',
         background: '#fff',
+        opacity: 0,
+        transform: 'translateY(40px)',
+        transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
       }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>

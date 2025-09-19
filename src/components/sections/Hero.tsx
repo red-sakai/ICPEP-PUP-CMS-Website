@@ -3,6 +3,8 @@ import Button from '../ui/Button';
 
 const Hero = ({ id }: { id?: string }) => {
   const waveRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,15 @@ const Hero = ({ id }: { id?: string }) => {
     // Set initial position
     if (waveRef.current) {
       waveRef.current.style.transform = `translateY(180px)`;
+    }
+    // Animate text and buttons
+    if (textRef.current) {
+      textRef.current.style.opacity = '1';
+      textRef.current.style.transform = 'translateY(0)';
+    }
+    if (btnRef.current) {
+      btnRef.current.style.opacity = '1';
+      btnRef.current.style.transform = 'translateY(0)';
     }
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -139,7 +150,16 @@ const Hero = ({ id }: { id?: string }) => {
         alignItems: "center",
         justifyContent: "center"
       }}>
-        <div className="hero-text">
+        <div className="hero-text" ref={textRef} style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          opacity: 0,
+          transform: "translateY(40px)",
+          transition: "opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)",
+        }}>
           <h1 style={{
             color: "#fff",
             fontFamily: "Montserrat, sans-serif",
@@ -160,11 +180,14 @@ const Hero = ({ id }: { id?: string }) => {
           }}>
             One Student at a Time
           </h1>
-          <div style={{
+          <div ref={btnRef} style={{
             display: "flex",
             gap: "1.5rem",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            opacity: 0,
+            transform: "translateY(40px)",
+            transition: "opacity 0.8s 0.3s cubic-bezier(.4,0,.2,1), transform 0.8s 0.3s cubic-bezier(.4,0,.2,1)",
           }}>
             <Button variant="primary">Become a Member</Button>
             <Button
@@ -179,6 +202,7 @@ const Hero = ({ id }: { id?: string }) => {
                 border: '2px solid #fff',
                 boxShadow: 'none',
               }}
+              onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
             >
               Learn More
             </Button>

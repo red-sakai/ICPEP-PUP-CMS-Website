@@ -81,20 +81,36 @@ const Footer = () => (
       <div style={{ flex: '1 1 180px', minWidth: '160px' }}>
         <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '1.2rem' }}>Quick Links</div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
-          <li className="footer-link">Home</li>
-          <li className="footer-link">About Us</li>
-          <li className="footer-link">Mission & Vision</li>
-          <li className="footer-link">Officers</li>
-          <li className="footer-link">Contacts</li>
+          <li>
+            <a className="footer-link" href="/" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Home</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/about" style={{ color: '#A5A5A9', textDecoration: 'none' }}>About Us</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/about#mission-vision-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Mission & Vision</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/about#officers-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Officers</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/contact" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Contacts</a>
+          </li>
         </ul>
       </div>
       {/* Organization */}
       <div style={{ flex: '1 1 180px', minWidth: '160px' }}>
         <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '1.2rem' }}>Organization</div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
-          <li className="footer-link">Our History</li>
-          <li className="footer-link">Membership</li>
-          <li className="footer-link">FAQs</li>
+          <li>
+            <a className="footer-link" href="/about#history-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Our History</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Membership</a>
+          </li>
+          <li>
+            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>FAQs</a>
+          </li>
         </ul>
       </div>
       {/* Contact Info */}

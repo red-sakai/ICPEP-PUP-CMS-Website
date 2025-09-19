@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Card3 from '../ui/Card3';
 
 const currentPresident = [
@@ -35,6 +36,24 @@ const executiveMembers = [
     name: 'Joshua A. Basilan',
     position: 'Vice President for External Affairs',
     photoUrl: "Joshua.PNG",
+    facebookUrl: "https://facebook.com",
+    xUrl: "https://x.com",
+    instagramUrl: "https://instagram.com",
+    linkedinUrl: "https://linkedin.com"
+  },
+  {
+    name: 'Carl Melvin A. Erosa',
+    position: 'Vice President for Technology',
+    photoUrl: "Carl-E.jpg",
+    facebookUrl: "https://facebook.com",
+    xUrl: "https://x.com",
+    instagramUrl: "https://instagram.com",
+    linkedinUrl: "https://linkedin.com"
+  },
+  {
+    name: 'Carl Blancaflor',
+    position: 'Assosciate Vice President for Technology',
+    photoUrl: "Carl-B.png",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
@@ -110,19 +129,33 @@ const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
 };
 
 const Officers = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (section) {
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
+    }
+  }, []);
+
   return (
     <div
+      ref={sectionRef}
       id="officers-section"
       style={{
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '4rem', // reduced from 15rem
+        marginBottom: '4rem',
         position: 'relative',
         background: '#FCEFF7',
         padding: '3rem 0',
         overflow: 'hidden',
+        opacity: 0,
+        transform: 'translateY(40px)',
+        transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
       }}
     >
       {/* Decorative circles with shine effect */}
@@ -187,7 +220,7 @@ const Officers = () => {
             marginTop: 0,
           }}
         >
-          ICpEP.se PUP Officers 2025-2026
+          ICPEP SE - PUP Manila Officers 2025-2026
         </h1>
         <div
           style={{
