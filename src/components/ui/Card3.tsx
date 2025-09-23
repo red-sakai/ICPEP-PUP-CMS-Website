@@ -26,21 +26,51 @@ const Card3: React.FC<Card3Props> = ({
   instagramUrl,
   linkedinUrl,
 }) => {
-  const renderIcon = (Icon: React.ElementType, url?: string) =>
-    url ? (
+
+  const [hovered, setHovered] = React.useState<number | null>(null);
+  const icons = [
+    { Icon: FaFacebookF, url: facebookUrl },
+    { Icon: FaInstagram, url: instagramUrl },
+    { Icon: FaLinkedinIn, url: linkedinUrl },
+  ];
+
+  const renderIcon = (Icon: React.ElementType, url: string | undefined, idx: number) => {
+    const isHovered = hovered === idx;
+    const isOther = hovered !== null && hovered !== idx;
+    let transform = 'none';
+    if (isHovered) transform = 'scale(1.25)';
+    else if (isOther) transform = idx < hovered! ? 'translateX(-12px)' : 'translateX(12px)';
+    return url ? (
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ color: 'inherit' }}
+        style={{
+          color: 'inherit',
+          transition: 'transform 0.25s cubic-bezier(.4,0,.2,1)',
+          transform,
+          zIndex: isHovered ? 2 : 1,
+        }}
+        onMouseEnter={() => setHovered(idx)}
+        onMouseLeave={() => setHovered(null)}
       >
         <Icon />
       </a>
     ) : (
-      <span style={{ opacity: 0.5, cursor: 'default' }}>
+      <span
+        style={{
+          opacity: 0.5,
+          cursor: 'default',
+          transition: 'transform 0.25s cubic-bezier(.4,0,.2,1)',
+          transform,
+        }}
+        onMouseEnter={() => setHovered(idx)}
+        onMouseLeave={() => setHovered(null)}
+      >
         <Icon />
       </span>
     );
+  };
 
   return (
     <div
@@ -104,11 +134,11 @@ const Card3: React.FC<Card3Props> = ({
           marginTop: '0.5rem',
           color: '#999',
           fontSize: '1.3rem',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        {renderIcon(FaFacebookF, facebookUrl)}
-        {renderIcon(FaInstagram, instagramUrl)}
-        {renderIcon(FaLinkedinIn, linkedinUrl)}
+        {icons.map(({ Icon, url }, idx) => renderIcon(Icon, url, idx))}
       </div>
     </div>
   );
