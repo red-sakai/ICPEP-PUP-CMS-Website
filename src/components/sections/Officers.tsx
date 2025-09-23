@@ -21,7 +21,7 @@ const SectionHeader = ({ title }: { title: string }) => (
     fontFamily: 'Montserrat, sans-serif',
     fontWeight: 650,
     fontSize: '1.3rem',
-    color: '#505050ff',
+    color: '#333',
     textAlign: 'center',
     marginBottom: '0.7rem',
     marginTop: 0,
@@ -30,44 +30,136 @@ const SectionHeader = ({ title }: { title: string }) => (
   </h4>
 );
 
-const MembersRow = ({ members }: { members: Officer[] }) => {
-  const rows = [];
-  for (let i = 0; i < members.length; i += 3) {
-    const chunk = members.slice(i, i + 3);
-    rows.push(
-      <div key={i} style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginTop: '2rem' }}>
-        {chunk.map((member, index) => (
-          <Card3
-            key={index}
-            name={member.name}
-            position={member.position}
-            photoUrl={member.photoUrl}
-            width="400px"
-            photoSize="150px"
-            facebookUrl={member.facebookUrl}
-            instagramUrl={member.instagramUrl}
-            linkedinUrl={member.linkedinUrl}
-          />
-        ))}
-      </div>
-    );
-  }
-  return <>{rows}</>;
-};
+// (Removed unused MembersRow)
 
 const Officers = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const execHeaderRef = useRef<HTMLHeadingElement>(null);
+  const presidentCardRef = useRef<HTMLDivElement>(null);
+  const membersRowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Section fade-in
     const section = sectionRef.current;
     if (section) {
       section.style.opacity = '1';
       section.style.transform = 'translateY(0)';
     }
+
+    // Observer for heading and color line
+    const fadeSlideClass = 'officers-fade-slide';
+    const fadeObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(fadeSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (headingRef.current) fadeObserver.observe(headingRef.current);
+    if (lineRef.current) fadeObserver.observe(lineRef.current);
+
+    // Observer for executive members section header
+    const execHeaderClass = 'officers-exec-header-animate';
+    const execHeaderObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(execHeaderClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (execHeaderRef.current) execHeaderObserver.observe(execHeaderRef.current);
+
+    // Observer for president card
+    const cardSlideClass = 'officers-card-animate';
+    const cardObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(cardSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (presidentCardRef.current) cardObserver.observe(presidentCardRef.current);
+
+    // Observer for each executive members row
+    const rowSlideClass = 'officers-row-animate';
+    const rowObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(rowSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    membersRowRefs.current.forEach(ref => {
+      if (ref) rowObserver.observe(ref);
+    });
+
+    return () => {
+      if (headingRef.current) fadeObserver.unobserve(headingRef.current);
+      if (lineRef.current) fadeObserver.unobserve(lineRef.current);
+      if (execHeaderRef.current) execHeaderObserver.unobserve(execHeaderRef.current);
+      if (presidentCardRef.current) cardObserver.unobserve(presidentCardRef.current);
+      membersRowRefs.current.forEach(ref => {
+        if (ref) rowObserver.unobserve(ref);
+      });
+    };
   }, []);
 
   const ensureProtocol = (url: string) =>
     url && !/^https?:\/\//i.test(url) ? `https://${url}` : url;
+
+  // Custom MembersRow with refs for animation
+  const MembersRowObserved = ({ members }: { members: Officer[] }) => {
+    const rows = [];
+    for (let i = 0; i < members.length; i += 3) {
+      const chunk = members.slice(i, i + 3);
+      rows.push(
+        <div
+          key={i}
+          ref={el => { membersRowRefs.current[i / 3] = el; }}
+          className="officers-row"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '2rem',
+            flexWrap: 'wrap',
+            marginTop: '2rem',
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          }}
+        >
+          {chunk.map((member, index) => (
+            <Card3
+              key={index}
+              name={member.name}
+              position={member.position}
+              photoUrl={member.photoUrl}
+              width="400px"
+              photoSize="150px"
+              facebookUrl={member.facebookUrl}
+              instagramUrl={member.instagramUrl}
+              linkedinUrl={member.linkedinUrl}
+            />
+          ))}
+        </div>
+      );
+    }
+    return <>{rows}</>;
+  };
 
   return (
     <div
@@ -140,25 +232,33 @@ const Officers = () => {
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <h1
+          ref={headingRef}
           style={{
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 900,
             fontSize: '2.2rem',
-            color: '#505050ff',
+            color: '#333',
             textAlign: 'center',
             marginBottom: '0.7rem',
             marginTop: 0,
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         >
           ICPEP SE - PUP Manila Officers 2025-2026
         </h1>
         <div
+          ref={lineRef}
           style={{
             width: '160px',
             height: '8px',
             borderRadius: '8px',
             background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
             margin: '0 auto 3rem auto',
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         />
       </div>
@@ -171,9 +271,25 @@ const Officers = () => {
           zIndex: 1
         }}
       >
-        <SectionHeader title="Executive Members" />
+        <h4
+          ref={execHeaderRef}
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 650,
+            fontSize: '1.3rem',
+            color: '#333',
+            textAlign: 'center',
+            marginBottom: '0.7rem',
+            marginTop: 0,
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          }}
+        >
+          Executive Members
+        </h4>
         {/* President */}
-        <div style={{ marginTop: '2rem' }}>
+        <div ref={presidentCardRef} style={{ marginTop: '2rem', opacity: 0, transform: 'translateY(48px)', transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)' }}>
           <Card3
             name={currentPresident[0].name}
             position={currentPresident[0].position}
@@ -186,13 +302,33 @@ const Officers = () => {
           />
         </div>
         {/* Other Executive Members */}
-        <MembersRow members={executiveMembers.map(m => ({
+        <MembersRowObserved members={executiveMembers.map(m => ({
           ...m,
           facebookUrl: ensureProtocol(m.facebookUrl),
           instagramUrl: ensureProtocol(m.instagramUrl),
           linkedinUrl: ensureProtocol(m.linkedinUrl),
         }))} />
       </div>
+      <style>
+        {`
+          .officers-fade-slide {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+          .officers-exec-header-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+          .officers-card-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+          .officers-row-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+        `}
+      </style>
     </div>
   );
 };
