@@ -37,7 +37,7 @@ const FAQ = () => {
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 900,
             fontSize: '2.5rem',
-            color: '#555',
+            color: '#333',
             marginBottom: '0.5rem',
           }}
         >
