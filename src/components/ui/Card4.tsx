@@ -30,7 +30,7 @@ const Card4: React.FC<Card4Props> = ({ question, answer }) => {
           style={{
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 700,
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             color: '#333',
             margin: 0,
           }}
@@ -54,7 +54,7 @@ const Card4: React.FC<Card4Props> = ({ question, answer }) => {
         <p
           style={{
             fontFamily: 'Montserrat, sans-serif',
-            fontSize: '1.15rem',
+            fontSize: '1.05rem',
             color: '#222',
             margin: '1.2rem 0 0 0',
             lineHeight: 1.6,
