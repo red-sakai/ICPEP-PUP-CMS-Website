@@ -7,9 +7,10 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement | null>(null);
+  const [navHeight, setNavHeight] = useState(90);
   const navigate = useNavigate();
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -26,6 +27,19 @@ const Navbar = () => {
     };
   }, [aboutDropdownOpen]);
 
+  useEffect(() => {
+    const updateNavHeight = () => {
+      if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+    };
+    updateNavHeight();
+    window.addEventListener('resize', updateNavHeight);
+    return () => window.removeEventListener('resize', updateNavHeight);
+  }, []);
+
+  useEffect(() => {
+    if (navRef.current) setNavHeight(navRef.current.offsetHeight);
+  }, [menuOpen]);
+
   return (
     <>
       {/* Import Montserrat font */}
@@ -35,6 +49,7 @@ const Navbar = () => {
         `}
       </style>
       <nav
+        ref={navRef}
         style={{
           position: 'fixed',
           top: 0,
@@ -277,17 +292,22 @@ const Navbar = () => {
           className="navbar-mobile-menu"
           style={{
             position: 'fixed',
-            top: 90, // changed from 70
+            top: navHeight,
             left: 0,
             right: 0,
+            height: '31vh',
+            maxHeight: `calc(100vh - ${navHeight}px)`,
             background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: 24,
-            padding: '24px 0',
-            zIndex: 99,
+            gap: 20,
+            padding: '28px 0 32px',
             fontFamily: 'Montserrat, sans-serif',
+            zIndex: 99,
+            overflowY: 'auto',
+            borderRadius: '0 0 24px 24px',
+            boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
           }}
         >
           <Link
@@ -354,10 +374,16 @@ const Navbar = () => {
               font-size: 18px !important;
               padding: 10px 18px !important;
             }
+            .navbar-spacer {
+              display: none !important;
+            }
           }
           @media (min-width: 901px) {
             .navbar-mobile-menu {
               display: none !important;
+            }
+            .navbar-spacer {
+              display: block !important;
             }
           }
           .dropdown-link:hover {
@@ -369,7 +395,7 @@ const Navbar = () => {
           }
         `}
       </style>
-      {!menuOpen && <div style={{ height: 90 }} />}
+      {!menuOpen && <div className="navbar-spacer" style={{ height: 90 }} />}
     </>
   );
 };

@@ -81,7 +81,6 @@ const MembersRow = ({ members }: { members: typeof devs | typeof researchTeam })
             width="400px"
             photoSize="150px"
             facebookUrl={member.facebookUrl}
-            xUrl={member.xUrl}
             instagramUrl={member.instagramUrl}
             linkedinUrl={member.linkedinUrl}
           />

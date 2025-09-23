@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
 
 type Card3Props = {
   name: string;
@@ -12,7 +11,6 @@ type Card3Props = {
   height?: string | number;
   photoSize?: string | number;
   facebookUrl?: string;
-  xUrl?: string;
   instagramUrl?: string;
   linkedinUrl?: string;
 };
@@ -25,7 +23,6 @@ const Card3: React.FC<Card3Props> = ({
   height = 'auto',
   photoSize = '100px',
   facebookUrl,
-  xUrl,
   instagramUrl,
   linkedinUrl,
 }) => {
@@ -110,7 +107,6 @@ const Card3: React.FC<Card3Props> = ({
         }}
       >
         {renderIcon(FaFacebookF, facebookUrl)}
-        {renderIcon(FaXTwitter, xUrl)}
         {renderIcon(FaInstagram, instagramUrl)}
         {renderIcon(FaLinkedinIn, linkedinUrl)}
       </div>

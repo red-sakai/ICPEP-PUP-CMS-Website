@@ -51,9 +51,27 @@ const executiveMembers = [
     linkedinUrl: "https://linkedin.com"
   },
   {
+    name: 'Emanuel Jabon',
+    position: 'Vice President for Graphics',
+    photoUrl: "#",
+    facebookUrl: "https://facebook.com",
+    xUrl: "https://x.com",
+    instagramUrl: "https://instagram.com",
+    linkedinUrl: "https://linkedin.com"
+  },
+  {
     name: 'Carl Blancaflor',
     position: 'Assosciate Vice President for Technology',
     photoUrl: "Carl-B.png",
+    facebookUrl: "https://facebook.com",
+    xUrl: "https://x.com",
+    instagramUrl: "https://instagram.com",
+    linkedinUrl: "https://linkedin.com"
+  },
+  {
+    name: 'Jasmin Paige Mazaredo',
+    position: 'Assosciate Vice President for ?',
+    photoUrl: "#",
     facebookUrl: "https://facebook.com",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
@@ -117,7 +135,6 @@ const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
             width="400px"
             photoSize="150px"
             facebookUrl={member.facebookUrl}
-            xUrl={member.xUrl}
             instagramUrl={member.instagramUrl}
             linkedinUrl={member.linkedinUrl}
           />
@@ -148,7 +165,7 @@ const Officers = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: '4rem',
+        marginBottom: '0',
         position: 'relative',
         background: '#FCEFF7',
         padding: '3rem 0',
@@ -251,7 +268,6 @@ const Officers = () => {
           width="650px"
           photoSize="150px"
           facebookUrl={currentPresident[0].facebookUrl}
-          xUrl={currentPresident[0].xUrl}
           instagramUrl={currentPresident[0].instagramUrl}
           linkedinUrl={currentPresident[0].linkedinUrl}
           />
