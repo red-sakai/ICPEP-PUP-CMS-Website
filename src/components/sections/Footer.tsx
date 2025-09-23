@@ -3,32 +3,59 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
+import { useCallback } from 'react';
 
 const iconStyle = { fontSize: '2rem', marginRight: '1.5rem', color: '#A5A5A9', verticalAlign: 'middle' };
 
-const Footer = () => (
-  <>
-    <style>
-      {`
-        .footer-link {
-          cursor: pointer;
-          transition: text-decoration 0.2s ease;
+const Footer = () => {
+  // Handles smooth scroll for same-page links
+  const handleFooterLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute('href');
+    if (!href) return;
+    // Only handle internal links
+    if (href.startsWith('/')) {
+      const currentPath = window.location.pathname + window.location.hash;
+      // If already on the page, scroll to section or top
+      if (currentPath === href || (href === '/' && window.location.pathname === '/')) {
+        e.preventDefault();
+        // If hash present, scroll to section
+        const hashIdx = href.indexOf('#');
+        if (hashIdx !== -1) {
+          const sectionId = href.slice(hashIdx + 1);
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        .footer-link:hover {
-          text-decoration: underline;
-        }
-      `}
-    </style>
-    <footer
-    style={{
-      background: '#23222A',
-      color: '#fff',
-      padding: '3.5rem 0 1.5rem 0',
-      fontFamily: 'Montserrat, sans-serif',
-      width: '100%',
-      marginTop: '4rem',
-    }}
-  >
+      }
+    }
+  }, []);
+
+  return (
+    <>
+      <style>
+        {`
+          .footer-link {
+            cursor: pointer;
+            transition: text-decoration 0.2s ease;
+          }
+          .footer-link:hover {
+            text-decoration: underline;
+          }
+        `}
+      </style>
+      <footer
+      style={{
+        background: '#23222A',
+        color: '#fff',
+        padding: '3.5rem 0 1.5rem 0',
+        fontFamily: 'Montserrat, sans-serif',
+        width: '100%',
+        marginTop: '4rem',
+      }}
+    >
     <div
       style={{
         maxWidth: '1400px',
@@ -81,19 +108,19 @@ const Footer = () => (
         <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '1.2rem' }}>Quick Links</div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
           <li>
-            <a className="footer-link" href="/" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Home</a>
+            <a className="footer-link" href="/" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Home</a>
           </li>
           <li>
-            <a className="footer-link" href="/about" style={{ color: '#A5A5A9', textDecoration: 'none' }}>About Us</a>
+            <a className="footer-link" href="/about" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>About Us</a>
           </li>
           <li>
-            <a className="footer-link" href="/about#mission-vision-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Mission & Vision</a>
+            <a className="footer-link" href="/about#mission-vision-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Mission & Vision</a>
           </li>
           <li>
-            <a className="footer-link" href="/about#officers-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Officers</a>
+            <a className="footer-link" href="/about#officers-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Officers</a>
           </li>
           <li>
-            <a className="footer-link" href="/contact" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Contacts</a>
+            <a className="footer-link" href="/contact" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Contacts</a>
           </li>
         </ul>
       </div>
@@ -102,13 +129,13 @@ const Footer = () => (
         <div style={{ fontWeight: 700, fontSize: '1.1rem', marginBottom: '1.2rem' }}>Organization</div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
           <li>
-            <a className="footer-link" href="/about#history-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Our History</a>
+            <a className="footer-link" href="/about#history-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Our History</a>
           </li>
           <li>
-            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>Membership</a>
+            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Membership</a>
           </li>
           <li>
-            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9', textDecoration: 'none' }}>FAQs</a>
+            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>FAQs</a>
           </li>
         </ul>
       </div>
@@ -143,8 +170,9 @@ const Footer = () => (
     }}>
       © 2024 ICPEP SE PUP. All rights reserved. | Empowering the future of computer engineering.
     </div>
-  </footer>
-  </>
-);
+    </footer>
+    </>
+  );
+};
 
 export default Footer;
