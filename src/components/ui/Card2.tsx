@@ -18,7 +18,7 @@ const Card2: React.FC<Card2Props> = ({ description, title, icon }) => (
       boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
       padding: '2rem 3rem',
       width: '100%',
-      maxWidth: '900px', // limit for readability
+      maxWidth: '900px', 
       boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'column',
@@ -48,10 +48,10 @@ const Card2: React.FC<Card2Props> = ({ description, title, icon }) => (
     <p
       style={{
         fontFamily: 'Montserrat, sans-serif',
-        fontSize: '1.15rem',
+        fontSize: '1.2rem',
         color: '#222',
         margin: 0,
-        lineHeight: 1.6,
+        lineHeight: 1.4,
         textAlign: 'justify',
       }}
     >
