@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ icon, title, description }) => (
       borderRadius: '18px',
       boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
       padding: '2rem 2rem 1.5rem 2rem',
-      width: '340px', // fixed width for all cards
+      width: '340px',
       minWidth: '340px',
       maxWidth: '340px',
       display: 'flex',
