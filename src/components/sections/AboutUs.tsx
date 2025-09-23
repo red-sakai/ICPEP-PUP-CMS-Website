@@ -39,7 +39,7 @@ const AboutUs = () => {
             margin: '0 auto',
             position: 'relative',
             zIndex: 2,
-            padding: '3rem 0 2rem 0',
+            padding: '1rem 0 2rem 0',
             boxSizing: 'border-box',
             opacity: 0,
             transform: 'translateY(40px)',
