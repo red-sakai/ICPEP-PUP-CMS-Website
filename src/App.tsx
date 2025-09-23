@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Hero from './components/sections/Hero';
 import Navbar from './components/sections/Navbar';
 import ICPEP from './components/sections/ICPEP';
@@ -55,6 +55,15 @@ function ContactPage() {
   )
 }
 
+// ScrollToTop component
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   // Add global styles to ensure full-width layout
   useEffect(() => {
@@ -72,6 +81,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div style={{ width: '100%', overflowX: 'hidden' }}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
