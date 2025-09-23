@@ -31,12 +31,27 @@ const SectionHeader = ({ title }: { title: string }) => (
   </h4>
 );
 
-const MembersRow = ({ members }: { members: TeamMember[] }) => {
+// MembersRow with refs for animation
+const MembersRowObserved = ({ members, rowRefs }: { members: TeamMember[], rowRefs: React.MutableRefObject<(HTMLDivElement | null)[]> }) => {
   const rows = [];
   for (let i = 0; i < members.length; i += 3) {
     const chunk = members.slice(i, i + 3);
     rows.push(
-      <div key={i} style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginTop: '2rem' }}>
+      <div
+        key={i}
+        ref={el => { rowRefs.current[i / 3] = el; }}
+        className="devs-row"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '2rem',
+          flexWrap: 'wrap',
+          marginTop: '2rem',
+          opacity: 0,
+          transform: 'translateY(48px)',
+          transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+        }}
+      >
         {chunk.map((member, index) => (
           <Card3
             key={index}
@@ -58,13 +73,74 @@ const MembersRow = ({ members }: { members: TeamMember[] }) => {
 
 const Devs = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const devHeaderRef = useRef<HTMLHeadingElement>(null);
+  const researchHeaderRef = useRef<HTMLHeadingElement>(null);
+  const devRowsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const researchRowsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    // Section fade-in
     const section = sectionRef.current;
     if (section) {
       section.style.opacity = '1';
       section.style.transform = 'translateY(0)';
     }
+
+    // Observer for heading and color line
+    const fadeSlideClass = 'devs-fade-slide';
+    const fadeObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(fadeSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (headingRef.current) fadeObserver.observe(headingRef.current);
+    if (lineRef.current) fadeObserver.observe(lineRef.current);
+
+    // Observer for team section headers
+    const headerSlideClass = 'devs-header-animate';
+    const headerObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(headerSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (devHeaderRef.current) headerObserver.observe(devHeaderRef.current);
+    if (researchHeaderRef.current) headerObserver.observe(researchHeaderRef.current);
+
+    // Observer for dev rows
+    const rowSlideClass = 'devs-row-animate';
+    const rowObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(rowSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    devRowsRef.current.forEach(ref => { if (ref) rowObserver.observe(ref); });
+    researchRowsRef.current.forEach(ref => { if (ref) rowObserver.observe(ref); });
+
+    return () => {
+      if (headingRef.current) fadeObserver.unobserve(headingRef.current);
+      if (lineRef.current) fadeObserver.unobserve(lineRef.current);
+      if (devHeaderRef.current) headerObserver.unobserve(devHeaderRef.current);
+      if (researchHeaderRef.current) headerObserver.unobserve(researchHeaderRef.current);
+      devRowsRef.current.forEach(ref => { if (ref) rowObserver.unobserve(ref); });
+      researchRowsRef.current.forEach(ref => { if (ref) rowObserver.unobserve(ref); });
+    };
   }, []);
 
   return (
@@ -138,37 +214,93 @@ const Devs = () => {
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <h1
+          ref={headingRef}
           style={{
             fontFamily: 'Montserrat, sans-serif',
             fontWeight: 900,
             fontSize: '2.2rem',
-            color: '#505050ff',
+            color: '#333',
             textAlign: 'center',
             marginBottom: '0.7rem',
             marginTop: 0,
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         >
           Meet the Devs
         </h1>
         <div
+          ref={lineRef}
           style={{
             width: '160px',
             height: '8px',
             borderRadius: '8px',
             background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
             margin: '0 auto 3rem auto',
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         />
       </div>
 
       <div style={{ marginTop: '0.5rem', position: 'relative', zIndex: 1 }}>
-        <SectionHeader title="Development Team" />
-        <MembersRow members={devs} />
+        <h4
+          ref={devHeaderRef}
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 650,
+            fontSize: '1.3rem',
+            color: '#333',
+            textAlign: 'center',
+            marginBottom: '0.7rem',
+            marginTop: 0,
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          }}
+        >
+          Development Team
+        </h4>
+        <MembersRowObserved members={devs} rowRefs={devRowsRef} />
       </div>
       <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
-        <SectionHeader title="Research Team" />
-        <MembersRow members={researchTeam} />
+        <h4
+          ref={researchHeaderRef}
+          style={{
+            fontFamily: 'Montserrat, sans-serif',
+            fontWeight: 650,
+            fontSize: '1.3rem',
+            color: '#333',
+            textAlign: 'center',
+            marginBottom: '0.7rem',
+            marginTop: 0,
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          }}
+        >
+          Research Team
+        </h4>
+        <MembersRowObserved members={researchTeam} rowRefs={researchRowsRef} />
       </div>
+      <style>
+        {`
+          .devs-fade-slide {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+          .devs-header-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+          .devs-row-animate {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+        `}
+      </style>
     </div>
   );
 };
