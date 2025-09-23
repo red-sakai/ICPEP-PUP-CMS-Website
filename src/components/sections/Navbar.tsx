@@ -68,8 +68,34 @@ const Navbar = () => {
           fontFamily: 'Montserrat, sans-serif',
         }}
       >
-        {/* Logo */}
-        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif', marginLeft: 16 }}>
+        {/* Logo (clickable) */}
+        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif', marginLeft: 16, cursor: 'pointer' }}
+          onClick={() => {
+            if (window.location.pathname !== '/') {
+              navigate('/');
+              setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }, 100);
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-label="Go to Home"
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              if (window.location.pathname !== '/') {
+                navigate('/');
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+              } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }
+          }}
+        >
           ICPEP
         </div>
         {/* Desktop Navigation */}
