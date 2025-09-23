@@ -50,7 +50,7 @@ const ContactUs = () => {
             style={{
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: 900,
-              fontSize: '4.5rem',
+              fontSize: '3.8rem',
               color: '#fff',
               textAlign: 'center',
               marginBottom: '1.2rem',
