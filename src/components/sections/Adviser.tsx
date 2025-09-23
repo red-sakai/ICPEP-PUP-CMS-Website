@@ -48,27 +48,26 @@ const Adviser = () => {
     >
       {/* Card with name, position, photo, and social media */}
       <Card3
-        name = {adviser[0].name}
-        position = {adviser[0].position}
-        photoUrl={adviser[0].photoUrl}
-        width="450px"
-        photoSize="150px"
-        facebookUrl= {adviser[0].facebookUrl}// example para sa clickable na icon (replace the link nalang po)
-        // xUrl= {adviser[0].xUrl}
-        // instagramUrl= {adviser[0].instagramUrl}
-        // linkedinUrl= {adviser[0].linkedinUrl}
+  name={adviser[0].name}
+  position={adviser[0].position}
+  photoUrl={adviser[0].photoUrl}
+  width="450px"
+  photoSize="150px"
+  facebookUrl={adviser[0].facebookUrl}
+  instagramUrl={adviser[0].instagramUrl}
+  linkedinUrl={adviser[0].linkedinUrl}
       />
 
       {/* Description */}
       <div
         style={{
-          maxWidth: '1500px',
-          marginTop: '2rem',
+          fontFamily: 'Montserrat, sans-serif',
+          fontSize: '1.2rem',
+          color: '#666',
           textAlign: 'center',
-          fontSize: '1.3rem',
-          lineHeight: '1.5',
-          color: '#777',
-          fontFamily: 'Montserrat, sans-serif'
+          maxWidth: '900px',
+          margin: '0 auto',
+          lineHeight: 1.4,
         }}
       >
         {adviserDescription}
