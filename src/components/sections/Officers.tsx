@@ -1,110 +1,20 @@
 import { useEffect, useRef } from 'react';
 import Card3 from '../ui/Card3';
+import officersData from '../../data/officers.json';
 
-const currentPresident = [
-  {
-    name: 'Gladwin Ferdz Del Rosario',
-    position: 'President',
-    photoUrl: "Gladwin.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  }
-]
+type Officer = {
+  name: string;
+  position: string;
+  photoUrl: string;
+  facebookUrl: string;
+  instagramUrl: string;
+  linkedinUrl: string;
+};
 
-const executiveMembers = [
-  {
-    name: 'Alexie Ysabel Anoya',
-    position: 'Executive Vice President',
-    photoUrl: "Alexie.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Shanella Maye S. Constantino',
-    position: 'Vice President for Internal Affairs',
-    photoUrl: "Shanella.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Joshua A. Basilan',
-    position: 'Vice President for External Affairs',
-    photoUrl: "Joshua.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Carl Melvin A. Erosa',
-    position: 'Vice President for Technology',
-    photoUrl: "Carl-E.jpg",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Emanuel Jabon',
-    position: 'Vice President for Graphics',
-    photoUrl: "#",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Carl Blancaflor',
-    position: 'Assosciate Vice President for Technology',
-    photoUrl: "Carl-B.png",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Jasmin Paige Mazaredo',
-    position: 'Assosciate Vice President for ?',
-    photoUrl: "#",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Albren Dominique Naplaza',
-    position: 'Executive Secretary',
-    photoUrl: "Albren.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Nikki Elisha D. Plaza',
-    position: 'Treasurer',
-    photoUrl: "Nikki.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  },
-  {
-    name: 'Mary Ruth P. Relator',
-    position: 'Auditor',
-    photoUrl: "Mary.PNG",
-    facebookUrl: "https://facebook.com",
-    xUrl: "https://x.com",
-    instagramUrl: "https://instagram.com",
-    linkedinUrl: "https://linkedin.com"
-  }
-]
+const { currentPresident, executiveMembers } = officersData as {
+  currentPresident: Officer[];
+  executiveMembers: Officer[];
+};
 
 const SectionHeader = ({ title }: { title: string }) => (
   <h4 style={{
@@ -120,7 +30,7 @@ const SectionHeader = ({ title }: { title: string }) => (
   </h4>
 );
 
-const MembersRow = ({ members }: { members: typeof executiveMembers }) => {
+const MembersRow = ({ members }: { members: Officer[] }) => {
   const rows = [];
   for (let i = 0; i < members.length; i += 3) {
     const chunk = members.slice(i, i + 3);
@@ -155,6 +65,9 @@ const Officers = () => {
       section.style.transform = 'translateY(0)';
     }
   }, []);
+
+  const ensureProtocol = (url: string) =>
+    url && !/^https?:\/\//i.test(url) ? `https://${url}` : url;
 
   return (
     <div
@@ -262,18 +175,23 @@ const Officers = () => {
         {/* President */}
         <div style={{ marginTop: '2rem' }}>
           <Card3
-          name={currentPresident[0].name}
-          position={currentPresident[0].position}
-          photoUrl={currentPresident[0].photoUrl}
-          width="650px"
-          photoSize="150px"
-          facebookUrl={currentPresident[0].facebookUrl}
-          instagramUrl={currentPresident[0].instagramUrl}
-          linkedinUrl={currentPresident[0].linkedinUrl}
+            name={currentPresident[0].name}
+            position={currentPresident[0].position}
+            photoUrl={currentPresident[0].photoUrl}
+            width="650px"
+            photoSize="150px"
+            facebookUrl={ensureProtocol(currentPresident[0].facebookUrl)}
+            instagramUrl={ensureProtocol(currentPresident[0].instagramUrl)}
+            linkedinUrl={ensureProtocol(currentPresident[0].linkedinUrl)}
           />
         </div>
         {/* Other Executive Members */}
-        <MembersRow members={executiveMembers} />
+        <MembersRow members={executiveMembers.map(m => ({
+          ...m,
+          facebookUrl: ensureProtocol(m.facebookUrl),
+          instagramUrl: ensureProtocol(m.instagramUrl),
+          linkedinUrl: ensureProtocol(m.linkedinUrl),
+        }))} />
       </div>
     </div>
   );

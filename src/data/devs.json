@@ -1,0 +1,46 @@
+{
+  "devs": [
+    {
+      "name": "Ezekiel Bustamante",
+      "position": "UI/UX Designer",
+      "photoUrl": "Ezekiel.PNG",
+      "facebookUrl": "https://www.facebook.com/ezekiel.bustamante.549",
+      "instagramUrl": "https://www.instagram.com/kielsough/",
+      "linkedinUrl": "https://www.linkedin.com/in/ezekiel-bustamante-166493353/"
+    },
+    {
+      "name": "Jhered Republica",
+      "position": "Frontend Developer",
+      "photoUrl": "Jhered.jpg",
+      "facebookUrl": "https://www.facebook.com/jay.mcrr",
+      "instagramUrl": "https://www.instagram.com/jay_mcrr/",
+      "linkedinUrl": "https://www.linkedin.com/in/jhered-miguel-republica-13884b322/"
+    },
+    {
+      "name": "Marjoy Caranto",
+      "position": "Frontend Developer",
+      "photoUrl": "Marjoy.PNG",
+      "facebookUrl": "https://www.facebook.com/marjoycarantoaccount",
+      "instagramUrl": "https://www.instagram.com/00filmj_/",
+      "linkedinUrl": "https://www.linkedin.com/in/marjoycaranto/"
+    }
+  ],
+  "researchTeam": [
+    {
+      "name": "Carl Erosa",
+      "position": "Researcher",
+      "photoUrl": "Carl-E.jpg",
+      "facebookUrl": "https://www.facebook.com/CmDrew13",
+      "instagramUrl": "https://www.instagram.com/itsyaboikaruu/",
+      "linkedinUrl": "https://www.linkedin.com/in/carl-melvin-erosa-4805b4304/"
+    },
+    {
+      "name": "Carl Blancaflor",
+      "position": "Researcher",
+      "photoUrl": "Carl-B-AI.PNG",
+      "facebookUrl": "https://www.facebook.com/BlancaflorCarl",
+      "instagramUrl": "https://www.instagram.com/blancaflor_carl/",
+      "linkedinUrl": "https://www.linkedin.com/in/carl-blancaflor-013881323/"
+    }
+  ]
+}

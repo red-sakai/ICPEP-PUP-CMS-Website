@@ -1,0 +1,94 @@
+{
+  "currentPresident": [
+    {
+      "name": "Gladwin Ferdz Del Rosario",
+      "position": "President",
+      "photoUrl": "GladwinAI.PNG",
+      "facebookUrl": "https://www.facebook.com/gfdelrosario0402/",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/gladwindr/"
+    }
+  ],
+  "executiveMembers": [
+    {
+      "name": "Alexie Ysabel Anoya",
+      "position": "Executive Vice President",
+      "photoUrl": "AlexieAI.PNG",
+      "facebookUrl": "https://www.facebook.com/Alexieee.50/",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/alexie-ysabel-anoya-75689b297"
+    },
+    {
+      "name": "Shanella Maye S. Constantino",
+      "position": "Vice President for Internal Affairs",
+      "photoUrl": "ShanellaAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    },
+    {
+      "name": "Joshua A. Basilan",
+      "position": "Vice President for External Affairs",
+      "photoUrl": "JoshuaAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    },
+    {
+      "name": "Carl Melvin A. Erosa",
+      "position": "Vice President for Technology",
+      "photoUrl": "Carl-E.jpg",
+      "facebookUrl": "https://www.facebook.com/CmDrew13",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/carl-melvin-erosa-4805b4304/"
+    },
+    {
+      "name": "Emanuel Jabon",
+      "position": "Vice President for Graphics",
+      "photoUrl": "#",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    },
+    {
+      "name": "Carl Blancaflor",
+      "position": "Assosciate Vice President for Technology",
+      "photoUrl": "Carl-B-AI.PNG",
+      "facebookUrl": "https://www.facebook.com/BlancaflorCarl?_rdc=1&_rdr#",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/carl-blancaflor-013881323/"
+    },
+    {
+      "name": "Jasmin Paige Mazaredo",
+      "position": "Assosciate Vice President for ?",
+      "photoUrl": "#",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/jasmin-paige-mazaredo-350027354/"
+    },
+    {
+      "name": "Albren Dominique Naplaza",
+      "position": "Executive Secretary",
+      "photoUrl": "AlbrenAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/albren-naplaza-815330296/"
+    },
+    {
+      "name": "Nikki Elisha D. Plaza",
+      "position": "Treasurer",
+      "photoUrl": "NikkiAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    },
+    {
+      "name": "Mary Ruth P. Relator",
+      "position": "Auditor",
+      "photoUrl": "MaryAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    }
+  ]
+}

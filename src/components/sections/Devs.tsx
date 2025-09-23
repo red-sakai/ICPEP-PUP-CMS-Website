@@ -1,56 +1,21 @@
 import { useEffect, useRef } from 'react';
 import Card3 from '../ui/Card3';
+import devsData from '../../data/devs.json';
 
-const devs = [
-  {
-    name: 'Ezekiel Bustamante',
-    position: 'UI/UX Designer',
-    photoUrl: "Ezekiel.PNG",
-    facebookUrl: "https://www.facebook.com/ezekiel.bustamante.549",
-    xUrl: "#",
-    instagramUrl: "https://www.instagram.com/kielsough/",
-    linkedinUrl: "https://www.linkedin.com/in/ezekiel-bustamante-166493353/"
-  },
-  {
-    name: 'Jhered Republica',
-    position: 'Frontend Developer',
-    photoUrl: "Jhered.jpg",
-    facebookUrl: "https://www.facebook.com/jay.mcrr",
-    xUrl: "#",
-    instagramUrl: "https://www.instagram.com/jay_mcrr/",
-    linkedinUrl: "https://www.linkedin.com/in/jhered-miguel-republica-13884b322/"
-  },
-  {
-    name: 'Marjoy Caranto',
-    position: 'Frontend Developer',
-    photoUrl: "Marjoy.PNG",
-    facebookUrl: "https://www.facebook.com/marjoycarantoaccount",
-    xUrl: "#",
-    instagramUrl: "https://www.instagram.com/00filmj_/",
-    linkedinUrl: "https://www.linkedin.com/in/marjoycaranto/"
-  }
-];
+type TeamMember = {
+  name: string;
+  position: string;
+  photoUrl: string;
+  facebookUrl: string;
+  xUrl: string;
+  instagramUrl: string;
+  linkedinUrl: string;
+};
 
-const researchTeam = [
-  {
-    name: 'Carl Erosa',
-    position: 'Researcher',
-    photoUrl: "Carl-E.jpg",
-    facebookUrl: "https://www.facebook.com/CmDrew13",
-    xUrl: "#",
-    instagramUrl: "https://www.instagram.com/itsyaboikaruu/",
-    linkedinUrl: "https://www.linkedin.com/in/carl-melvin-erosa-4805b4304/"
-  },
-  {
-    name: 'Carl Blancaflor',
-    position: 'Researcher',
-    photoUrl: "Carl-B.png",
-    facebookUrl: "https://www.facebook.com/BlancaflorCarl",
-    xUrl: "#",
-    instagramUrl: "https://www.instagram.com/blancaflor_carl/",
-    linkedinUrl: "https://www.linkedin.com/in/carl-blancaflor-013881323/"
-  }
-];
+const { devs, researchTeam } = devsData as {
+  devs: TeamMember[];
+  researchTeam: TeamMember[];
+};
 
 const SectionHeader = ({ title }: { title: string }) => (
   <h4 style={{
@@ -66,7 +31,7 @@ const SectionHeader = ({ title }: { title: string }) => (
   </h4>
 );
 
-const MembersRow = ({ members }: { members: typeof devs | typeof researchTeam }) => {
+const MembersRow = ({ members }: { members: TeamMember[] }) => {
   const rows = [];
   for (let i = 0; i < members.length; i += 3) {
     const chunk = members.slice(i, i + 3);
