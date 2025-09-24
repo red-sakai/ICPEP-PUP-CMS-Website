@@ -22,6 +22,7 @@ const MembersRowObserved = ({ members, rowRefs }: { members: TeamMember[], rowRe
   const rows = [];
   for (let i = 0; i < members.length; i += 3) {
     const chunk = members.slice(i, i + 3);
+    
     rows.push(
       <div
         key={i}
@@ -30,12 +31,14 @@ const MembersRowObserved = ({ members, rowRefs }: { members: TeamMember[], rowRe
         style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: '1.5rem',
+          gap: chunk.length <= 2 ? '2rem' : '1.5rem',
           flexWrap: 'wrap',
           marginTop: '2rem',
           opacity: 0,
           transform: 'translateY(48px)',
           transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          maxWidth: chunk.length <= 2 ? '800px' : '100%',
+          margin: '2rem auto 0 auto',
         }}
       >
         {chunk.map((member, index) => (
