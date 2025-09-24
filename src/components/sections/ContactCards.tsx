@@ -28,7 +28,17 @@ const ContactCards = () => {
           'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
       }}
     >
-      <div style={{ display: 'flex', gap: '2.5rem', justifyContent: 'center' }}>
+      <div 
+        style={{ 
+          display: 'flex', 
+          gap: 'clamp(1rem, 4vw, 2.5rem)', 
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          maxWidth: '1200px',
+          width: '100%',
+          padding: '0 clamp(0.5rem, 3vw, 1rem)'
+        }}
+      >
         <Card
           icon={<FiMapPin size={28} color="#6C63FF" />}
           title="Location"
