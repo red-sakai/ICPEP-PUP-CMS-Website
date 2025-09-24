@@ -30,6 +30,7 @@ const Navbar = () => {
   const navRef = useRef<HTMLElement | null>(null);
   const [navHeight, setNavHeight] = useState(90);
   const navigate = useNavigate();
+  const gradient = 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)';
 
   // Inject styles
   useEffect(() => {
@@ -447,26 +448,35 @@ const Navbar = () => {
           <span style={{
             width: 28,
             height: 4,
-            background: '#fff',
+            background: isScrolled 
+              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
+              : '#fff',
             margin: '4px 0',
             borderRadius: 2,
             display: 'block',
+            transition: 'background 0.3s ease-in-out',
           }} />
           <span style={{
             width: 28,
             height: 4,
-            background: '#fff',
+            background: isScrolled 
+              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
+              : '#fff',
             margin: '4px 0',
             borderRadius: 2,
             display: 'block',
+            transition: 'background 0.3s ease-in-out',
           }} />
           <span style={{
             width: 28,
             height: 4,
-            background: '#fff',
+            background: isScrolled 
+              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
+              : '#fff',
             margin: '4px 0',
             borderRadius: 2,
             display: 'block',
+            transition: 'background 0.3s ease-in-out',
           }} />
         </div>
       </nav>
@@ -481,7 +491,7 @@ const Navbar = () => {
             right: 0,
             height: '31vh',
             maxHeight: `calc(100vh - ${navHeight}px)`,
-            background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
+            background: isScrolled ? '#ffffff' : gradient,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -491,17 +501,20 @@ const Navbar = () => {
             zIndex: 99,
             overflowY: 'auto',
             borderRadius: '0 0 24px 24px',
-            boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
+            boxShadow: '0 6px 18px rgba(0,0,0,0.25)',
+            border: isScrolled ? '1px solid rgba(0,0,0,0.08)' : 'none',
+            transition: 'background 0.3s ease-in-out'
           }}
         >
           <Link
             to="/"
             style={{
-              color: '#fff',
               fontWeight: 600,
               fontSize: 22,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
+              color: isScrolled ? '#6b7280' : '#fff',
+              transition: 'color 0.3s ease-in-out',
             }}
             onClick={() => setMenuOpen(false)}
           >
@@ -510,11 +523,12 @@ const Navbar = () => {
           <Link
             to="/about"
             style={{
-              color: '#fff',
               fontWeight: 600,
               fontSize: 22,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
+              color: isScrolled ? '#6b7280' : '#fff',
+              transition: 'color 0.3s ease-in-out',
             }}
             onClick={() => setMenuOpen(false)}
           >
@@ -523,17 +537,23 @@ const Navbar = () => {
           <Link
             to="/contact"
             style={{
-              color: '#fff',
               fontWeight: 600,
               fontSize: 22,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
+              color: isScrolled ? '#6b7280' : '#fff',
+              transition: 'color 0.3s ease-in-out',
             }}
             onClick={() => setMenuOpen(false)}
           >
             Contact Us
           </Link>
           <Button
+            style={{
+              background: isScrolled ? gradient : '#9D6AD6',
+              color: '#ffffff',
+              transition: 'all 0.3s ease-in-out'
+            }}
             onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
           >
             Join Now

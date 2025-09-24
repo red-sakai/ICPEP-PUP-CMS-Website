@@ -53,21 +53,34 @@ const MissionVision = () => {
         }}
       >
         {/* Mission Section */}
-        <div style={{ width: '100%', display: 'flex', alignItems: 'center', background: '#F9F7FB', borderRadius: '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginBottom: '2.5rem', padding: '2.5rem 2rem', gap: '2.5rem', flexWrap: 'wrap' }}>
-          <div style={{ flex: '0 0 220px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div
+          className="mv-section"
+          style={{ width: '100%', display: 'flex', alignItems: 'center', background: '#F9F7FB', borderRadius: '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginBottom: '2.5rem', padding: '2.5rem 2rem', gap: '2.5rem', flexWrap: 'wrap' }}
+        >
+          <div
+            className="mv-img-col"
+            style={{ flex: '0 0 220px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
             <div style={{ width: '180px', height: '180px', borderRadius: '50%', overflow: 'hidden', background: 'linear-gradient(135deg, #9362CD 0%, #E80F50 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src="/mission.jpg" alt="Mission" style={{ width: '200px', height: '200px', objectFit: 'cover', borderRadius: '50%' }} />
             </div>
           </div>
-          <div style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div
+            className="mv-text-col"
+            style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+          >
             <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>Mission</h2>
-            <div style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }} />
+            <div
+              className="mv-underline"
+              style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }}
+            />
             <Card2 description={missionText} />
           </div>
         </div>
         {/* Vision Section */}
         <div
           ref={visionRef}
+          className="mv-section"
           style={{
             width: '100%',
             display: 'flex',
@@ -85,14 +98,23 @@ const MissionVision = () => {
               'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         >
-          <div style={{ flex: '0 0 220px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div
+            className="mv-img-col"
+            style={{ flex: '0 0 220px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
             <div style={{ width: '180px', height: '180px', borderRadius: '50%', overflow: 'hidden', background: 'linear-gradient(135deg, #E80F50 0%, #9362CD 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src="/vision.jpg" alt="Vision" style={{ width: '200px', height: '200px', objectFit: 'cover', borderRadius: '50%' }} />
             </div>
           </div>
-          <div style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div
+            className="mv-text-col"
+            style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+          >
             <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>Vision</h2>
-            <div style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }} />
+            <div
+              className="mv-underline"
+              style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }}
+            />
             <Card2 description={visionText} />
           </div>
         </div>
@@ -102,6 +124,34 @@ const MissionVision = () => {
           .mv-fade-slide {
             opacity: 1 !important;
             transform: translateY(0) !important;
+          }
+
+          @media (max-width: 900px) {
+            .mv-section {
+              flex-direction: column;
+              align-items: center !important;
+              text-align: center;
+            }
+            .mv-img-col {
+              flex: 0 0 auto !important;
+              width: 100% !important;
+              display: flex !important;
+              justify-content: center !important;
+              margin-bottom: 1rem !important;
+            }
+            .mv-text-col {
+              flex: 1 1 auto !important;
+              min-width: 0 !important;
+              width: 100% !important;
+              text-align: center !important;
+            }
+            .mv-text-col h2 {
+              text-align: center !important;
+            }
+            .mv-underline {
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
           }
         `}
       </style>

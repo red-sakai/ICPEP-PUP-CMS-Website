@@ -13,7 +13,7 @@ import ContactUs from './components/sections/ContactUs';
 import ContactCards from './components/sections/ContactCards';
 import FAQ from './components/sections/FAQ';
 import Devs from './components/sections/Devs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 {/* Landing Page section */}
 function LandingPage() {
@@ -55,6 +55,54 @@ function ContactPage() {
   )
 }
 
+// Splash screen shown before landing page
+function SplashScreen() {
+  return (
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: '#ffffff',
+      zIndex: 9999
+    }}>
+      <style>
+        {`
+          @keyframes icpepSplash {
+            0% { opacity: 0; transform: scale(0.8); }
+            40% { opacity: 1; transform: scale(1.05); }
+            70% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.1); }
+          }
+        `}
+      </style>
+      <img
+        src="/ICPEP-logo.svg"
+        alt="ICPEP Logo"
+        style={{
+          width: 'min(48vw, 260px)',
+          height: 'auto',
+          animation: 'icpepSplash 1800ms ease-in-out forwards'
+        }}
+      />
+    </div>
+  );
+}
+
+// Gate the LandingPage behind the splash animation
+function GatedLanding() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 1900); // slightly longer than animation
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showSplash) return <SplashScreen />;
+  return <LandingPage />;
+}
+
 // ScrollToTop component
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -84,7 +132,7 @@ function App() {
       <ScrollToTop />
       <div style={{ width: '100%', overflowX: 'hidden' }}>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<GatedLanding />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>

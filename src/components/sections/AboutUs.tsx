@@ -50,12 +50,14 @@ const AboutUs = () => {
             style={{
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: 900,
-              fontSize: '3.8rem',
+              fontSize: 'clamp(2rem, 7vw, 3.8rem)',
+              lineHeight: 1.15,
               color: '#fff',
               textAlign: 'center',
               marginBottom: '1.2rem',
               marginTop: 0,
               letterSpacing: '0.02em',
+              overflowWrap: 'break-word',
             }}
           >
             ABOUT ICPEP SE - PUP Manila

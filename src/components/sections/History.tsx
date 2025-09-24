@@ -6,6 +6,8 @@ import HandshakeIcon from '@mui/icons-material/Handshake';
 import SchoolIcon from '@mui/icons-material/School';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Card2 from '../ui/Card2';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const History = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -98,6 +100,63 @@ const History = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const total = cards.length;
 
+  // Mobile detection and swipe refs/handlers
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 900);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const touchMoveX = useRef<number | null>(null);
+  const touchMoveY = useRef<number | null>(null);
+
+  // Hint: show on mobile, auto-hide, dismiss on interaction
+  const [showSwipeHint, setShowSwipeHint] = useState(false);
+  useEffect(() => {
+    if (isMobile) {
+      setShowSwipeHint(true);
+      const timer = setTimeout(() => setShowSwipeHint(false), 4000);
+      return () => clearTimeout(timer);
+    } else {
+      setShowSwipeHint(false);
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 900);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    touchMoveX.current = null;
+    touchMoveY.current = null;
+    setShowSwipeHint(false);
+  };
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchMoveX.current = e.touches[0].clientX;
+    touchMoveY.current = e.touches[0].clientY;
+  };
+  const handleTouchEnd = () => {
+    if (
+      isTransitioning ||
+      touchStartX.current === null ||
+      touchStartY.current === null ||
+      touchMoveX.current === null ||
+      touchMoveY.current === null
+    ) {
+      touchStartX.current = touchStartY.current = touchMoveX.current = touchMoveY.current = null;
+      return;
+    }
+    const dx = (touchMoveX.current ?? 0) - (touchStartX.current ?? 0);
+    const dy = (touchMoveY.current ?? 0) - (touchStartY.current ?? 0);
+    const threshold = 40;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > threshold) {
+      if (dx < 0) goRight();
+      else goLeft();
+    }
+    touchStartX.current = touchStartY.current = touchMoveX.current = touchMoveY.current = null;
+  };
+
   const goLeft = () => {
     if (isTransitioning) return;
     setIsTransitioning(true);
@@ -111,6 +170,9 @@ const History = () => {
     setCurrent((prev) => (prev + 1) % total);
     setTimeout(() => setIsTransitioning(false), 400);
   };
+
+  // Reuse app gradient for high-contrast buttons
+  const gradient = 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)';
 
   return (
     <div
@@ -159,91 +221,139 @@ const History = () => {
         />
 
         {/* Carousel */}
-        <div ref={carouselRef} style={{ position: 'relative', width: '100%', maxWidth: 700, margin: '0 auto', height: 340, perspective: '1500px', transformStyle: 'preserve-3d' }}>
-          {/* Left Button */}
-          <button
-            aria-label="Previous"
-            onClick={goLeft}
-            disabled={isTransitioning}
-            style={{
-              position: 'absolute',
-              left: -60,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 20,
-              background: 'rgba(255,255,255,0.9)',
-              border: 'none',
-              borderRadius: '50%',
-              width: 50,
-              height: 50,
-              boxShadow: '0 4px 16px rgba(147,98,205,0.15)',
-              cursor: isTransitioning ? 'not-allowed' : 'pointer',
-              fontSize: 24,
-              color: isTransitioning ? '#ccc' : '#9362CD',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              backdropFilter: 'blur(10px)',
-              opacity: 1,
-            }}
-            onMouseEnter={(e) => {
-              if (!isTransitioning) {
-                e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
-                e.currentTarget.style.background = 'rgba(147,98,205,0.1)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isTransitioning) {
-                e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.9)';
-              }
-            }}
-          >
-            &#8592;
-          </button>
-          {/* Right Button */}
-          <button
-            aria-label="Next"
-            onClick={goRight}
-            disabled={isTransitioning}
-            style={{
-              position: 'absolute',
-              right: -60,
-              top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 20,
-              background: 'rgba(255,255,255,0.9)',
-              border: 'none',
-              borderRadius: '50%',
-              width: 50,
-              height: 50,
-              boxShadow: '0 4px 16px rgba(147,98,205,0.15)',
-              cursor: isTransitioning ? 'not-allowed' : 'pointer',
-              fontSize: 24,
-              color: isTransitioning ? '#ccc' : '#9362CD',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              backdropFilter: 'blur(10px)',
-              opacity: 1,
-            }}
-            onMouseEnter={(e) => {
-              if (!isTransitioning) {
-                e.currentTarget.style.transform = 'translateY(-50%) scale(1.1)';
-                e.currentTarget.style.background = 'rgba(147,98,205,0.1)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isTransitioning) {
-                e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
-                e.currentTarget.style.background = 'rgba(255,255,255,0.9)';
-              }
-            }}
-          >
-            &#8594;
-          </button>
+        <div
+          ref={carouselRef}
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: 700,
+            margin: '0 auto',
+            height: 340,
+            perspective: '1500px',
+            transformStyle: 'preserve-3d',
+            touchAction: isMobile ? 'pan-y' : undefined, // allow vertical scroll, capture horizontal swipes
+          }}
+          onTouchStart={isMobile ? handleTouchStart : undefined}
+          onTouchMove={isMobile ? handleTouchMove : undefined}
+          onTouchEnd={isMobile ? handleTouchEnd : undefined}
+        >
+          {/* Left Button (hidden on mobile) */}
+          {!isMobile && (
+            <button
+              aria-label="Previous"
+              onClick={goLeft}
+              disabled={isTransitioning}
+              style={{
+                position: 'absolute',
+                left: -60,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                background: gradient,
+                border: 'none',
+                borderRadius: '50%',
+                width: 56,
+                height: 56,
+                boxShadow: '0 8px 24px rgba(147,98,205,0.35)',
+                cursor: isTransitioning ? 'not-allowed' : 'pointer',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                backdropFilter: 'blur(6px)',
+                opacity: 1,
+              }}
+              onMouseEnter={(e) => {
+                if (!isTransitioning) {
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.12)';
+                  e.currentTarget.style.filter = 'brightness(1.05)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isTransitioning) {
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                  e.currentTarget.style.filter = 'none';
+                }
+              }}
+            >
+              <ChevronLeftIcon style={{ fontSize: 28, color: '#fff' }} />
+            </button>
+          )}
+          {/* Right Button (hidden on mobile) */}
+          {!isMobile && (
+            <button
+              aria-label="Next"
+              onClick={goRight}
+              disabled={isTransitioning}
+              style={{
+                position: 'absolute',
+                right: -60,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                background: gradient,
+                border: 'none',
+                borderRadius: '50%',
+                width: 56,
+                height: 56,
+                boxShadow: '0 8px 24px rgba(147,98,205,0.35)',
+                cursor: isTransitioning ? 'not-allowed' : 'pointer',
+                color: '#fff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                backdropFilter: 'blur(6px)',
+                opacity: 1,
+              }}
+              onMouseEnter={(e) => {
+                if (!isTransitioning) {
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1.12)';
+                  e.currentTarget.style.filter = 'brightness(1.05)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isTransitioning) {
+                  e.currentTarget.style.transform = 'translateY(-50%) scale(1)';
+                  e.currentTarget.style.filter = 'none';
+                }
+              }}
+            >
+              <ChevronRightIcon style={{ fontSize: 28, color: '#fff' }} />
+            </button>
+          )}
+
+          {/* Mobile swipe hint */}
+          {isMobile && showSwipeHint && (
+            <div
+              onClick={() => setShowSwipeHint(false)}
+              style={{
+                position: 'absolute',
+                bottom: 12,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                padding: '10px 14px',
+                background: 'rgba(17,24,39,0.85)',
+                color: '#fff',
+                fontFamily: 'Montserrat, sans-serif',
+                fontSize: 14,
+                borderRadius: 999,
+                boxShadow: '0 8px 20px rgba(0,0,0,0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8,
+                zIndex: 30,
+                animation: 'swipeHintPop 0.5s ease-out',
+              }}
+              aria-live="polite"
+            >
+              <ChevronLeftIcon style={{ fontSize: 18, color: '#fff' }} />
+              <span>Swipe to see more</span>
+              <ChevronRightIcon style={{ fontSize: 18, color: '#fff' }} />
+            </div>
+          )}
+
           {/* Carousel Cards */}
           <div
             style={{
@@ -374,11 +484,12 @@ const History = () => {
               outline: none !important;
             }
             button[aria-label="Previous"]:focus, button[aria-label="Next"]:focus {
-              outline: 2px solid rgba(147,98,205,0.5) !important;
+              outline: 2px solid rgba(147,98,205,0.6) !important;
               outline-offset: 2px !important;
             }
             button[aria-label="Previous"]:disabled, button[aria-label="Next"]:disabled {
               pointer-events: none;
+              opacity: 0.6;
             }
             
             /* Smooth card transitions with spring effect */
@@ -397,6 +508,17 @@ const History = () => {
             /* Prevent text selection during transitions */
             .carousel-card-smooth * {
               user-select: none;
+            }
+
+            @keyframes swipeHintPop {
+              from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(8px) scale(0.96);
+              }
+              to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+              }
             }
           `}
         </style>
