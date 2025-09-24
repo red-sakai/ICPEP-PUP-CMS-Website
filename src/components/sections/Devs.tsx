@@ -17,20 +17,6 @@ const { devs, researchTeam } = devsData as {
   researchTeam: TeamMember[];
 };
 
-const SectionHeader = ({ title }: { title: string }) => (
-  <h4 style={{
-    fontFamily: 'Montserrat, sans-serif',
-    fontWeight: 650,
-    fontSize: '1.3rem',
-    color: '#505050ff',
-    textAlign: 'center',
-    marginBottom: '0.7rem',
-    marginTop: 0,
-  }}>
-    {title}
-  </h4>
-);
-
 // MembersRow with refs for animation
 const MembersRowObserved = ({ members, rowRefs }: { members: TeamMember[], rowRefs: React.MutableRefObject<(HTMLDivElement | null)[]> }) => {
   const rows = [];

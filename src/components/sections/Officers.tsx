@@ -16,20 +16,6 @@ const { currentPresident, executiveMembers } = officersData as {
   executiveMembers: Officer[];
 };
 
-const SectionHeader = ({ title }: { title: string }) => (
-  <h4 style={{
-    fontFamily: 'Montserrat, sans-serif',
-    fontWeight: 650,
-    fontSize: '1.3rem',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: '0.7rem',
-    marginTop: 0,
-  }}>
-    {title}
-  </h4>
-);
-
 // (Removed unused MembersRow)
 
 const Officers = () => {
