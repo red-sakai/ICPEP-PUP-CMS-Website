@@ -53,7 +53,7 @@ const Footer = () => {
         padding: '3.5rem 0 1.5rem 0',
         fontFamily: 'Montserrat, sans-serif',
         width: '100%',
-        marginTop: '4rem',
+        marginTop: '0',
       }}
     >
     <div
