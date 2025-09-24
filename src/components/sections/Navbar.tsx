@@ -452,7 +452,7 @@ const Navbar = () => {
                       }}
                       onClick={() => {
                         setAboutDropdownOpen(false);
-                        window.location.href = "https://www.facebook.com/icpepse.pupmanila";
+                        window.open("https://www.facebook.com/icpepse.pupmanila", "_blank", "noopener,noreferrer");
                       }}
                     >
                       Membership
@@ -480,7 +480,7 @@ const Navbar = () => {
                 : '#9D6AD6',
               transition: 'all 0.3s ease-in-out'
             }}
-            onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
+            onClick={() => window.open("https://www.facebook.com/icpepse.pupmanila", "_blank", "noopener,noreferrer")}
           >
             Join Now
           </Button>
@@ -610,7 +610,7 @@ const Navbar = () => {
               transform: 'translateY(20px)',
               animation: 'mobileMenuSlideDown 0.5s ease-out 0.4s forwards',
             }}
-            onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
+            onClick={() => window.open("https://www.facebook.com/icpepse.pupmanila", "_blank", "noopener,noreferrer")}
           >
             Join Now
           </Button>
