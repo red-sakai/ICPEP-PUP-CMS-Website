@@ -181,6 +181,7 @@ const History = () => {
       style={{
         width: '100%',
         padding: '3rem 1rem 9rem', 
+        marginBottom: '3rem',
         boxSizing: 'border-box',
         background: '#fff',
         opacity: 0,
