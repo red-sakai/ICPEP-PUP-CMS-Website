@@ -1,66 +1,26 @@
 {/* shorter card */}
 
 import React from 'react';
+import './Card.css';
 
 type CardProps = {
   icon: React.ReactNode;
   title: string;
   description: React.ReactNode; // changed from string to React.ReactNode
 };
+
 const Card: React.FC<CardProps> = ({ icon, title, description }) => (
-  <div
-    style={{
-      background: '#F9F7FB',
-      borderRadius: '18px',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
-      padding: '2rem 2rem 1.5rem 2rem',
-      width: '340px',
-      minWidth: '340px',
-      maxWidth: '340px',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-start',
-      gap: '1.2rem',
-      margin: '0',
-    }}
-  >
-    <div
-      style={{
-        background: '#EAE8F6',
-        borderRadius: '12px',
-        width: '48px',
-        height: '48px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '0.25rem',
-      }}
-    >
+  <div className="contact-card">
+    <div className="contact-card-icon">
       {icon}
     </div>
-    <h3
-      style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontWeight: 700,
-        fontSize: '1.1rem',
-        color: '#222',
-        margin: 0,
-      }}
-    >
+    <h3 className="contact-card-title">
       {title}
     </h3>
-    <p
-      style={{
-        fontFamily: 'Montserrat, sans-serif',
-        fontSize: '0.95rem',
-        color: '#555',
-        margin: 0,
-        lineHeight: 1.5,
-      }}
-    >
+    <div className="contact-card-description">
       {description}
-    </p>
+    </div>
   </div>
-  );
+);
 
 export default Card;
