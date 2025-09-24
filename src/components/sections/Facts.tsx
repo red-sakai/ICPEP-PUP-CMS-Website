@@ -64,15 +64,15 @@ const Facts = () => {
             className="facts-card facts-card-group"
             style={{ 
               background: fact.background,
-              borderRadius: '32px',
-              padding: '3rem',
-              marginBottom: idx === facts.length - 1 ? '0' : '3rem',
+              borderRadius: 'clamp(16px, 4vw, 32px)',
+              padding: 'clamp(1.5rem, 4vw, 3rem)',
+              marginBottom: idx === facts.length - 1 ? '0' : 'clamp(1.5rem, 4vw, 3rem)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
               flexWrap: 'wrap',
-              gap: '2rem',
-              minHeight: '250px',
+              gap: 'clamp(1rem, 3vw, 2rem)',
+              minHeight: 'clamp(200px, 30vh, 250px)',
               position: 'relative',
               overflow: 'hidden',
               opacity: 0,
@@ -90,7 +90,8 @@ const Facts = () => {
               className="facts-text-group"
               style={{
                 flex: '1',
-                minWidth: '300px',
+                minWidth: 'min(300px, 100%)',
+                maxWidth: '100%',
                 order: idx % 2 === 0 ? 1 : 2,
                 zIndex: 2,
                 position: 'relative',
@@ -100,11 +101,13 @@ const Facts = () => {
                 className="facts-title"
                 style={{
                   fontWeight: 800,
-                  fontSize: '2.5rem',
+                  fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
                   marginBottom: '1.5rem',
                   color: '#333',
                   fontFamily: 'Montserrat, sans-serif',
                   transition: 'transform 0.35s cubic-bezier(.4,0,.2,1), text-shadow 0.35s',
+                  wordWrap: 'break-word',
+                  hyphens: 'auto',
                 }}
               >
                 {fact.title}
@@ -112,12 +115,14 @@ const Facts = () => {
               <p
                 className="facts-desc"
                 style={{
-                  fontSize: '1.2rem',
+                  fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
                   color: '#333',
                   lineHeight: '1.6',
                   fontFamily: 'Montserrat, sans-serif',
                   fontWeight: '400',
                   transition: 'transform 0.35s cubic-bezier(.4,0,.2,1), text-shadow 0.35s',
+                  wordWrap: 'break-word',
+                  hyphens: 'auto',
                 }}
               >
                 {fact.description}
@@ -129,7 +134,7 @@ const Facts = () => {
               className="facts-illustration-container"
               style={{
                 flex: '1',
-                minWidth: '250px',
+                minWidth: 'min(250px, 100%)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -141,14 +146,14 @@ const Facts = () => {
               <div
                 className="facts-illustration"
                 style={{
-                  width: '280px',
-                  height: '280px',
+                  width: 'clamp(200px, 25vw, 280px)',
+                  height: 'clamp(200px, 25vw, 280px)',
                   borderRadius: '50%',
                   background: 'rgba(255,255,255,0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '8rem',
+                  fontSize: 'clamp(4rem, 8vw, 8rem)',
                   backdropFilter: 'blur(10px)',
                   border: '2px solid rgba(255,255,255,0.2)',
                   boxShadow: '0 8px 32px rgba(80, 60, 120, 0.10)',
@@ -161,8 +166,8 @@ const Facts = () => {
                     alt={fact.title}
                     className="facts-illustration-img"
                     style={{
-                      width: '400px',
-                      height: '400px',
+                      width: 'clamp(250px, 30vw, 400px)',
+                      height: 'clamp(250px, 30vw, 400px)',
                       objectFit: 'contain',
                       transition: 'transform 0.35s cubic-bezier(.4,0,.2,1)',
                     }}
