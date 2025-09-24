@@ -21,7 +21,7 @@ const ContactCards = () => {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '2.5rem',
-        margin: '6rem 0 3rem 0',
+        margin: '9rem 0 -4rem 0',
         opacity: 0,
         transform: 'translateY(40px)',
         transition:
