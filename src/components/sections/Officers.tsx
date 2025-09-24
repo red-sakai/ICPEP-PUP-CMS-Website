@@ -159,11 +159,12 @@ const Officers = () => {
         marginBottom: '0',
         position: 'relative',
         background: '#FCEFF7',
-        padding: '3rem 0',
+        padding: '3rem 2rem',
         overflow: 'hidden',
         opacity: 0,
         transform: 'translateY(40px)',
         transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
+        boxSizing: 'border-box',
       }}
     >
       {/* Decorative circles with shine effect */}
@@ -216,7 +217,7 @@ const Officers = () => {
         boxShadow: '0 0 20px 0 rgba(245, 220, 233, 0.6)',
       }} />
 
-      <div style={{ position: 'relative', zIndex: 1 }}>
+      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '1200px' }}>
         <h1
           ref={headingRef}
           style={{
@@ -254,7 +255,9 @@ const Officers = () => {
         style={{
           marginTop: '0.5rem',
           position: 'relative',
-          zIndex: 1
+          zIndex: 1,
+          width: '100%',
+          maxWidth: '1200px'
         }}
       >
         <h4
@@ -275,12 +278,20 @@ const Officers = () => {
           Executive Members
         </h4>
         {/* President */}
-        <div ref={presidentCardRef} style={{ marginTop: '2rem', opacity: 0, transform: 'translateY(48px)', transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)' }}>
+        <div ref={presidentCardRef} style={{ 
+          marginTop: '2rem', 
+          opacity: 0, 
+          transform: 'translateY(48px)', 
+          transition: 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%'
+        }}>
           <Card3
             name={currentPresident[0].name}
             position={currentPresident[0].position}
             photoUrl={currentPresident[0].photoUrl}
-            width="650px"
+            width="500px"
             photoSize="150px"
             facebookUrl={ensureProtocol(currentPresident[0].facebookUrl)}
             instagramUrl={ensureProtocol(currentPresident[0].instagramUrl)}
