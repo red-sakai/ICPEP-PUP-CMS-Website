@@ -34,7 +34,7 @@ const MissionVision = () => {
   }, []);
 
   return (
-    <div id="mission-vision-section" style={{ width: '100%', minHeight: '100vh', overflowX: 'hidden', boxSizing: 'border-box', background: '#fff' }}>
+    <div id="mission-vision-section" style={{ width: '100%', minHeight: '100vh', overflow: 'visible', boxSizing: 'border-box', background: '#fff' }}>
       <Navbar />
       <div
         ref={contentRef}
@@ -50,12 +50,13 @@ const MissionVision = () => {
           opacity: 0,
           transform: 'translateY(40px)',
           transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
+          overflow: 'visible',
         }}
       >
         {/* Mission Section */}
         <div
           className="mv-section"
-          style={{ width: '100%', display: 'flex', alignItems: 'center', background: '#F9F7FB', borderRadius: '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginBottom: '2.5rem', padding: '2.5rem 2rem', gap: '2.5rem', flexWrap: 'wrap' }}
+          style={{ width: '100%', display: 'flex', alignItems: 'center', background: '#F9F7FB', borderRadius: '18px', boxShadow: '0 2px 12px rgba(0,0,0,0.04)', marginBottom: '2.5rem', padding: '2.5rem 2rem', gap: '2.5rem', flexWrap: 'wrap', overflow: 'visible' }}
         >
           <div
             className="mv-img-col"
@@ -67,7 +68,7 @@ const MissionVision = () => {
           </div>
           <div
             className="mv-text-col"
-            style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+            style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'visible' }}
           >
             <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>Mission</h2>
             <div
