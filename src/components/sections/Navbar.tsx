@@ -3,6 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+// Add keyframe animations
+const dropdownStyles = `
+  @keyframes dropdownSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .dropdown-link:hover {
+    background-color: #f3f4f6 !important;
+    color: #1f2937 !important;
+  }
+`;
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -10,6 +29,17 @@ const Navbar = () => {
   const navRef = useRef<HTMLElement | null>(null);
   const [navHeight, setNavHeight] = useState(90);
   const navigate = useNavigate();
+
+  // Inject styles
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = dropdownStyles;
+    document.head.appendChild(styleElement);
+    
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -109,6 +139,8 @@ const Navbar = () => {
           <div 
             ref={dropdownRef}
             style={{ position: 'relative' }}
+            onMouseEnter={() => setAboutDropdownOpen(true)}
+            onMouseLeave={() => setAboutDropdownOpen(false)}
           >
             <div style={{ 
               color: '#fff', 
@@ -117,7 +149,9 @@ const Navbar = () => {
               fontFamily: 'Montserrat, sans-serif',
               display: 'flex',
               alignItems: 'center',
-              gap: '4px'
+              gap: '4px',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
             }}>
               <Link 
                 to="/about" 
@@ -132,133 +166,204 @@ const Navbar = () => {
                 About Us
               </Link>
               <ArrowDropDownIcon 
-                style={{ fontSize: 20, cursor: 'pointer' }} 
-                onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                style={{ 
+                  fontSize: 20, 
+                  transition: 'transform 0.2s ease', 
+                  transform: aboutDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' 
+                }} 
               />
             </div>
             {aboutDropdownOpen && (
-              <div style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                background: '#fff',
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                padding: '12px 0',
-                minWidth: '200px',
-                zIndex: 1000,
-                marginTop: '8px'
-              }}>
-                <Link 
-                  to="/about/history" 
-                  className="dropdown-link"
-                  style={{ 
-                    display: 'block',
-                    color: '#333', 
-                    fontWeight: 500, 
-                    fontSize: 14, 
-                    textDecoration: 'none', 
-                    fontFamily: 'Montserrat, sans-serif',
-                    padding: '8px 16px',
-                    transition: 'background-color 0.2s'
+              <>
+                {/* Invisible bridge area */}
+                <div 
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '-120px',
+                    width: '380px',
+                    height: '12px',
+                    background: 'transparent',
+                    zIndex: 999
                   }}
-                  onClick={e => {
-                    e.preventDefault();
-                    if (window.location.pathname !== '/about') {
-                      navigate('/about');
-                      setTimeout(() => {
-                        const el = document.getElementById('history-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  onMouseEnter={() => setAboutDropdownOpen(true)}
+                  onMouseLeave={() => setAboutDropdownOpen(false)}
+                />
+                {/* Dropdown menu */}
+                <div 
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: '-120px',
+                    background: '#fff',
+                    borderRadius: '12px',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
+                    minWidth: '380px',
+                    zIndex: 1000,
+                    marginTop: '12px',
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    animation: 'dropdownSlideIn 0.2s ease-out',
+                    display: 'flex',
+                    overflow: 'hidden'
+                  }}
+                  onMouseEnter={() => setAboutDropdownOpen(true)}
+                  onMouseLeave={() => setAboutDropdownOpen(false)}
+                >
+                  {/* Left section with ICPEP logo */}
+                  <div style={{
+                    width: '140px',
+                    padding: '24px 20px',
+                    background: 'linear-gradient(135deg, #9362CD 0%, #E80F50 100%)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '12px'
+                  }}>
+                    <img 
+                      src="/ICPEP-logo.svg" 
+                      alt="ICPEP Logo" 
+                      style={{
+                        width: '60px',
+                        height: '60px',
+                        filter: 'brightness(0) invert(1)'
+                      }}
+                    />
+                    
+                  </div>
+                  
+                  {/* Divider */}
+                  <div style={{
+                    width: '1px',
+                    background: 'rgba(0,0,0,0.08)'
+                  }} />
+                  
+                  {/* Right section with menu items */}
+                  <div style={{
+                    flex: 1,
+                    padding: '16px 0'
+                  }}>
+                    <Link 
+                      to="/about/history" 
+                      className="dropdown-link"
+                      style={{ 
+                        display: 'block',
+                        color: '#374151', 
+                        fontWeight: 500, 
+                        fontSize: 15, 
+                        textDecoration: 'none', 
+                        fontFamily: 'Montserrat, sans-serif',
+                        padding: '12px 20px',
+                        transition: 'all 0.2s ease',
+                        borderRadius: '8px',
+                        margin: '0 8px'
+                      }}
+                      onClick={e => {
+                        e.preventDefault();
                         setAboutDropdownOpen(false);
-                      }, 100);
-                    } else {
-                      const el = document.getElementById('history-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      setAboutDropdownOpen(false);
-                    }
-                  }}
-                >
-                  Our History
-                </Link>
-                <Link 
-                  to="/about/mission" 
-                  className="dropdown-link"
-                  style={{ 
-                    display: 'block',
-                    color: '#333', 
-                    fontWeight: 500, 
-                    fontSize: 14, 
-                    textDecoration: 'none', 
-                    fontFamily: 'Montserrat, sans-serif',
-                    padding: '8px 16px',
-                    transition: 'background-color 0.2s'
-                  }}
-                  onClick={e => {
-                    e.preventDefault();
-                    if (window.location.pathname !== '/about') {
-                      navigate('/about');
-                      setTimeout(() => {
-                        const el = document.getElementById('mission-vision-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        if (window.location.pathname !== '/about') {
+                          navigate('/about');
+                          setTimeout(() => {
+                            const el = document.getElementById('history-section');
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        } else {
+                          const el = document.getElementById('history-section');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      Our History
+                    </Link>
+                    <Link 
+                      to="/about/mission" 
+                      className="dropdown-link"
+                      style={{ 
+                        display: 'block',
+                        color: '#374151', 
+                        fontWeight: 500, 
+                        fontSize: 15, 
+                        textDecoration: 'none', 
+                        fontFamily: 'Montserrat, sans-serif',
+                        padding: '12px 20px',
+                        transition: 'all 0.2s ease',
+                        borderRadius: '8px',
+                        margin: '0 8px'
+                      }}
+                      onClick={e => {
+                        e.preventDefault();
                         setAboutDropdownOpen(false);
-                      }, 100);
-                    } else {
-                      const el = document.getElementById('mission-vision-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      setAboutDropdownOpen(false);
-                    }
-                  }}
-                >
-                  Mission & Vision
-                </Link>
-                <Link 
-                  to="/about/officers" 
-                  className="dropdown-link"
-                  style={{ 
-                    display: 'block',
-                    color: '#333', 
-                    fontWeight: 500, 
-                    fontSize: 14, 
-                    textDecoration: 'none', 
-                    fontFamily: 'Montserrat, sans-serif',
-                    padding: '8px 16px',
-                    transition: 'background-color 0.2s'
-                  }}
-                  onClick={e => {
-                    e.preventDefault();
-                    if (window.location.pathname !== '/about') {
-                      navigate('/about');
-                      setTimeout(() => {
-                        const el = document.getElementById('officers-section');
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        if (window.location.pathname !== '/about') {
+                          navigate('/about');
+                          setTimeout(() => {
+                            const el = document.getElementById('mission-vision-section');
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        } else {
+                          const el = document.getElementById('mission-vision-section');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      Mission & Vision
+                    </Link>
+                    <Link 
+                      to="/about/officers" 
+                      className="dropdown-link"
+                      style={{ 
+                        display: 'block',
+                        color: '#374151', 
+                        fontWeight: 500, 
+                        fontSize: 15, 
+                        textDecoration: 'none', 
+                        fontFamily: 'Montserrat, sans-serif',
+                        padding: '12px 20px',
+                        transition: 'all 0.2s ease',
+                        borderRadius: '8px',
+                        margin: '0 8px'
+                      }}
+                      onClick={e => {
+                        e.preventDefault();
                         setAboutDropdownOpen(false);
-                      }, 100);
-                    } else {
-                      const el = document.getElementById('officers-section');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      setAboutDropdownOpen(false);
-                    }
-                  }}
-                >
-                  Officers
-                </Link>
-                <Link 
-                  to="/about/membership" 
-                  className="dropdown-link"
-                  style={{ 
-                    display: 'block',
-                    color: '#333', 
-                    fontWeight: 500, 
-                    fontSize: 14, 
-                    textDecoration: 'none', 
-                    fontFamily: 'Montserrat, sans-serif',
-                    padding: '8px 16px',
-                    transition: 'background-color 0.2s'
-                  }}
-                >
-                  Membership
-                </Link>
-              </div>
+                        if (window.location.pathname !== '/about') {
+                          navigate('/about');
+                          setTimeout(() => {
+                            const el = document.getElementById('officers-section');
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
+                          }, 100);
+                        } else {
+                          const el = document.getElementById('officers-section');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      Officers
+                    </Link>
+                    <div 
+                      className="dropdown-link"
+                      style={{ 
+                        display: 'block',
+                        color: '#374151', 
+                        fontWeight: 500, 
+                        fontSize: 15, 
+                        textDecoration: 'none', 
+                        fontFamily: 'Montserrat, sans-serif',
+                        padding: '12px 20px',
+                        transition: 'all 0.2s ease',
+                        borderRadius: '8px',
+                        margin: '0 8px',
+                        cursor: 'pointer'
+                      }}
+                      onClick={() => {
+                        setAboutDropdownOpen(false);
+                        window.location.href = "https://www.facebook.com/icpepse.pupmanila";
+                      }}
+                    >
+                      Membership
+                    </div>
+                  </div>
+                </div>
+              </>
             )}
           </div>
           <Link to="/contact" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</Link>
