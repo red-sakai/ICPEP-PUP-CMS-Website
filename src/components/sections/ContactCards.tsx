@@ -21,7 +21,7 @@ const ContactCards = () => {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '2.5rem',
-        margin: '3rem 0',
+        margin: '6rem 0 3rem 0',
         opacity: 0,
         transform: 'translateY(40px)',
         transition:
@@ -48,7 +48,7 @@ const ContactCards = () => {
             <div
               style={{
                 display: 'flex',
-                gap: '1.2rem',
+                gap: '1.5rem',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
@@ -57,25 +57,82 @@ const ContactCards = () => {
                 href="https://www.facebook.com/icpepse.pupmanila"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#6C63FF' }}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: '#1877F2',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(24,119,242,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <FaFacebookF size={28} />
+                <FaFacebookF size={20} />
               </a>
               <a
                 href="https://www.instagram.com/icpep.se_pup/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#6C63FF' }}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(221,42,123,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <FaInstagram size={28} />
+                <FaInstagram size={20} />
               </a>
               <a
                 href="https://www.linkedin.com/company/icpepse-pupmanila/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#6C63FF' }}
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '50%',
+                  background: '#0A66C2',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  transition: 'all 0.3s ease',
+                  textDecoration: 'none',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.1)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px rgba(10,102,194,0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <FaLinkedinIn size={28} />
+                <FaLinkedinIn size={20} />
               </a>
             </div>
           }
