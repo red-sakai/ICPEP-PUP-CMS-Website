@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 // Add keyframe animations
 const dropdownStyles = `
@@ -15,15 +17,59 @@ const dropdownStyles = `
       transform: translateY(0);
     }
   }
+
+  @keyframes mobileMenuSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mobileMenuSlideUp {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes menuIconRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(180deg);
+    }
+  }
   
   .dropdown-link:hover {
     background-color: #f3f4f6 !important;
     color: #1f2937 !important;
   }
+
+  .mobile-menu-enter {
+    animation: mobileMenuSlideDown 0.3s ease-out;
+  }
+
+  .mobile-menu-exit {
+    animation: mobileMenuSlideUp 0.2s ease-in;
+  }
+
+  .menu-icon-animate {
+    animation: menuIconRotate 0.3s ease-in-out;
+  }
 `;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -31,6 +77,15 @@ const Navbar = () => {
   const [navHeight, setNavHeight] = useState(90);
   const navigate = useNavigate();
   const gradient = 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)';
+
+  // Function to handle menu closing with animation
+  const handleMenuClose = () => {
+    setMenuClosing(true);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setMenuClosing(false);
+    }, 200); // Match the animation duration
+  };
 
   // Inject styles
   useEffect(() => {
@@ -291,10 +346,10 @@ const Navbar = () => {
                         display: 'block',
                         color: '#374151', 
                         fontWeight: 500, 
-                        fontSize: 15, 
+                        fontSize: 13, 
                         textDecoration: 'none', 
                         fontFamily: 'Montserrat, sans-serif',
-                        padding: '12px 20px',
+                        padding: '10px 20px',
                         transition: 'all 0.2s ease',
                         borderRadius: '8px',
                         margin: '0 8px'
@@ -323,10 +378,10 @@ const Navbar = () => {
                         display: 'block',
                         color: '#374151', 
                         fontWeight: 500, 
-                        fontSize: 15, 
+                        fontSize: 13, 
                         textDecoration: 'none', 
                         fontFamily: 'Montserrat, sans-serif',
-                        padding: '12px 20px',
+                        padding: '10px 20px',
                         transition: 'all 0.2s ease',
                         borderRadius: '8px',
                         margin: '0 8px'
@@ -355,10 +410,10 @@ const Navbar = () => {
                         display: 'block',
                         color: '#374151', 
                         fontWeight: 500, 
-                        fontSize: 15, 
+                        fontSize: 13, 
                         textDecoration: 'none', 
                         fontFamily: 'Montserrat, sans-serif',
-                        padding: '12px 20px',
+                        padding: '10px 20px',
                         transition: 'all 0.2s ease',
                         borderRadius: '8px',
                         margin: '0 8px'
@@ -386,10 +441,10 @@ const Navbar = () => {
                         display: 'block',
                         color: '#374151', 
                         fontWeight: 500, 
-                        fontSize: 15, 
+                        fontSize: 13, 
                         textDecoration: 'none', 
                         fontFamily: 'Montserrat, sans-serif',
-                        padding: '12px 20px',
+                        padding: '10px 20px',
                         transition: 'all 0.2s ease',
                         borderRadius: '8px',
                         margin: '0 8px',
@@ -430,60 +485,48 @@ const Navbar = () => {
             Join Now
           </Button>
         </div>
-        {/* Hamburger for mobile */}
+        {/* Menu Icon for mobile */}
         <div
           className="navbar-hamburger"
           style={{
             display: 'none',
-            flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             cursor: 'pointer',
             width: 40,
             height: 40,
             minWidth: 0,
+            borderRadius: '50%',
+            transition: 'all 0.3s ease-in-out',
+            transform: menuOpen ? 'rotate(90deg)' : 'rotate(0deg)',
           }}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => menuOpen ? handleMenuClose() : setMenuOpen(true)}
         >
-          <span style={{
-            width: 28,
-            height: 4,
-            background: isScrolled 
-              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
-              : '#fff',
-            margin: '4px 0',
-            borderRadius: 2,
-            display: 'block',
-            transition: 'background 0.3s ease-in-out',
-          }} />
-          <span style={{
-            width: 28,
-            height: 4,
-            background: isScrolled 
-              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
-              : '#fff',
-            margin: '4px 0',
-            borderRadius: 2,
-            display: 'block',
-            transition: 'background 0.3s ease-in-out',
-          }} />
-          <span style={{
-            width: 28,
-            height: 4,
-            background: isScrolled 
-              ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
-              : '#fff',
-            margin: '4px 0',
-            borderRadius: 2,
-            display: 'block',
-            transition: 'background 0.3s ease-in-out',
-          }} />
+          {menuOpen ? (
+            <CloseIcon 
+              style={{
+                fontSize: 28,
+                color: isScrolled ? '#9362CD' : '#fff',
+                transition: 'all 0.3s ease-in-out',
+                transform: 'rotate(90deg)',
+              }}
+            />
+          ) : (
+            <MenuIcon 
+              style={{
+                fontSize: 28,
+                color: isScrolled ? '#9362CD' : '#fff',
+                transition: 'all 0.3s ease-in-out',
+                transform: 'rotate(0deg)',
+              }}
+            />
+          )}
         </div>
       </nav>
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="navbar-mobile-menu"
+          className={`navbar-mobile-menu ${menuClosing ? 'mobile-menu-exit' : 'mobile-menu-enter'}`}
           style={{
             position: 'fixed',
             top: navHeight,
@@ -503,20 +546,24 @@ const Navbar = () => {
             borderRadius: '0 0 24px 24px',
             boxShadow: '0 6px 18px rgba(0,0,0,0.25)',
             border: isScrolled ? '1px solid rgba(0,0,0,0.08)' : 'none',
-            transition: 'background 0.3s ease-in-out'
+            transition: 'background 0.3s ease-in-out',
+            backdropFilter: 'blur(10px)',
           }}
         >
           <Link
             to="/"
             style={{
               fontWeight: 600,
-              fontSize: 22,
+              fontSize: 20,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
               color: isScrolled ? '#6b7280' : '#fff',
-              transition: 'color 0.3s ease-in-out',
+              transition: 'all 0.3s ease-in-out',
+              opacity: 0,
+              transform: 'translateY(20px)',
+              animation: 'mobileMenuSlideDown 0.5s ease-out 0.1s forwards',
             }}
-            onClick={() => setMenuOpen(false)}
+            onClick={handleMenuClose}
           >
             Home
           </Link>
@@ -524,13 +571,16 @@ const Navbar = () => {
             to="/about"
             style={{
               fontWeight: 600,
-              fontSize: 22,
+              fontSize: 20,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
               color: isScrolled ? '#6b7280' : '#fff',
-              transition: 'color 0.3s ease-in-out',
+              transition: 'all 0.3s ease-in-out',
+              opacity: 0,
+              transform: 'translateY(20px)',
+              animation: 'mobileMenuSlideDown 0.5s ease-out 0.2s forwards',
             }}
-            onClick={() => setMenuOpen(false)}
+            onClick={handleMenuClose}
           >
             About Us
           </Link>
@@ -538,13 +588,16 @@ const Navbar = () => {
             to="/contact"
             style={{
               fontWeight: 600,
-              fontSize: 22,
+              fontSize: 20,
               textDecoration: 'none',
               fontFamily: 'Montserrat, sans-serif',
               color: isScrolled ? '#6b7280' : '#fff',
-              transition: 'color 0.3s ease-in-out',
+              transition: 'all 0.3s ease-in-out',
+              opacity: 0,
+              transform: 'translateY(20px)',
+              animation: 'mobileMenuSlideDown 0.5s ease-out 0.3s forwards',
             }}
-            onClick={() => setMenuOpen(false)}
+            onClick={handleMenuClose}
           >
             Contact Us
           </Link>
@@ -552,7 +605,10 @@ const Navbar = () => {
             style={{
               background: isScrolled ? gradient : '#9D6AD6',
               color: '#ffffff',
-              transition: 'all 0.3s ease-in-out'
+              transition: 'all 0.3s ease-in-out',
+              opacity: 0,
+              transform: 'translateY(20px)',
+              animation: 'mobileMenuSlideDown 0.5s ease-out 0.4s forwards',
             }}
             onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
           >
