@@ -120,7 +120,7 @@ const Officers = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '2rem',
+            gap: '1.5rem',
             flexWrap: 'wrap',
             marginTop: '2rem',
             opacity: 0,
@@ -134,7 +134,7 @@ const Officers = () => {
               name={member.name}
               position={member.position}
               photoUrl={member.photoUrl}
-              width="400px"
+              width="350px"
               photoSize="150px"
               facebookUrl={member.facebookUrl}
               instagramUrl={member.instagramUrl}
