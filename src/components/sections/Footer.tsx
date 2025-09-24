@@ -245,7 +245,7 @@ const Footer = () => {
             <a className="footer-link" href="/about#history-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Our History</a>
           </li>
           <li>
-            <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>Membership</a>
+            <a className="footer-link" href="https://www.facebook.com/icpepse.pupmanila" target="_blank" rel="noopener noreferrer" style={{ color: '#A5A5A9' }}>Membership</a>
           </li>
           <li>
             <a className="footer-link" href="/contact#faq-section" style={{ color: '#A5A5A9' }} onClick={handleFooterLinkClick}>FAQs</a>
