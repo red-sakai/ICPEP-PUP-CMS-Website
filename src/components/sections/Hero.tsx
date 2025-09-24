@@ -419,7 +419,7 @@ const Hero = ({ id }: { id?: string }) => {
             lineHeight: "1.6",
             opacity: 0.9,
           }}>
-            Join the Institute of Computer and Electronics Engineers - PUP Manila Chapter, 
+            Join the Institute of Computer and Electronics Engineers - PUP Manila, 
             where innovation meets excellence and future engineers shape tomorrow's technology.
           </p>
           <div ref={btnRef} className="hero-buttons" style={{
