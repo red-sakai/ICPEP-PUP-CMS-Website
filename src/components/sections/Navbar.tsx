@@ -25,6 +25,7 @@ const dropdownStyles = `
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement | null>(null);
   const [navHeight, setNavHeight] = useState(90);
@@ -70,6 +71,18 @@ const Navbar = () => {
     if (navRef.current) setNavHeight(navRef.current.offsetHeight);
   }, [menuOpen]);
 
+  // Handle scroll to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 100; // Change navbar after scrolling 100px
+      setIsScrolled(scrollPosition > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {/* Import Montserrat font */}
@@ -92,14 +105,32 @@ const Navbar = () => {
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0 60px',
-          background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
+          background: isScrolled 
+            ? '#ffffff' 
+            : 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
           boxSizing: 'border-box',
           flexWrap: 'wrap',
           fontFamily: 'Montserrat, sans-serif',
+          transition: 'all 0.3s ease-in-out',
+          boxShadow: isScrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none',
         }}
       >
         {/* Logo (clickable) */}
-        <div style={{ fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: 2, fontFamily: 'Montserrat, sans-serif', marginLeft: 16, cursor: 'pointer' }}
+        <div style={{ 
+          fontWeight: 900, 
+          fontSize: 32, 
+          background: isScrolled 
+            ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)' 
+            : 'transparent',
+          color: isScrolled ? 'transparent' : '#fff',
+          WebkitBackgroundClip: isScrolled ? 'text' : 'unset',
+          backgroundClip: isScrolled ? 'text' : 'unset',
+          letterSpacing: 2, 
+          fontFamily: 'Montserrat, sans-serif', 
+          marginLeft: 16, 
+          cursor: 'pointer',
+          transition: 'all 0.3s ease-in-out'
+        }}
           onClick={() => {
             if (window.location.pathname !== '/') {
               navigate('/');
@@ -135,7 +166,14 @@ const Navbar = () => {
           alignItems: 'center',
           fontFamily: 'Montserrat, sans-serif',
         }}>
-          <Link to="/" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Home</Link>
+          <Link to="/" style={{ 
+            color: isScrolled ? '#6b7280' : '#fff', 
+            fontWeight: 500, 
+            fontSize: 16, 
+            textDecoration: 'none', 
+            fontFamily: 'Montserrat, sans-serif',
+            transition: 'color 0.3s ease-in-out'
+          }}>Home</Link>
           <div 
             ref={dropdownRef}
             style={{ position: 'relative' }}
@@ -143,24 +181,25 @@ const Navbar = () => {
             onMouseLeave={() => setAboutDropdownOpen(false)}
           >
             <div style={{ 
-              color: '#fff', 
-              fontWeight: 600, 
+              color: isScrolled ? '#6b7280' : '#fff', 
+              fontWeight: 500, 
               fontSize: 16, 
               fontFamily: 'Montserrat, sans-serif',
               display: 'flex',
               alignItems: 'center',
               gap: '4px',
               cursor: 'pointer',
-              transition: 'all 0.2s ease'
+              transition: 'all 0.3s ease'
             }}>
               <Link 
                 to="/about" 
                 style={{ 
-                  color: '#fff', 
-                  fontWeight: 600, 
+                  color: isScrolled ? '#6b7280' : '#fff', 
+                  fontWeight: 500, 
                   fontSize: 16, 
                   textDecoration: 'none', 
-                  fontFamily: 'Montserrat, sans-serif' 
+                  fontFamily: 'Montserrat, sans-serif',
+                  transition: 'color 0.3s ease-in-out'
                 }}
               >
                 About Us
@@ -168,7 +207,8 @@ const Navbar = () => {
               <ArrowDropDownIcon 
                 style={{ 
                   fontSize: 20, 
-                  transition: 'transform 0.2s ease', 
+                  color: isScrolled ? '#6b7280' : '#fff',
+                  transition: 'transform 0.2s ease, color 0.3s ease-in-out', 
                   transform: aboutDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' 
                 }} 
               />
@@ -366,11 +406,24 @@ const Navbar = () => {
               </>
             )}
           </div>
-          <Link to="/contact" style={{ color: '#fff', fontWeight: 600, fontSize: 16, textDecoration: 'none', fontFamily: 'Montserrat, sans-serif' }}>Contact Us</Link>
+          <Link to="/contact" style={{ 
+            color: isScrolled ? '#6b7280' : '#fff', 
+            fontWeight: 500, 
+            fontSize: 16, 
+            textDecoration: 'none', 
+            fontFamily: 'Montserrat, sans-serif',
+            transition: 'color 0.3s ease-in-out'
+          }}>Contact Us</Link>
         </div>
         <div className="navbar-btn" style={{ minWidth: 0, marginRight: 16 }}>
           <Button
-            style={{ padding: '14px 22px' }}
+            style={{ 
+              padding: '14px 22px',
+              background: isScrolled 
+                ? 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)'
+                : '#9D6AD6',
+              transition: 'all 0.3s ease-in-out'
+            }}
             onClick={() => window.location.href = "https://www.facebook.com/icpepse.pupmanila"}
           >
             Join Now
