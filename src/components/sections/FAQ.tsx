@@ -2,6 +2,10 @@ import { useRef, useEffect, useState } from 'react';
 
 const FAQ = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const faqItemsRef = useRef<HTMLDivElement>(null);
   const [openItems, setOpenItems] = useState<{ [key: number]: boolean }>({});
 
   const toggleItem = (index: number) => {
@@ -17,10 +21,62 @@ const FAQ = () => {
   };
 
   useEffect(() => {
-    if (sectionRef.current) {
-      sectionRef.current.style.opacity = '1';
-      sectionRef.current.style.transform = 'translateY(0)';
+    // Animate section
+    const section = sectionRef.current;
+    if (section) {
+      section.style.opacity = '1';
+      section.style.transform = 'translateY(0)';
     }
+
+    // Observer for heading and color line (fade-in slide-up)
+    const fadeSlideClass = 'faq-fade-slide';
+    const fadeObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(fadeSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (headingRef.current) fadeObserver.observe(headingRef.current);
+    if (lineRef.current) fadeObserver.observe(lineRef.current);
+
+    // Observer for description paragraph (separate animation)
+    const descSlideClass = 'faq-desc-slide';
+    const descObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(descSlideClass);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (descRef.current) descObserver.observe(descRef.current);
+
+    // Observer for FAQ items container
+    const faqItemsSlideClass = 'faq-items-slide';
+    const faqItemsObserver = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add(faqItemsSlideClass);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    if (faqItemsRef.current) faqItemsObserver.observe(faqItemsRef.current);
+
+    return () => {
+      if (headingRef.current) fadeObserver.unobserve(headingRef.current);
+      if (lineRef.current) fadeObserver.unobserve(lineRef.current);
+      if (descRef.current) descObserver.unobserve(descRef.current);
+      if (faqItemsRef.current) faqItemsObserver.unobserve(faqItemsRef.current);
+    };
   }, []);
 
   const faqData = [
@@ -48,6 +104,7 @@ const FAQ = () => {
 
   return (
     <section
+      id="faq-section"
       ref={sectionRef}
       style={{
         background: '#FCEFFB',
@@ -74,6 +131,7 @@ const FAQ = () => {
         {/* Left Side - Title and Description */}
         <div>
           <h2
+            ref={headingRef}
             style={{
               fontFamily: 'Montserrat, sans-serif',
               fontWeight: 900,
@@ -81,11 +139,16 @@ const FAQ = () => {
               color: '#333',
               marginBottom: '1.5rem',
               lineHeight: '1.2',
+              opacity: 0,
+              transform: 'translateY(48px)',
+              transition:
+                'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
             }}
           >
             Frequently Asked Questions
           </h2>
           <div
+            ref={lineRef}
             style={{
               width: '160px',
               height: '8px',
@@ -93,15 +156,24 @@ const FAQ = () => {
               background:
                 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)',
               marginBottom: '2rem',
+              opacity: 0,
+              transform: 'translateY(48px)',
+              transition:
+                'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
             }}
           />
           <p
+            ref={descRef}
             style={{
               fontFamily: 'Montserrat, sans-serif',
               fontSize: '1.1rem',
               color: '#666',
               marginBottom: '2rem',
               lineHeight: '1.6',
+              opacity: 0,
+              transform: 'translateY(48px)',
+              transition:
+                'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
             }}
           >
             Find answers to common questions about ICPEP SE PUP membership and activities.
@@ -110,21 +182,29 @@ const FAQ = () => {
 
         {/* Right Side - FAQ Items */}
         <div
+          ref={faqItemsRef}
           style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '1rem',
+            opacity: 0,
+            transform: 'translateY(48px)',
+            transition:
+              'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
           }}
         >
           {faqData.map((item, index) => (
             <div
               key={index}
+              className="faq-card"
               style={{
                 backgroundColor: 'white',
                 borderRadius: '12px',
                 padding: '1.5rem',
                 boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
                 transition: 'all 0.3s ease',
+                cursor: 'pointer',
+                border: '1px solid transparent',
               }}
             >
               <div
@@ -199,10 +279,47 @@ const FAQ = () => {
             }
           }
 
+          .faq-fade-slide {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+          }
+
+          .faq-desc-slide {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition:
+              opacity 0.7s cubic-bezier(.4,0,.2,1) 0.2s,
+              transform 0.7s cubic-bezier(.4,0,.2,1) 0.2s;
+          }
+
+          .faq-items-slide {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition:
+              opacity 0.7s cubic-bezier(.4,0,.2,1) 0.4s,
+              transform 0.7s cubic-bezier(.4,0,.2,1) 0.4s;
+          }
+
+          .faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(147, 98, 205, 0.15);
+            border-color: rgba(147, 98, 205, 0.2);
+          }
+
+          .faq-card:active {
+            transform: translateY(-1px);
+          }
+
           @media (max-width: 768px) {
             .faq-container {
               grid-template-columns: 1fr !important;
               gap: 2rem !important;
+            }
+            
+            .faq-card:hover {
+              transform: none;
+              box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+              border-color: transparent;
             }
           }
         `}
