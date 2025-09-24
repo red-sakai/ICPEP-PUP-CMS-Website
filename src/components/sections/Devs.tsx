@@ -141,11 +141,12 @@ const Devs = () => {
         marginBottom: '4rem',
         position: 'relative',
         background: '#FCEFF7',
-        padding: '3rem 0',
+        padding: '3rem 2rem',
         overflow: 'hidden',
         opacity: 0,
         transform: 'translateY(40px)',
         transition: 'opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1)',
+        boxSizing: 'border-box',
       }}
     >
       {/* Decorative circles */}
@@ -198,7 +199,7 @@ const Devs = () => {
         boxShadow: '0 0 20px 0 rgba(195, 218, 254, 0.6)',
       }} />
 
-      <div style={{ position: 'relative', zIndex: 1 }}>
+      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: '1200px' }}>
         <h1
           ref={headingRef}
           style={{
@@ -231,7 +232,7 @@ const Devs = () => {
         />
       </div>
 
-      <div style={{ marginTop: '0.5rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: '0.5rem', position: 'relative', zIndex: 1, width: '100%', maxWidth: '1200px' }}>
         <h4
           ref={devHeaderRef}
           style={{
@@ -251,7 +252,7 @@ const Devs = () => {
         </h4>
         <MembersRowObserved members={devs} rowRefs={devRowsRef} />
       </div>
-      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1 }}>
+      <div style={{ marginTop: '2rem', position: 'relative', zIndex: 1, width: '100%', maxWidth: '1200px' }}>
         <h4
           ref={researchHeaderRef}
           style={{
