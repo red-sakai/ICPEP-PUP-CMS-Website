@@ -120,8 +120,103 @@ const Hero = ({ id }: { id?: string }) => {
               rgba(242, 135, 118, 0.55), 
               rgba(253, 229, 217, 0.45));
           }
-          /* Full solid gradient overlay on mobile */
-          @media (max-width: 768px) {
+          /* Comprehensive responsive design for all viewports */
+          
+          /* Extra Small Mobile (320px - 480px) */
+          @media (max-width: 480px) {
+            .animated-gradient-bg {
+              display: none !important;
+            }
+            .purple-overlay {
+              background: linear-gradient(135deg, 
+                rgba(147, 98, 205, 0.98), 
+                rgba(190, 56, 142, 0.90), 
+                rgba(232, 15, 80, 0.82), 
+                rgba(242, 135, 118, 0.74), 
+                rgba(253, 229, 217, 0.66)) !important;
+            }
+            .hero-content {
+              padding: 0 1rem !important;
+            }
+            .hero-text {
+              margin-top: -80px !important;
+            }
+            .welcome-message {
+              font-size: 0.8rem !important;
+              letter-spacing: 0.5px !important;
+              margin: 0 0 0.8rem 0 !important;
+              gap: 4px !important;
+            }
+            .crown-icon {
+              font-size: 0.9rem !important;
+            }
+            .hero-title {
+              font-size: 1.8rem !important;
+              margin: 0.1rem 0 !important;
+            }
+            .hero-title:last-of-type {
+              margin: 0.1rem 0 1.2rem 0 !important;
+            }
+            .hero-description {
+              font-size: 0.9rem !important;
+              margin: 0 0 1.5rem 0 !important;
+              line-height: 1.4 !important;
+            }
+            .hero-buttons {
+              flex-direction: column !important;
+              gap: 0.8rem !important;
+              max-width: 260px !important;
+            }
+            .hero-buttons button {
+              font-size: 13px !important;
+              padding: 12px 20px !important;
+              height: 44px !important;
+            }
+          }
+          
+          /* Small Mobile (481px - 600px) */
+          @media (min-width: 481px) and (max-width: 600px) {
+            .animated-gradient-bg {
+              display: none !important;
+            }
+            .purple-overlay {
+              background: linear-gradient(135deg, 
+                rgba(147, 98, 205, 0.96), 
+                rgba(190, 56, 142, 0.88), 
+                rgba(232, 15, 80, 0.80), 
+                rgba(242, 135, 118, 0.72), 
+                rgba(253, 229, 217, 0.64)) !important;
+            }
+            .hero-content {
+              padding: 0 1.2rem !important;
+            }
+            .hero-text {
+              margin-top: -100px !important;
+            }
+            .welcome-message {
+              font-size: 0.85rem !important;
+              letter-spacing: 0.8px !important;
+              margin: 0 0 0.9rem 0 !important;
+            }
+            .hero-title {
+              font-size: 2rem !important;
+            }
+            .hero-description {
+              font-size: 0.95rem !important;
+              margin: 0 0 1.7rem 0 !important;
+            }
+            .hero-buttons {
+              flex-direction: column !important;
+              gap: 0.9rem !important;
+              max-width: 270px !important;
+            }
+          }
+          
+          /* Large Mobile / Small Tablet (601px - 768px) */
+          @media (min-width: 601px) and (max-width: 768px) {
+            .animated-gradient-bg {
+              display: none !important;
+            }
             .purple-overlay {
               background: linear-gradient(135deg, 
                 rgba(147, 98, 205, 0.95), 
@@ -134,20 +229,92 @@ const Hero = ({ id }: { id?: string }) => {
               padding: 0 1.5rem !important;
             }
             .hero-text {
-              max-width: 100% !important;
-              width: 100% !important;
+              margin-top: -110px !important;
             }
             .welcome-message {
               font-size: 0.9rem !important;
               letter-spacing: 1px !important;
               margin: 0 0 1rem 0 !important;
-              gap: 6px !important;
+            }
+            .hero-title {
+              font-size: 2.2rem !important;
+            }
+            .hero-description {
+              font-size: 1rem !important;
+              margin: 0 0 2rem 0 !important;
+            }
+            .hero-buttons {
+              flex-direction: column !important;
+              gap: 1rem !important;
+              max-width: 280px !important;
+            }
+          }
+          
+          /* Tablet Portrait (769px - 1024px) */
+          @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-content {
+              padding: 0 2rem !important;
+            }
+            .welcome-message {
+              font-size: 1rem !important;
+            }
+            .hero-title {
+              font-size: 2.8rem !important;
+            }
+            .hero-description {
+              font-size: 1.05rem !important;
+            }
+          }
+          
+          /* Tablet Landscape / Small Desktop (1025px - 1200px) */
+          @media (min-width: 1025px) and (max-width: 1200px) {
+            .welcome-message {
+              font-size: 1.05rem !important;
+            }
+            .hero-title {
+              font-size: 3rem !important;
+            }
+            .hero-description {
+              font-size: 1.08rem !important;
+            }
+          }
+          
+          /* Medium Desktop (1201px - 1440px) */
+          @media (min-width: 1201px) and (max-width: 1440px) {
+            .welcome-message {
+              font-size: 1.08rem !important;
+            }
+            .hero-title {
+              font-size: 3.1rem !important;
+            }
+            .hero-description {
+              font-size: 1.1rem !important;
+            }
+          }
+          
+          /* Large Desktop (1441px+) */
+          @media (min-width: 1441px) {
+            .welcome-message {
+              font-size: 1.1rem !important;
+            }
+            .hero-title {
+              font-size: 3.2rem !important;
+            }
+            .hero-description {
+              font-size: 1.1rem !important;
+            }
+          }
+          
+          /* Common mobile styles for all small screens */
+          @media (max-width: 768px) {
+            .hero-text {
+              max-width: 100% !important;
+              width: 100% !important;
             }
             .crown-icon {
               font-size: 1rem !important;
             }
             .hero-title {
-              font-size: 2.2rem !important;
               margin: 0.2rem 0 !important;
               line-height: 1.1 !important;
             }
@@ -155,18 +322,13 @@ const Hero = ({ id }: { id?: string }) => {
               margin: 0.2rem 0 1.5rem 0 !important;
             }
             .hero-description {
-              font-size: 1rem !important;
-              margin: 0 0 2rem 0 !important;
               max-width: 100% !important;
               width: 100% !important;
               line-height: 1.5 !important;
               padding: 0 !important;
             }
             .hero-buttons {
-              flex-direction: column !important;
-              gap: 1rem !important;
               width: 100% !important;
-              max-width: 280px !important;
             }
             .hero-buttons > * {
               width: 100% !important;
@@ -281,7 +443,32 @@ const Hero = ({ id }: { id?: string }) => {
                 fontWeight: '600',
                 height: '50px',
               }}
-              onClick={() => window.location.href = "/about"}
+              onClick={() => {
+                // Enhanced navigation with perfect scrolling
+                const currentPath = window.location.pathname;
+                if (currentPath === "/about" || currentPath === "/") {
+                  // If already on about page or home, scroll to about section
+                  const aboutSection = document.getElementById("about-section");
+                  if (aboutSection) {
+                    const getScrollOffset = () => {
+                      const viewportWidth = window.innerWidth;
+                      if (viewportWidth <= 480) return 60;
+                      if (viewportWidth <= 768) return 70;
+                      if (viewportWidth <= 1024) return 80;
+                      if (viewportWidth <= 1440) return 90;
+                      return 100;
+                    };
+                    const elementTop = aboutSection.offsetTop;
+                    const offset = getScrollOffset();
+                    const targetPosition = Math.max(0, elementTop - offset);
+                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                  } else {
+                    window.location.href = "/about";
+                  }
+                } else {
+                  window.location.href = "/about";
+                }
+              }}
             >
               Learn More
             </Button>
@@ -333,7 +520,32 @@ const Hero = ({ id }: { id?: string }) => {
                   backgroundColor: 'transparent',
                   transition: 'all 0.3s ease',
                 }}
-                onClick={() => window.location.href = "/contact"}
+                onClick={() => {
+                  // Enhanced navigation with perfect scrolling
+                  const currentPath = window.location.pathname;
+                  if (currentPath === "/contact" || currentPath === "/") {
+                    // If already on contact page or home, scroll to contact section
+                    const contactSection = document.getElementById("contact-section");
+                    if (contactSection) {
+                      const getScrollOffset = () => {
+                        const viewportWidth = window.innerWidth;
+                        if (viewportWidth <= 480) return 60;
+                        if (viewportWidth <= 768) return 70;
+                        if (viewportWidth <= 1024) return 80;
+                        if (viewportWidth <= 1440) return 90;
+                        return 100;
+                      };
+                      const elementTop = contactSection.offsetTop;
+                      const offset = getScrollOffset();
+                      const targetPosition = Math.max(0, elementTop - offset);
+                      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                    } else {
+                      window.location.href = "/contact";
+                    }
+                  } else {
+                    window.location.href = "/contact";
+                  }
+                }}
               >
                 Contact Us
               </Button>
