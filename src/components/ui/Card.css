@@ -1,0 +1,70 @@
+.contact-card {
+  background: #F9F7FB;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  padding: 2rem 2rem 1.5rem 2rem;
+  width: 340px;
+  min-width: 280px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 0;
+}
+
+.contact-card-icon {
+  background: #EAE8F6;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.contact-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #222;
+  margin: 0;
+}
+
+.contact-card-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .contact-card {
+    width: 100%;
+    min-width: 280px;
+    max-width: 100%;
+    margin: 0 0.5rem;
+    flex: 1 1 280px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1.5rem 1rem 1rem 1rem;
+    margin: 0;
+    min-width: 260px;
+  }
+  
+  .contact-card-title {
+    font-size: 1rem;
+  }
+  
+  .contact-card-description {
+    font-size: 0.9rem;
+  }
+}
