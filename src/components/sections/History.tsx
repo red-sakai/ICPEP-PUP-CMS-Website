@@ -402,7 +402,7 @@ const History = () => {
                   ? '0 20px 60px rgba(147,98,205,0.25)' 
                   : `0 ${Math.max(2, 8 - Math.abs(offset) * 2)}px ${Math.max(5, 20 - Math.abs(offset) * 5)}px rgba(0,0,0,${Math.max(0.02, 0.1 - Math.abs(offset) * 0.02)})`,
                 pointerEvents: offset === 0 ? 'auto' : 'none',
-                width: 380,
+                width: 420,
                 maxWidth: '90vw',
                 background: '#fff',
                 borderRadius: 18,
