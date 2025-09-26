@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import CrownIcon from '@mui/icons-material/WorkspacePremium';
 
@@ -6,6 +7,7 @@ const Hero = ({ id }: { id?: string }) => {
   const waveRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -444,30 +446,7 @@ const Hero = ({ id }: { id?: string }) => {
                 height: '50px',
               }}
               onClick={() => {
-                // Enhanced navigation with perfect scrolling
-                const currentPath = window.location.pathname;
-                if (currentPath === "/about" || currentPath === "/") {
-                  // If already on about page or home, scroll to about section
-                  const aboutSection = document.getElementById("about-section");
-                  if (aboutSection) {
-                    const getScrollOffset = () => {
-                      const viewportWidth = window.innerWidth;
-                      if (viewportWidth <= 480) return 60;
-                      if (viewportWidth <= 768) return 70;
-                      if (viewportWidth <= 1024) return 80;
-                      if (viewportWidth <= 1440) return 90;
-                      return 100;
-                    };
-                    const elementTop = aboutSection.offsetTop;
-                    const offset = getScrollOffset();
-                    const targetPosition = Math.max(0, elementTop - offset);
-                    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                  } else {
-                    window.location.href = "/about";
-                  }
-                } else {
-                  window.location.href = "/about";
-                }
+                navigate('/about');
               }}
             >
               Learn More
@@ -521,30 +500,7 @@ const Hero = ({ id }: { id?: string }) => {
                   transition: 'all 0.3s ease',
                 }}
                 onClick={() => {
-                  // Enhanced navigation with perfect scrolling
-                  const currentPath = window.location.pathname;
-                  if (currentPath === "/contact" || currentPath === "/") {
-                    // If already on contact page or home, scroll to contact section
-                    const contactSection = document.getElementById("contact-section");
-                    if (contactSection) {
-                      const getScrollOffset = () => {
-                        const viewportWidth = window.innerWidth;
-                        if (viewportWidth <= 480) return 60;
-                        if (viewportWidth <= 768) return 70;
-                        if (viewportWidth <= 1024) return 80;
-                        if (viewportWidth <= 1440) return 90;
-                        return 100;
-                      };
-                      const elementTop = contactSection.offsetTop;
-                      const offset = getScrollOffset();
-                      const targetPosition = Math.max(0, elementTop - offset);
-                      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                    } else {
-                      window.location.href = "/contact";
-                    }
-                  } else {
-                    window.location.href = "/contact";
-                  }
+                  navigate('/contact');
                 }}
               >
                 Contact Us
