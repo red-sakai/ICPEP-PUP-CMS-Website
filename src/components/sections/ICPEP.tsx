@@ -171,8 +171,8 @@ const ICPEP = () => {
             'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
         }}
       >
-        The Institute of Computer Engineers of the Philippines – Student Edition
-        at the Polytechnic University of the Philippines (ICpEP.SE-PUP) is a
+        The Institute of Computer Engineers of the Philippines Student Edition - PUP Manila
+        at the Polytechnic University of the Philippines, ICPEP SE - PUP Manila is a
         student organization committed to advancing computer engineering and
         computer science education.
       </p>

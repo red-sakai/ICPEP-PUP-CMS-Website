@@ -2,20 +2,20 @@ import { useRef, useEffect } from 'react';
 
 const facts = [
   {
-    title: "ICPEP x PUP Fact #1",
-    description: "ICpEP. org (representing CpE students) joins inter-organization competitions, like quiz bees, hackathons, and programming",
+    title: "What is ICpEP?",
+    description: "The Institute of Computer Engineers of the Philippines (ICpEP) is a non-stock, non-profit professional organization registered under the Securities and Exchange Commission (SEC Reg. No. 201120675). It serves as the parent organization of the ICpEP Student Edition (ICpEP.SE).",
     background: "linear-gradient(135deg, #E8D5FF 0%, #C8A8FF 100%)",
     illustration: "/sapiens 1.svg" // Sapiens 1 illustration
   },
   {
-    title: "ICPEP x PUP Fact #2",
-    description: "From inter-org competitions, academic seminars, to community outreach — ICpEP joins in PUP initiatives as the CpE representative.",
+    title: "What is ICpEP SE?",
+    description: "The Institute of Computer Engineers of the Philippines – Student Edition (ICpEP.SE) is the official student chapter of ICpEP, established to bridge academic institutions across the country.",
     background: "linear-gradient(135deg, #FFB8B8 0%, #FF9999 100%)",
     illustration: "/sapiens 2.svg" // Sapiens 2 illustration
   },
   {
-    title: "ICPEP x PUP Fact #3",
-    description: "It’s the recognized student chapter of ICpEP at PUP. It serves as the official academic organization for Computer Engineering (CpE) students.",
+    title: "What is ICPEP SE - PUP Manila?",
+    description: "ICPEP SE – PUP Manila, affiliated with ICpEP.SE – National Capital Region (ICpEP.SE – NCR), is an organization dedicated to providing Bachelor’s and Diploma in Computer Engineering students of PUP with meaningful opportunities to grow, connect, and collaborate with technology-driven communities and industries.",
     background: "linear-gradient(135deg, #FFD4B8 0%, #FFBF99 100%)",
     illustration: "/sapiens 3.svg" // Sapiens 3 illustration
   }

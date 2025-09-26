@@ -43,7 +43,7 @@ const ContactCards = () => {
           icon={<FiMapPin size={28} color="#6C63FF" />}
           title="Location"
           description={
-            'Polytechnic University of the Philippines\nSta. Mesa, Manila, Philippines'
+            '3rd Floor College of Engineering and Architecture Building, Pureza St., Manila, Philippines'
           }
         />
         <Card

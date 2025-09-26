@@ -202,7 +202,7 @@ const Footer = () => {
           </span>
         </div>
         <div style={{ fontSize: '0.9rem', color: '#A5A5A9', marginBottom: '1rem' }}>
-          Institute of Computer Engineers of the Philippines - Polytechnic University of the Philippines.
+          Institute of Computer Engineers of The Philippines Student Edition – Polytechnic University of The Philippines Manila
         </div>
         <div className="footer-social-icons" style={{ display: 'flex', alignItems: 'center' }}>
           <a href="https://www.facebook.com/icpepse.pupmanila" target="_blank" rel="noopener noreferrer">
@@ -258,7 +258,7 @@ const Footer = () => {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#A5A5A9', fontSize: '0.9rem', lineHeight: '2.1' }}>
           <li>
             <span style={{ marginRight: '0.7rem', fontSize: '0.9rem', verticalAlign: 'middle' }}><LocationOnIcon /></span>
-            Polytechnic University of the Philippines, Sta. Mesa, Manila, Philippines
+            3rd Floor College of Engineering and Architecture Building, Pureza St., Manila, Philippines
           </li>
           <li>
             <span style={{ marginRight: '0.7rem', fontSize: '0.9rem', verticalAlign: 'middle' }}><EmailIcon /></span>
@@ -281,7 +281,7 @@ const Footer = () => {
       marginTop: '0.5rem',
       fontFamily: 'Montserrat, sans-serif',
     }}>
-      © 2024 ICPEP SE PUP. All rights reserved. | Empowering the future of computer engineering.
+      © 2025 ICPEP SE - PUP Manila. All rights reserved. | Empowering the future of computer engineering.
     </div>
     </footer>
     </>

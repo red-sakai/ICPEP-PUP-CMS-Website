@@ -8,6 +8,9 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Card2 from '../ui/Card2';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { FaHandBackFist } from "react-icons/fa6";
+import { IoArrowDownOutline } from "react-icons/io5";
+import { FaEye } from "react-icons/fa";
 
 const History = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -93,6 +96,21 @@ const History = () => {
       title: 'Continuing Mission',
       description: 'ICpEP remains committed to advancing the profession, providing opportunities for professional development, and contributing to the technological growth of the Philippines. Through its professional and student chapters, it ensures that computer engineers play a vital role in shaping the country\'s future.'
     },
+    {
+      icon: <div style={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><FaHandBackFist style={{ fontSize: 40, color: '#9362CD' }} /></div>,
+      title: 'The Comeback',
+      description: 'Some time after the climax of the pandemic, the chapter experienced a period of dormancy and had become inactive. Marking a strong comeback in School Year 2024–2025, it was revived through the leadership of Marvin James Erosa (Co-Founder and President) and Gladwin Ferdz Del Rosario (Co-Founder and Executive Vice President) finalizing the name of ICPEP SE - PUP Manila.'
+    },
+    {
+      icon: <div style={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><IoArrowDownOutline style={{ fontSize: 40, color: '#9362CD' }} /></div>,
+      title: 'The Present',
+      description: 'In the current school year, Gladwin Ferdz I. Del Rosario now leads the ICpEP.SE chapter of PUP as President, while also serving as Vice President External of ICpEP.SE–NCR. Today, ICPEP SE–PUP stands at the forefront of innovation, serving both the BS and Diploma in Computer Engineering programs of the university.'
+    },
+    {
+      icon: <div style={{ width: 48, height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: "150px"}}><FaEye style={{ fontSize: 40, color: '#9362CD' }} /></div>,
+      title: 'A Visionary Future for PUP',
+      description: 'The chapter provides its members with meaningful opportunities to connect with the industry, collaborate with the broader tech community, and gain access to external learning and professional development initiatives.'
+    }
   ];
 
   const [current, setCurrent] = useState(0);

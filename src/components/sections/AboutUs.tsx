@@ -85,7 +85,7 @@ const AboutUs = () => {
               margin: '0 auto',
             }}
           >
-            Learn about the Institute of Computer Engineers of the Philippines, our mission, vision, and the people who lead our organization.
+            Learn more about the Institute of Computer Engineers of the Philippines Student Edition – both at the NCR chapter and our PUP chapter – including our mission, vision, and the dedicated leaders behind our organization.
           </p>
         </div>
         {/* Decorative circles */}

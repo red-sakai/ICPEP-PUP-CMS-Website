@@ -384,7 +384,7 @@ const Hero = ({ id }: { id?: string }) => {
             gap: "8px"
           }}>
             <CrownIcon className="crown-icon" style={{ fontSize: "1.2rem", color: "#FFB6C1" }} />
-            Welcome to ICPEP!
+            Welcome to ICPEP SE - PUP MANILA!
           </div>
           <h1 className="hero-title" style={{
             color: "#fff",
@@ -419,7 +419,7 @@ const Hero = ({ id }: { id?: string }) => {
             lineHeight: "1.6",
             opacity: 0.9,
           }}>
-            Join the Institute of Computer and Electronics Engineers - PUP Manila, 
+            Join the Institute of Computer and Electronics Engineers Student Edition - PUP Manila, 
             where innovation meets excellence and future engineers shape tomorrow's technology.
           </p>
           <div ref={btnRef} className="hero-buttons" style={{

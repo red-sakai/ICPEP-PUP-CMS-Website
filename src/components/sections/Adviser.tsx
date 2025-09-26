@@ -4,9 +4,9 @@ import Card3 from '../ui/Card3';
 const adviser = [
   {
     name: 'Engr. Rolito L. Mahaguay',
-    position: 'ICPEP SE PUP ADVISER',
+    position: 'ICPEP SE - PUP MANILA ADVISER',
     photoUrl: "Engr-Mahaguay.jpg",
-    facebookUrl: "https://www.facebook.com/rmahaguay",
+    facebookUrl: "#",
     xUrl: "https://x.com",
     instagramUrl: "https://instagram.com",
     linkedinUrl: "https://linkedin.com"

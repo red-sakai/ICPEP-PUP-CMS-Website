@@ -81,24 +81,24 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "What is ICPEP SE PUP?",
-      answer: "ICPEP SE PUP is a student organization for Computer Engineering students at PUP."
+      question: "What is ICPEP SE - PUP Manila?",
+      answer: "ICPEP SE – PUP Manila is a student organization under ICpEP.SE – NCR that provides PUP Computer Engineering(both BS and Diploma) students with opportunities to learn, grow, and connect with technology-driven communities and industries."
     },
     {
       question: "How do I become a member?",
-      answer: "Membership details will be announced soon. Stay tuned for updates!"
+      answer: "Membership details will be announced soon. Stay tuned through our facebook page for updates!"
     },
     {
       question: "What activities do you offer?",
-      answer: "We offer seminars, workshops, competitions, and social events for members."
+      answer: "We organize a variety of activities including seminars, workshops, competitions, mentorship programs, social events, and exclusive member initiatives. Stay connected through our social media channels to get the latest updates!"
     },
     {
       question: "Who can join?",
-      answer: "All Computer Engineering students at PUP are welcome to join."
+      answer: "All Computer Engineering students in both BS and Diploma programs at PUP-Sta.Mesa are welcome to join."
     },
     {
       question: "How can I contact the officers?",
-      answer: "You can reach out via our official email or social media channels."
+      answer: "You can reach out via our official email, social media channels or through our facebook page."
     }
   ];
 
@@ -176,7 +176,7 @@ const FAQ = () => {
                 'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)',
             }}
           >
-            Find answers to common questions about ICPEP SE PUP membership and activities.
+            Find answers to common questions about ICPEP SE - PUP Manila membership and activities.
           </p>
         </div>
 

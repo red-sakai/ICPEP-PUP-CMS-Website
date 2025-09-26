@@ -5,7 +5,6 @@ import ICPEP from './components/sections/ICPEP';
 import Footer from './components/sections/Footer';
 import Facts from './components/sections/Facts';
 import AboutUs from './components/sections/AboutUs';
-import MissionVision from './components/sections/Mission&Vision';
 import Adviser from './components/sections/Adviser';
 import Officers from './components/sections/Officers';
 import History from './components/sections/History';
@@ -13,6 +12,7 @@ import ContactUs from './components/sections/ContactUs';
 import ContactCards from './components/sections/ContactCards';
 import FAQ from './components/sections/FAQ';
 import Devs from './components/sections/Devs';
+import MissionVisionICPEP from './components/sections/Mission&VisionICPEP';
 import { useEffect, useState } from 'react';
 
 {/* Landing Page section */}
@@ -33,7 +33,7 @@ function AboutPage() {
   return (
     <div style={{ width: '100%', overflowX: 'hidden' }}>
       <AboutUs />
-      <MissionVision />
+      <MissionVisionICPEP />
       <Adviser />
       <Officers />
       <Devs />

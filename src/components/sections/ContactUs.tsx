@@ -83,7 +83,7 @@ const ContactUs = () => {
               margin: '0 auto',
             }}
           >
-            Get in touch with ICPEP SE PUP. We&apos;re here to answer your questions and help you get involved.
+            Get in touch with ICPEP SE - PUP Manila. We&apos;re here to answer your questions and help you get involved.
           </p>
         </div>
         {/* Decorative circles */}

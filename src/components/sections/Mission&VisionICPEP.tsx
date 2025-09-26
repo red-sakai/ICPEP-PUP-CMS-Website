@@ -2,11 +2,11 @@ import { useRef, useEffect } from 'react';
 import Navbar from './Navbar';
 import Card2 from '../ui/Card2';
 
-const missionText = `The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) is committed to bridging the gap between the industry and the academe by empowering the interests, welfare, and ideals of its members, developing a strong and harmonious foundation within its community, and professionalizing the skills of its officers and members for global competitiveness and national progression.`;
+const missionText = `ICPEP SE - PUP Manila aims to empower Polytechnic University of the Philippines (PUP) Computer Engineering students by fostering a dynamic community of collaborative learning, providing technical training, building strategic industry partnerships, and cultivating excellence in the field of Computer Engineering.`;
 
-const visionText = `The Institute of Computer Engineers of the Philippines Student Edition (ICpEP.SE) envisions itself as the foundation of world-class computer engineers and a motivator of students' interests towards excellence in Computer Engineering as their field of specialization.`;
+const visionText = `ICPEP SE - PUP Manila envisions itself as a catalyst for evolving Polytechnic University of the Philippines (PUP) Computer Engineering students into competent professionals, innovative leaders, and responsible advocates for technology.`;
 
-const MissionVision = () => {
+const MissionVisionICPEP = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const visionRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -70,7 +70,7 @@ const MissionVision = () => {
             className="mv-text-col"
             style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'visible' }}
           >
-            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>ICpEP Mission</h2>
+            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>ICPEP SE - PUP Manila Mission</h2>
             <div
               className="mv-underline"
               style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }}
@@ -111,7 +111,7 @@ const MissionVision = () => {
             className="mv-text-col"
             style={{ flex: 1, minWidth: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
           >
-            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>ICpEP Vision</h2>
+            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 900, fontSize: '2.2rem', color: '#333', marginBottom: '0.7rem', marginTop: 0 }}>ICPEP SE - PUP Manila Vision</h2>
             <div
               className="mv-underline"
               style={{ width: '120px', height: '8px', borderRadius: '8px', background: 'linear-gradient(90deg, #9362CD 0%, #E80F50 60%, #FDE5D9 100%)', marginBottom: '1.2rem' }}
@@ -160,4 +160,4 @@ const MissionVision = () => {
   );
 };
 
-export default MissionVision;
+export default MissionVisionICPEP;

@@ -19,6 +19,14 @@
       "linkedinUrl": "https://www.linkedin.com/in/alexie-ysabel-anoya-75689b297"
     },
     {
+      "name": "Albren Dominique Naplaza",
+      "position": "Executive Secretary",
+      "photoUrl": "AlbrenAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/albren-naplaza-815330296/"
+    },
+    {
       "name": "Shanella Maye S. Constantino",
       "position": "Vice President for Internal Relations",
       "photoUrl": "ShanellaAI.PNG",
@@ -27,9 +35,25 @@
       "linkedinUrl": "https://linkedin.com"
     },
     {
+      "name": "Jasmin Paige Mazaredo",
+      "position": "Associate Vice President for Internal Relations",
+      "photoUrl": "JasminAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://www.linkedin.com/in/jasmin-paige-mazaredo-350027354/"
+    },
+    {
       "name": "Joshua A. Basilan",
       "position": "Vice President for External Relations",
       "photoUrl": "JoshuaAI.PNG",
+      "facebookUrl": "https://facebook.com",
+      "instagramUrl": "https://instagram.com",
+      "linkedinUrl": "https://linkedin.com"
+    },
+        {
+      "name": "Pierre Victor Zurbito",
+      "position": "Vice President for Operations",
+      "photoUrl": "ZurbitoAI.PNG",
       "facebookUrl": "https://facebook.com",
       "instagramUrl": "https://instagram.com",
       "linkedinUrl": "https://linkedin.com"
@@ -43,14 +67,6 @@
       "linkedinUrl": "https://www.linkedin.com/in/carl-melvin-erosa-4805b4304/"
     },
     {
-      "name": "Emanuel Jabon",
-      "position": "Vice President for Graphics",
-      "photoUrl": "EmanuelAI.png",
-      "facebookUrl": "https://facebook.com",
-      "instagramUrl": "https://instagram.com",
-      "linkedinUrl": "https://linkedin.com"
-    },
-    {
       "name": "Carl Blancaflor",
       "position": "Associate Vice President for Technology",
       "photoUrl": "Carl-B-AI.PNG",
@@ -59,20 +75,12 @@
       "linkedinUrl": "https://www.linkedin.com/in/carl-blancaflor-013881323/"
     },
     {
-      "name": "Jasmin Paige Mazaredo",
-      "position": "Associate Vice President for Internal Relations",
-      "photoUrl": "no-profile.PNG",
+      "name": "Emanuel Jabon",
+      "position": "Vice President for Graphics",
+      "photoUrl": "EmanuelAI.png",
       "facebookUrl": "https://facebook.com",
       "instagramUrl": "https://instagram.com",
-      "linkedinUrl": "https://www.linkedin.com/in/jasmin-paige-mazaredo-350027354/"
-    },
-    {
-      "name": "Albren Dominique Naplaza",
-      "position": "Executive Secretary",
-      "photoUrl": "AlbrenAI.PNG",
-      "facebookUrl": "https://facebook.com",
-      "instagramUrl": "https://instagram.com",
-      "linkedinUrl": "https://www.linkedin.com/in/albren-naplaza-815330296/"
+      "linkedinUrl": "https://linkedin.com"
     },
     {
       "name": "Nikki Elisha D. Plaza",
